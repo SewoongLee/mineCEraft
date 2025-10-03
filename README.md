@@ -1,3 +1,6 @@
+> [!TODO]
+Update README for MineCEraft project & Acknowledge Mindcraft
+
 # Mindcraft 🧠⛏️
 
 Crafting minds for Minecraft with LLMs and [Mineflayer!](https://prismarinejs.github.io/mineflayer/#/)
