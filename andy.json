@@ -1,0 +1,25 @@
+{
+    "name": "andy",
+
+    "model": "gpt-5-mini",
+    
+    "modelc37": "claude-3-7-sonnet-latest",
+    "model35t": "gpt-3.5-turbo",
+    "model4": "gpt-4",
+    "model41m": "gpt-4.1-mini",
+    "model5n": "gpt-5-nano",
+    "model25f": "gemini-2.5-flash",
+
+    "modes": {
+        "self_preservation": false,
+        "unstuck": false,
+        "cowardice": false,
+        "self_defense": false,
+        "hunting": false,
+        "item_collecting": false,
+        "torch_placing": false,
+        "elbow_room": true,
+        "idle_staring": true,
+        "cheat": true
+    }
+}

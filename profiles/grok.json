@@ -1,0 +1,7 @@
+{
+    "name": "Grok",
+
+    "model": "grok-3-mini-latest",
+    
+    "embedding": "openai"
+}
