@@ -1,4 +1,4 @@
-> [!TODO]
+# TODO
 Update README for MineCEraft project & Acknowledge Mindcraft
 
 # Mindcraft 🧠⛏️
