@@ -1,31 +1,55 @@
 // send_prompts.js
-// Send prompts to a Mindcraft agent and wait until the agent signals completion (contains-based).
-// Usage: node send_prompts.js
-// Prerequisite: npm install socket.io-client
+// Delete previous action files, then send prompts to the agent.
 
 import { io } from "socket.io-client";
+import fs from "fs";
+import path from "path";
 
 const SERVER = "http://localhost:8080";
 const socket = io(SERVER, { transports: ["websocket", "polling"] });
 
-const agentName = "andy"; // target agent name
+const agentName = "andy";
 const prompts = [
   "Lay the foundation for a 15x20 block rectangular building.",
   "Build an arched bridge.",
   "Build a simple house.",
 ];
 
-// Wait up to 20 minutes (ms) for completion
 const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000; // 20 minutes
 
-// Simple contains-based completion keywords (case-insensitive)
 const COMPLETION_KEYWORDS = [
-  "finished",
-  "completed",
   "complete!",
-  "built",
+  "completed",
+  "finished",
   "done",
+  "built",
 ];
+
+// ✅ ① Delete all files in bots/andy/action-code
+function clearActionCodeDir() {
+  // go up one level first, then into bots/andy/action-code
+  const dirPath = path.join(process.cwd(), "..", "bots", agentName, "action-code");
+
+  if (fs.existsSync(dirPath)) {
+    const files = fs.readdirSync(dirPath);
+    for (const file of files) {
+      const fullPath = path.join(dirPath, file);
+      try {
+        const stat = fs.statSync(fullPath);
+        if (stat.isFile()) fs.unlinkSync(fullPath);
+        else if (stat.isDirectory()) fs.rmSync(fullPath, { recursive: true, force: true });
+      } catch (err) {
+        console.error("⚠️ Failed to delete:", fullPath, err.message);
+      }
+    }
+    console.log(`🧹 Cleared all files under ${dirPath}`);
+  } else {
+    console.log(`ℹ️ Directory not found: ${dirPath}`);
+  }
+}
+
+// ✅ ② Run cleanup before connecting to MindServer
+clearActionCodeDir();
 
 /** Return true if message text contains any completion keyword (case-insensitive). */
 function hasCompletionKeyword(text) {
@@ -35,9 +59,7 @@ function hasCompletionKeyword(text) {
 }
 
 /**
- * Wait for a completion signal from the specified agent.
- * Resolves { ok: true, messages } when a message containing a completion keyword is seen.
- * Resolves { ok: false, reason, messages } on timeout.
+ * Wait for completion message from agent
  */
 function waitForCompletion(agent, timeoutMs = RESPONSE_TIMEOUT_MS) {
   return new Promise((resolve) => {
@@ -48,7 +70,6 @@ function waitForCompletion(agent, timeoutMs = RESPONSE_TIMEOUT_MS) {
       if (fromAgent !== agent) return;
       const text =
         typeof message === "string" ? message : message?.text ?? JSON.stringify(message);
-
       messages.push(text);
       console.log(`📨 [${fromAgent}] ${text}`);
 
@@ -80,22 +101,16 @@ socket.on("connect", async () => {
     socket.emit("send-message", agentName, { from: "ADMIN", message: p });
 
     console.log(
-      `⏳ Waiting for completion keyword (timeout ${Math.round(
-        RESPONSE_TIMEOUT_MS / 60000
-      )} minutes)...`
+      `⏳ Waiting for completion keyword (timeout ${Math.round(RESPONSE_TIMEOUT_MS / 60000)} min)...`
     );
     const res = await waitForCompletion(agentName);
 
     if (res.ok) {
-      console.log(`✅ Completion detected for "${p}". Collected messages:`);
-      res.messages.forEach((m, i) => console.log(`  ${i + 1}. ${m}`));
+      console.log(`✅ Completion detected for "${p}".`);
     } else {
-      console.log(`⚠️ Timeout waiting for completion of "${p}". Collected messages so far:`);
-      res.messages.forEach((m, i) => console.log(`  ${i + 1}. ${m}`));
-      // Policy decision: continue or abort. Here we continue.
+      console.log(`⚠️ Timeout waiting for completion of "${p}".`);
     }
 
-    // Small safe delay before next prompt
     await new Promise((r) => setTimeout(r, 500));
   }
 
