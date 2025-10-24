@@ -1,5 +1,5 @@
 // send_prompts.js
-// Send prompts to a Mindcraft agent and wait until the agent signals completion.
+// Send prompts to a Mindcraft agent and wait until the agent signals completion (contains-based).
 // Usage: node send_prompts.js
 // Prerequisite: npm install socket.io-client
 
@@ -10,20 +10,34 @@ const socket = io(SERVER, { transports: ["websocket", "polling"] });
 
 const agentName = "andy"; // target agent name
 const prompts = [
-  "Build an arched bridge",
-  "Build a simple house",
+  "Lay the foundation for a 15x20 block rectangular building.",
+  "Build an arched bridge.",
+  "Build a simple house.",
 ];
 
-// Wait up to 10 minutes (ms) for completion keyword
-const RESPONSE_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
+// Wait up to 20 minutes (ms) for completion
+const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000; // 20 minutes
 
-// Completion keywords (case-insensitive). We'll match whole words.
-const COMPLETION_REGEX = /\b(complete)\b/i;
+// Simple contains-based completion keywords (case-insensitive)
+const COMPLETION_KEYWORDS = [
+  "finished",
+  "completed",
+  "complete!",
+  "built",
+  "done",
+];
+
+/** Return true if message text contains any completion keyword (case-insensitive). */
+function hasCompletionKeyword(text) {
+  if (!text) return false;
+  const lower = String(text).toLowerCase();
+  return COMPLETION_KEYWORDS.some((kw) => lower.includes(kw));
+}
 
 /**
  * Wait for a completion signal from the specified agent.
  * Resolves { ok: true, messages } when a message containing a completion keyword is seen.
- * Resolves { ok: false, reason } on timeout.
+ * Resolves { ok: false, reason, messages } on timeout.
  */
 function waitForCompletion(agent, timeoutMs = RESPONSE_TIMEOUT_MS) {
   return new Promise((resolve) => {
@@ -32,11 +46,13 @@ function waitForCompletion(agent, timeoutMs = RESPONSE_TIMEOUT_MS) {
 
     const handler = (fromAgent, message) => {
       if (fromAgent !== agent) return;
-      const text = typeof message === "string" ? message : (message?.text ?? JSON.stringify(message));
+      const text =
+        typeof message === "string" ? message : message?.text ?? JSON.stringify(message);
+
       messages.push(text);
       console.log(`📨 [${fromAgent}] ${text}`);
 
-      if (COMPLETION_REGEX.test(text)) {
+      if (hasCompletionKeyword(text)) {
         cleanup();
         resolve({ ok: true, messages });
       }
@@ -63,7 +79,11 @@ socket.on("connect", async () => {
     console.log(`\n➡️ Sending to ${agentName}: "${p}"`);
     socket.emit("send-message", agentName, { from: "ADMIN", message: p });
 
-    console.log(`⏳ Waiting for completion keyword (timeout ${RESPONSE_TIMEOUT_MS / 60000} minutes)...`);
+    console.log(
+      `⏳ Waiting for completion keyword (timeout ${Math.round(
+        RESPONSE_TIMEOUT_MS / 60000
+      )} minutes)...`
+    );
     const res = await waitForCompletion(agentName);
 
     if (res.ok) {
@@ -72,10 +92,10 @@ socket.on("connect", async () => {
     } else {
       console.log(`⚠️ Timeout waiting for completion of "${p}". Collected messages so far:`);
       res.messages.forEach((m, i) => console.log(`  ${i + 1}. ${m}`));
-      // Decide policy: continue to next prompt or abort. Here we continue.
+      // Policy decision: continue or abort. Here we continue.
     }
 
-    // small safe delay before next prompt
+    // Small safe delay before next prompt
     await new Promise((r) => setTimeout(r, 500));
   }
 
@@ -85,5 +105,5 @@ socket.on("connect", async () => {
 });
 
 socket.on("connect_error", (err) => {
-  console.error("❌ Socket connection error:", err && err.message ? err.message : err);
+  console.error("❌ Socket connection error:", err?.message ?? err);
 });
