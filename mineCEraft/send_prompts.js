@@ -18,8 +18,7 @@ const prompts = [
 const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000; // 20 minutes
 
 const COMPLETION_KEYWORDS = [
-  "complete!",
-  "completed",
+  "complete",
   "finished",
   "done",
   "built",
