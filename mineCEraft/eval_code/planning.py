@@ -1,5 +1,5 @@
 from typing import List, Dict, Any
-from utils import to_int
+from .utils import to_int
 
 def l1_dist(coords: List[Dict[str, Any]], required_step: int = 1) -> int:
     """
