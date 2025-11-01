@@ -5,6 +5,7 @@
             "material.is_quantity_correct(coords, 15 * 20 * 2)",
             "material.is_type_correct(coords, 'stone')",
             "size.is_equal(coords, xz=(15, 20), y=2)",
+            "structural_stability.is_ground_connected(coords)",
             "planning.l1_dist(coords, 1)"
         ]
     },
