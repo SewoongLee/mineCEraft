@@ -1,0 +1,18 @@
+[
+    {
+        "prompt":"Lay the foundation for a 15x20 block rectangular building.",
+        "eval_code": [
+            "material.is_quantity_correct(coords, 15 * 20 * 2)",
+            "material.is_type_correct(coords, 'stone')",
+            "size.is_equal(coords, xz=(15, 20), y=2)",
+            "planning.l1_dist(coords, 1)"
+        ]
+    },
+    {
+        "prompt":"Build an arched bridge.",
+        "eval_code": [
+            "structural_stability.is_ground_connected(coords)",
+            "shape.center_column_above_center(coords)"
+        ]
+    }
+]
