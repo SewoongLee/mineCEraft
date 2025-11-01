@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Tuple
-from .utils import xyz_lists
+from utils import xyz_lists
 
 def _ranges(coords: List[Dict[str, Any]]) -> Tuple[int, int, int]:
     """
