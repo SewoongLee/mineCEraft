@@ -8,7 +8,7 @@ import path from "path";
 const SERVER = "http://localhost:8080";
 const agentName = "andy";
 const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000;
-const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built"];
+const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid out"];
 
 /** Return true if text contains any completion keyword (case-insensitive). */
 function hasCompletionKeyword(text) {
@@ -40,12 +40,12 @@ function clearActionCodeDir() {
 /**
  * Find the highest-numbered *.js file under bots/<agentName>/action-code
  * and print a single machine-readable line with a sentinel prefix.
- * Format: ::ACTION_MAX::<json>
+ * Format: ::ACTION_MAX_JS::<json>
  */
 function reportMaxActionFile() {
   const dirPath = path.join(process.cwd(), "..", "bots", agentName, "action-code");
   if (!fs.existsSync(dirPath)) {
-    console.log(`::ACTION_MAX::${JSON.stringify({ ok: false, reason: "dir-not-found", dirPath })}`);
+    console.log(`::ACTION_MAX_JS::${JSON.stringify({ ok: false, reason: "dir-not-found", dirPath })}`);
     return;
   }
 
@@ -64,13 +64,13 @@ function reportMaxActionFile() {
   }
 
   if (maxIndex < 0) {
-    console.log(`::ACTION_MAX::${JSON.stringify({ ok: false, reason: "no-js-files", dirPath })}`);
+    console.log(`::ACTION_MAX_JS::${JSON.stringify({ ok: false, reason: "no-js-files", dirPath })}`);
     return;
   }
 
   const fullPath = path.join(dirPath, maxName);
   console.log(
-    `::ACTION_MAX::${JSON.stringify({
+    `::ACTION_MAX_JS::${JSON.stringify({
       ok: true,
       index: maxIndex,
       name: maxName,
