@@ -4,12 +4,11 @@ from .utils import to_int
 
 def is_ground_connected(
     coords: List[Dict[str, Any]],
-    ground_y: int = 0,
     mark_visit: bool = False,
 ) -> int:
     """
     Return 1 if every block is connected (via face adjacency) to at least one
-    block on the ground plane y == ground_y. Otherwise return 0.
+    block with y <= 0. Otherwise return 0.
 
     - Face adjacency (6-neighborhood): +/-1 step on exactly one axis.
     - If `mark_visit=True`, each input coord dict receives a boolean `visit` flag
@@ -17,7 +16,6 @@ def is_ground_connected(
 
     Args:
         coords: [{"x":..,"y":..,"z":.., ...}, ...]
-        ground_y: ground plane height (default 0)
         mark_visit: whether to set `visit` flags in-place on `coords`
     """
 
@@ -26,7 +24,6 @@ def is_ground_connected(
         return 1
 
     # Normalize coordinates and build a map from (x,y,z) -> list of indices.
-    # We collect indices to allow optional in-place `visit` flag updates.
     pos_to_indices = defaultdict(list)
     positions: List[Tuple[int, int, int]] = []
 
@@ -37,12 +34,12 @@ def is_ground_connected(
         if mark_visit:
             c["visit"] = False
 
-    # Initialize BFS queue with all ground-contact blocks (y == ground_y).
+    # Initialize BFS queue with all "ground" blocks: y <= 0.
     queue: deque[Tuple[int, int, int]] = deque()
     visited: Set[Tuple[int, int, int]] = set()
 
     for (x, y, z) in positions:
-        if y == ground_y:
+        if y <= 0:  # ★ 여기만 바뀜: y == 0 → y <= 0
             if (x, y, z) not in visited:
                 visited.add((x, y, z))
                 queue.append((x, y, z))
@@ -50,7 +47,7 @@ def is_ground_connected(
                 for idx in pos_to_indices[(x, y, z)]:
                     coords[idx]["visit"] = True
 
-    # If there are no ground-contact blocks at all, everything is floating.
+    # If there are no ground-contact blocks at all (no y <= 0), everything is floating.
     if not queue:
         return 0
 
