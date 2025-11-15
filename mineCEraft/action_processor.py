@@ -24,11 +24,21 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     const code = fs.readFileSync(FILENAME, 'utf8');
 
     // ---- mocks ----
+    // Provide a Vec3-like object with .floored() as Mineflayer does.
+    const _pos = {
+      x: __X0__, y: __Y0__, z: __Z0__,
+      floored() {
+        return {
+          x: Math.floor(this.x),
+          y: Math.floor(this.y),
+          z: Math.floor(this.z),
+        };
+      }
+    };
     global.bot = {
       interrupt_code: false,
-      entity: { position: { x: __X0__, y: __Y0__, z: __Z0__ } }
+      entity: { position: _pos }
     };
-
     global.world = {
       getPosition: (_bot) => ({ x: __X0__, y: __Y0__, z: __Z0__ }),
       getBlockAtPosition: (_bot, _x, _y, _z) => ({ name: 'air' })
@@ -83,8 +93,8 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
         except (json.JSONDecodeError, ValueError, KeyError):
             pass
 
-    # (optional) if debugging: print stderr when nothing captured
-    # if not coords and res.stderr:
-    #     print("[read_coords_from_action] stderr:", res.stderr)
+    # If nothing was captured, surface Node's error output to help debugging.
+    if not coords and res.stderr:
+        print("[read_coords_from_action] stderr:", res.stderr)
 
     return coords
