@@ -39,7 +39,7 @@ def is_ground_connected(
     visited: Set[Tuple[int, int, int]] = set()
 
     for (x, y, z) in positions:
-        if y <= 0:  # ★ 여기만 바뀜: y == 0 → y <= 0
+        if y <= 0:
             if (x, y, z) not in visited:
                 visited.add((x, y, z))
                 queue.append((x, y, z))
