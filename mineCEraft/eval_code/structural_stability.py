@@ -160,17 +160,7 @@ def get_block_support_strength(
     base_strength_lookup: Dict[str, float] = MATERIAL_BASE_SUPPORT_STRENGTH,
 ) -> int:
     """
-    Python re-implementation of:
-
-        public int getBlockSupportStrength(RPBlockContext blockContext) {
-            double strength = blockContext.blockDefinition().physics().supportStrength();
-            double count = 1;
-            for (ExtendedDirection dir : DirectionConstants.HORIZONTAL_ADJACENT) {
-                ...
-                count++;
-            }
-            return (int) (strength * count);
-        }
+    Reference: https://github.com/xBigEllx/realistic-block-physics-mirror/blob/mc-1.20.x/src/main/java/xbigellx/rbp/internal/physics/PhysicsHelper.java
 
     In our simplified context:
 
