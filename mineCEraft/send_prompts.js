@@ -8,7 +8,7 @@ import path from "path";
 const SERVER = "http://localhost:8080";
 const agentName = "andy";
 const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000;
-const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid out"];
+const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid"];
 
 /** Return true if text contains any completion keyword (case-insensitive). */
 function hasCompletionKeyword(text) {
