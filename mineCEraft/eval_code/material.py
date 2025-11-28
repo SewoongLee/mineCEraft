@@ -55,12 +55,7 @@ def is_type_correct(
     else:
         unique = {c.get("material") for c in coords}
         return unique == {expected_material}
-
-
-def material_distribution(coords: List[Dict[str, Any]]) -> Counter:
-    """(Optional helper) Count materials for reporting."""
-    return Counter(c.get("material") for c in coords)
-
+    
 
 def is_corner_material_equal_to(
     coords: List[Dict[str, Any]],
