@@ -15,17 +15,7 @@ Mesh3d triangle indices:
 
 from typing import Dict, List, Any, Tuple, Iterable, Optional
 import plotly.graph_objects as go
-
-# Material → color mapping (hex). Unknown materials fallback to black.
-MATERIAL_COLOR: Dict[str, str] = {
-    "stone": "#888888",
-    "stone_bricks": "#9aa0a6",
-    "dirt": "#8B4513",
-    "oak_planks": "#b8860b",
-    "oak_fence": "#a0522d",
-    "stone_slab": "#b0b0b0",
-    "torch": "#f1c40f",
-}
+from .material_colors import MATERIAL_COLOR
 
 def _cube_vertices(x: int, y: int, z: int, size: int = 1) -> List[Tuple[int, int, int]]:
     """
