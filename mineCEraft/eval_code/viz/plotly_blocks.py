@@ -77,10 +77,18 @@ def plot(
     tri_j: List[int] = []
     tri_k: List[int] = []
     face_colors: List[str] = []
+    
+    # Track materials actually used in the plot
+    materials_used: Dict[str, str] = {}  # material_name -> color
 
     for c in coords:
         x, y, z = int(c["x"]), int(c["y"]), int(c["z"])
-        color = _material_to_color(c.get("material"))
+        material = (c.get("material") or "").strip()
+        color = _material_to_color(material)
+        
+        # Track this material if it's a known material (not the black fallback)
+        if material and material in MATERIAL_COLOR:
+            materials_used[material] = color
 
         # Build the 8 cube vertices in Minecraft coords
         verts = _cube_vertices(x, y, z, size=cube_size)
@@ -122,10 +130,11 @@ def plot(
         margin=dict(l=0, r=0, t=40, b=0),
     )
 
-    if show_legend and MATERIAL_COLOR:
+    if show_legend and materials_used:
         # Create a tiny legend using invisible Scatter3d markers
+        # Only show materials that are actually present in the plot
         legend_traces = []
-        for name, color in MATERIAL_COLOR.items():
+        for name, color in sorted(materials_used.items()):
             legend_traces.append(go.Scatter3d(
                 x=[None], y=[None], z=[None],
                 mode="markers",
