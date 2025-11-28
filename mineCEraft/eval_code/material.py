@@ -23,12 +23,26 @@ def _material_matches(material: str, expected_material: str, use_substring_match
         return material_str == expected_material
 
 
-def is_quantity_correct(coords: List[Dict[str, Any]], expected_count: int) -> bool:
+def is_total_block_cnt_equal_to(coords: List[Dict[str, Any]], expected_count: int) -> bool:
     """Return True if number of blocks equals expected_count, else False."""
     return len(coords) == expected_count
 
 
-def is_type_correct(
+def is_block_cnt_larger_than(coords: List[Dict[str, Any]], cnt: int) -> bool:
+    """
+    Return True if number of blocks is larger than cnt, else False.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        cnt: The minimum count (exclusive) that blocks must exceed
+    
+    Returns:
+        True if len(coords) > cnt, else False
+    """
+    return len(coords) > cnt
+
+
+def is_all_material_equal_to(
     coords: List[Dict[str, Any]], 
     expected_material: str,
     use_substring_match: bool = False,
