@@ -98,3 +98,165 @@ def is_corner_material_equal_to(
     # Check if the ratio meets the threshold
     ratio = matching_count / len(corner_blocks)
     return ratio >= ratio_threshold
+
+
+def _check_material_equality_at_minmax_coordinate(
+    coords: List[Dict[str, Any]],
+    expected_material: str,
+    height_y: int,
+    ratio_threshold: float,
+    coordinate_getter,
+    direction: str,
+) -> bool:
+    """
+    Helper function to check material equality at min/max coordinate boundaries.
+    
+    Checks if blocks at the minimum or maximum value of a coordinate (x or z) at a specific
+    height match the expected material, based on a ratio threshold.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        expected_material: The material type to check for
+        height_y: The y-coordinate (height) to filter blocks at
+        ratio_threshold: Minimum ratio (0.0-1.0) of boundary blocks that must match expected_material
+        coordinate_getter: Function to extract coordinate value (e.g., lambda c: int(c.get("x", 0)))
+        direction: Either "max" or "min" to determine which boundary to check
+    
+    Returns:
+        True if ratio of matching boundary blocks >= ratio_threshold, else False
+    """
+    # Filter blocks at the specified height
+    blocks_at_height = [c for c in coords if int(c.get("y", 0)) == height_y]
+    
+    # If there are no blocks at height_y, return False
+    # Reason: Cannot determine wall blocks without any blocks at the specified height
+    if not blocks_at_height:
+        return False
+    
+    # Find the boundary value (max or min) for the coordinate
+    coordinate_values = [coordinate_getter(c) for c in blocks_at_height]
+    boundary_value = max(coordinate_values) if direction == "max" else min(coordinate_values)
+    
+    # Find all blocks at the boundary
+    wall_blocks = [
+        c for c in blocks_at_height 
+        if coordinate_getter(c) == boundary_value
+    ]
+    
+    # If no wall blocks found (shouldn't happen, but safety check)
+    if not wall_blocks:
+        return False
+    
+    # Count how many wall blocks match the expected material
+    matching_count = sum(
+        1 for c in wall_blocks 
+        if c.get("material") == expected_material
+    )
+    
+    # Check if the ratio meets the threshold
+    ratio = matching_count / len(wall_blocks)
+    return ratio >= ratio_threshold
+
+
+def is_max_x_material_equal_to(
+    coords: List[Dict[str, Any]],
+    expected_material: str,
+    height_y: int = 2,
+    ratio_threshold: float = 0.5,
+) -> bool:
+    """
+    Return True if at least ratio_threshold of blocks at maximum x-coordinate (east wall)
+    at height_y match expected_material, else False.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        expected_material: The material type to check for
+        height_y: The y-coordinate (height) to filter blocks at
+        ratio_threshold: Minimum ratio (0.0-1.0) of wall blocks that must match expected_material
+    
+    Returns:
+        True if ratio of matching wall blocks >= ratio_threshold, else False
+    """
+    return _check_material_equality_at_minmax_coordinate(
+        coords, expected_material, height_y, ratio_threshold,
+        coordinate_getter=lambda c: int(c.get("x", 0)),
+        direction="max"
+    )
+
+
+def is_min_x_material_equal_to(
+    coords: List[Dict[str, Any]],
+    expected_material: str,
+    height_y: int = 2,
+    ratio_threshold: float = 0.5,
+) -> bool:
+    """
+    Return True if at least ratio_threshold of blocks at minimum x-coordinate (west wall)
+    at height_y match expected_material, else False.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        expected_material: The material type to check for
+        height_y: The y-coordinate (height) to filter blocks at
+        ratio_threshold: Minimum ratio (0.0-1.0) of wall blocks that must match expected_material
+    
+    Returns:
+        True if ratio of matching wall blocks >= ratio_threshold, else False
+    """
+    return _check_material_equality_at_minmax_coordinate(
+        coords, expected_material, height_y, ratio_threshold,
+        coordinate_getter=lambda c: int(c.get("x", 0)),
+        direction="min"
+    )
+
+
+def is_max_z_material_equal_to(
+    coords: List[Dict[str, Any]],
+    expected_material: str,
+    height_y: int = 2,
+    ratio_threshold: float = 0.5,
+) -> bool:
+    """
+    Return True if at least ratio_threshold of blocks at maximum z-coordinate (south wall)
+    at height_y match expected_material, else False.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        expected_material: The material type to check for
+        height_y: The y-coordinate (height) to filter blocks at
+        ratio_threshold: Minimum ratio (0.0-1.0) of wall blocks that must match expected_material
+    
+    Returns:
+        True if ratio of matching wall blocks >= ratio_threshold, else False
+    """
+    return _check_material_equality_at_minmax_coordinate(
+        coords, expected_material, height_y, ratio_threshold,
+        coordinate_getter=lambda c: int(c.get("z", 0)),
+        direction="max"
+    )
+
+
+def is_min_z_material_equal_to(
+    coords: List[Dict[str, Any]],
+    expected_material: str,
+    height_y: int = 2,
+    ratio_threshold: float = 0.5,
+) -> bool:
+    """
+    Return True if at least ratio_threshold of blocks at minimum z-coordinate (north wall)
+    at height_y match expected_material, else False.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        expected_material: The material type to check for
+        height_y: The y-coordinate (height) to filter blocks at
+        ratio_threshold: Minimum ratio (0.0-1.0) of wall blocks that must match expected_material
+    
+    Returns:
+        True if ratio of matching wall blocks >= ratio_threshold, else False
+    """
+    return _check_material_equality_at_minmax_coordinate(
+        coords, expected_material, height_y, ratio_threshold,
+        coordinate_getter=lambda c: int(c.get("z", 0)),
+        direction="min"
+    )
