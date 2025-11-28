@@ -1,0 +1,12 @@
+[
+    {
+        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of red.",
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            }
+        ]
+    }
+]
+
