@@ -24,7 +24,7 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     const code = fs.readFileSync(FILENAME, 'utf8');
 
     // ---- mocks ----
-    // Provide a Vec3-like object with .floored() as Mineflayer does.
+    // Provide a Vec3-like object with .floored(), .clone(), .offset(), and .distanceTo() as Mineflayer does.
     const _pos = {
       x: __X0__, y: __Y0__, z: __Z0__,
       floored() {
@@ -32,7 +32,39 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
           x: Math.floor(this.x),
           y: Math.floor(this.y),
           z: Math.floor(this.z),
+          floored: this.floored,
+          clone: this.clone,
+          offset: this.offset,
+          distanceTo: this.distanceTo
         };
+      },
+      clone() {
+        return {
+          x: this.x,
+          y: this.y,
+          z: this.z,
+          floored: this.floored,
+          clone: this.clone,
+          offset: this.offset,
+          distanceTo: this.distanceTo
+        };
+      },
+      offset(dx, dy, dz) {
+        return {
+          x: this.x + dx,
+          y: this.y + dy,
+          z: this.z + dz,
+          floored: this.floored,
+          clone: this.clone,
+          offset: this.offset,
+          distanceTo: this.distanceTo
+        };
+      },
+      distanceTo(other) {
+        const dx = this.x - other.x;
+        const dy = this.y - other.y;
+        const dz = this.z - other.z;
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
       }
     };
     global.bot = {
