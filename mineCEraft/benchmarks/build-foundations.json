@@ -3,13 +3,13 @@
         "prompt": "Lay the foundation for a 15x20 block rectangular building. Use stone blocks and make it two blocks deep.",
         "checks": [
             {
-                "fn": "material.is_quantity_correct",
+                "fn": "material.is_total_block_cnt_equal_to",
                 "args": {
                     "expected_count": 600
                 }
             },
             {
-                "fn": "material.is_type_correct",
+                "fn": "material.is_all_material_equal_to",
                 "args": {
                     "expected_material": "stone"
                 }
@@ -40,13 +40,13 @@
         "prompt": "Lay the foundation for a 20x15 block rectangular building. Use stone blocks and make it two blocks deep.",
         "checks": [
             {
-                "fn": "material.is_quantity_correct",
+                "fn": "material.is_total_block_cnt_equal_to",
                 "args": {
                     "expected_count": 600
                 }
             },
             {
-                "fn": "material.is_type_correct",
+                "fn": "material.is_all_material_equal_to",
                 "args": {
                     "expected_material": "stone"
                 }
