@@ -3,54 +3,26 @@
 Von Mises stress for Minecraft-like block structures (SPH / meshfree solid),
 ported from "Minecraft SPH V8" and optimized for Python.
 
-This implementation assumes:
-- Input is ONLY the initial block coordinates (no deformed coords are provided).
-- We run an internal time integration to obtain a deformed state, then compute stress.
-
-Key optimizations vs a direct port:
-1) Build an edge list (i,j pairs) once and reuse it.
-2) Precompute reference-only quantities per edge:
-   - Rij = Xj - Xi
-   - |Rij|, W(Rij), gradW(Rij)
-3) Precompute Ainv per particle once (reference-only):
-   A_i = Σ_j (Rij ⊗ gradW(Rij))     (same as the mod, but cached)
-   Ainv_i = inv(A_i) (or pinv fallback)
-4) Per timestep we only recompute deformation-dependent parts:
-   - rij = xj - xi
-   - Fstar_i = Σ_j (rij ⊗ gradW(Rij))   (uses cached gradW)
-   - F_i = Fstar_i @ Ainv_i
-
--------------------------------------------------------------------------------
-Material / physical parameters used in this solver:
-- young (E) [Pa]:
-    Young's modulus; elastic stiffness (higher => stiffer, higher natural frequencies).
-- nu (ν) [-]:
-    Poisson's ratio; lateral contraction (0~0.49 typical for 3D solids).
-- eta (η) [Pa·s-ish]:
-    Deviatoric viscosity coefficient; adds damping to kill oscillations faster.
-- rho (ρ) [kg/m^3]:
-    Density; each block mass is approximated by m = rho * Vol, and Vol=1 here.
-    Larger rho => smaller acceleration for the same force (more inertia, often more stable).
-- alpha [-], Ehg [Pa]:
-    Hourglass control parameters (numerical stabilization from the mod).
-    They suppress zero-energy / hourglass modes in meshfree discretizations.
-
-Simulation / loading parameters:
-- dt [s]:
-    Time step size. This is an explicit method; too large dt can cause divergence (NaN/Inf).
-- n_t_steps [-]:
-    Number of time steps. Total simulated time is ~ dt * n_t_steps.
-- loading_time_percent [%]:
-    Load ramp fraction. Ramp-up reduces shock and improves stability.
-- block_load / load_block_weight [N]:
-    External force applied in the y direction (negative = downward).
-    load_block_weight is added for blocks in loaded_blocks.
-
-Boundary/supports:
-- fix_min_y:
-    If True, blocks with minimum y are fixed (displacement/velocity/accel set to 0 each step).
+Reference:
+- https://arxiv.org/pdf/2212.08124
+- https://github.com/abuganza/minecraft_sph
 -------------------------------------------------------------------------------
 """
+
+# Material / physical parameters used in this solver:
+# - young (E) [Pa]: Young's modulus, controls elastic stiffness (higher => stiffer).
+# - nu (ν): Poisson's ratio, controls lateral contraction (0~0.49 typical for 3D solids).
+# - eta (η): deviatoric viscosity coefficient (higher => more damping / less vibration).
+# - rho (ρ) [kg/m^3]: density; each block mass is approximated by m = rho * Vol (Vol=1 here).
+#   Larger rho => smaller acceleration for the same force (more inertia, often more stable).
+# - alpha (α): hourglass strength factor (numerical stabilization).
+# - Ehg [Pa]: hourglass "stiffness" scale (numerical stabilization).
+#
+# Simulation / loading parameters:
+# - dt [s]: time step size (explicit integration; too large => instability).
+# - n_t_steps: number of time steps (total simulated time ~ dt * n_t_steps).
+# - loading_time_percent [%]: ramp-up duration for external load to avoid sudden shock.
+# - block_load / load_block_weight [N]: per-block external force applied in -y direction.
 
 from __future__ import annotations
 
