@@ -2,6 +2,9 @@
 """
 Compute von Mises stress for Minecraft-like block structures using a mod-equivalent
 SPH/meshfree solid solver (ported from Minecraft SPH V8).
+References:
+- https://arxiv.org/pdf/2212.08124
+- https://github.com/abuganza/minecraft_sph
 
 Key design choices (matching the original Java mod behavior):
 - Input is ONLY the initial block coordinates (no deformed coords are provided).
@@ -24,6 +27,21 @@ Dependencies:
 - numpy (required)
 - tqdm (optional, only if progress=True)
 """
+
+# Material / physical parameters used in this solver:
+# - young (E) [Pa]: Young's modulus, controls elastic stiffness (higher => stiffer).
+# - nu (ν) [-]: Poisson's ratio, controls lateral contraction (0~0.49 typical for 3D solids).
+# - eta (η) [Pa·s-ish]: deviatoric viscosity coefficient (higher => more damping / less vibration).
+# - rho (ρ) [kg/m^3]: density; each block mass is approximated by m = rho * Vol (Vol=1 here).
+#   Larger rho => smaller acceleration for the same force (more inertia, often more stable).
+# - alpha [-]: hourglass strength factor (numerical stabilization).
+# - Ehg [Pa]: hourglass "stiffness" scale (numerical stabilization).
+#
+# Simulation / loading parameters:
+# - dt [s]: time step size (explicit integration; too large => instability).
+# - n_t_steps [-]: number of time steps (total simulated time ~ dt * n_t_steps).
+# - loading_time_percent [%]: ramp-up duration for external load to avoid sudden shock.
+# - block_load / load_block_weight [N]: per-block external force applied in -y direction.
 
 from __future__ import annotations
 
@@ -357,7 +375,7 @@ def compute_von_mises_stress(
     # Material model (defaults match the mod)
     young: float = 1e9,
     nu: float = 0.4,
-    eta: float = 1e7,
+    eta: float = 0,
     # Mass/density and integration (defaults match typical "1999 step" runs)
     rho: float = 15000.0,          # [kg/m^3], used as mass density (mass = rho*Vol; Vol=1)
     dt: float = 1e-4,              # global time step (mod default)
