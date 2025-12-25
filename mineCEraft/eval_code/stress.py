@@ -1,91 +1,87 @@
 # eval_code/stress.py
 """
-Compute von Mises stress for Minecraft-like block structures using a mod-equivalent
-SPH/meshfree solid solver (ported from Minecraft SPH V8).
-References:
-- https://arxiv.org/pdf/2212.08124
-- https://github.com/abuganza/minecraft_sph
+Von Mises stress for Minecraft-like block structures (SPH / meshfree solid),
+ported from "Minecraft SPH V8" and optimized for Python.
 
-Key design choices (matching the original Java mod behavior):
+This implementation assumes:
 - Input is ONLY the initial block coordinates (no deformed coords are provided).
-- The solver internally runs a timestep simulation to obtain deformed positions.
-- Neighbors are built ONCE from reference coordinates using a cutoff radius h_threshold.
-- Deformation gradient is computed with the correction matrix Ainv:
-    F = (Σ (rij ⊗ ∇W(Rij))) * Ainv
-- First Piola stress P is computed with St. Venant–Kirchhoff (StVK) + deviatoric viscosity.
-- The code stores PP_tilde = P * Ainv (exactly like the Java mod),
-  and uses PP_tilde for internal force accumulation.
-- Internal force includes hourglass stabilization term (alpha, Ehg) from the mod.
-- Supports are enforced by fixing all blocks at minimum y (requested behavior).
-- External loading is applied as a per-particle force in the y direction, ramped
-  over loading_time_percent of the total steps (mod behavior).
+- We run an internal time integration to obtain a deformed state, then compute stress.
 
-Optional:
-- progress=True will display a tqdm progress bar if tqdm is installed.
+Key optimizations vs a direct port:
+1) Build an edge list (i,j pairs) once and reuse it.
+2) Precompute reference-only quantities per edge:
+   - Rij = Xj - Xi
+   - |Rij|, W(Rij), gradW(Rij)
+3) Precompute Ainv per particle once (reference-only):
+   A_i = Σ_j (Rij ⊗ gradW(Rij))     (same as the mod, but cached)
+   Ainv_i = inv(A_i) (or pinv fallback)
+4) Per timestep we only recompute deformation-dependent parts:
+   - rij = xj - xi
+   - Fstar_i = Σ_j (rij ⊗ gradW(Rij))   (uses cached gradW)
+   - F_i = Fstar_i @ Ainv_i
 
-Dependencies:
-- numpy (required)
-- tqdm (optional, only if progress=True)
+-------------------------------------------------------------------------------
+Material / physical parameters used in this solver:
+- young (E) [Pa]:
+    Young's modulus; elastic stiffness (higher => stiffer, higher natural frequencies).
+- nu (ν) [-]:
+    Poisson's ratio; lateral contraction (0~0.49 typical for 3D solids).
+- eta (η) [Pa·s-ish]:
+    Deviatoric viscosity coefficient; adds damping to kill oscillations faster.
+- rho (ρ) [kg/m^3]:
+    Density; each block mass is approximated by m = rho * Vol, and Vol=1 here.
+    Larger rho => smaller acceleration for the same force (more inertia, often more stable).
+- alpha [-], Ehg [Pa]:
+    Hourglass control parameters (numerical stabilization from the mod).
+    They suppress zero-energy / hourglass modes in meshfree discretizations.
+
+Simulation / loading parameters:
+- dt [s]:
+    Time step size. This is an explicit method; too large dt can cause divergence (NaN/Inf).
+- n_t_steps [-]:
+    Number of time steps. Total simulated time is ~ dt * n_t_steps.
+- loading_time_percent [%]:
+    Load ramp fraction. Ramp-up reduces shock and improves stability.
+- block_load / load_block_weight [N]:
+    External force applied in the y direction (negative = downward).
+    load_block_weight is added for blocks in loaded_blocks.
+
+Boundary/supports:
+- fix_min_y:
+    If True, blocks with minimum y are fixed (displacement/velocity/accel set to 0 each step).
+-------------------------------------------------------------------------------
 """
-
-# Material / physical parameters used in this solver:
-# - young (E) [Pa]: Young's modulus, controls elastic stiffness (higher => stiffer).
-# - nu (ν) [-]: Poisson's ratio, controls lateral contraction (0~0.49 typical for 3D solids).
-# - eta (η) [Pa·s-ish]: deviatoric viscosity coefficient (higher => more damping / less vibration).
-# - rho (ρ) [kg/m^3]: density; each block mass is approximated by m = rho * Vol (Vol=1 here).
-#   Larger rho => smaller acceleration for the same force (more inertia, often more stable).
-# - alpha [-]: hourglass strength factor (numerical stabilization).
-# - Ehg [Pa]: hourglass "stiffness" scale (numerical stabilization).
-#
-# Simulation / loading parameters:
-# - dt [s]: time step size (explicit integration; too large => instability).
-# - n_t_steps [-]: number of time steps (total simulated time ~ dt * n_t_steps).
-# - loading_time_percent [%]: ramp-up duration for external load to avoid sudden shock.
-# - block_load / load_block_weight [N]: per-block external force applied in -y direction.
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 # Public result type
-# -----------------------------------------------------------------------------
+# =============================================================================
 
 @dataclass
 class VonMisesResult:
     """
     Result of compute_von_mises_stress().
-
-    Attributes
-    ----------
-    von_mises : (n,) ndarray
-        von Mises stress per block in Pa.
-    sigma : (n,3,3) ndarray
-        Cauchy stress tensor per block in Pa.
-    F : (n,3,3) ndarray
-        Deformation gradient per block at the final step.
-    x : (n,3) ndarray
-        Deformed coordinates at the final step.
-    meta : dict
-        Useful debug information (dt_used, steps, supports_count, etc.).
     """
-    von_mises: np.ndarray
-    sigma: np.ndarray
-    F: np.ndarray
-    x: np.ndarray
+    von_mises: np.ndarray  # (n,) Pa
+    sigma: np.ndarray      # (n,3,3) Pa
+    F: np.ndarray          # (n,3,3)
+    x: np.ndarray          # (n,3) final deformed positions
     meta: Dict[str, Any]
 
 
-# -----------------------------------------------------------------------------
-# Basic utilities: coords -> arrays
-# -----------------------------------------------------------------------------
+# =============================================================================
+# Helpers: coords -> arrays
+# =============================================================================
 
 def _coords_to_X(coords: Sequence[Dict[str, Any]]) -> np.ndarray:
-    """Convert coords list of dicts to an (n,3) float array X0."""
+    """Convert a list of {"x","y","z",...} dicts to an (n,3) float array."""
     X0 = np.zeros((len(coords), 3), dtype=float)
     for i, c in enumerate(coords):
         X0[i, 0] = float(c["x"])
@@ -95,105 +91,42 @@ def _coords_to_X(coords: Sequence[Dict[str, Any]]) -> np.ndarray:
 
 
 def _min_y_supports(X0: np.ndarray, eps: float = 1e-12) -> np.ndarray:
-    """Return indices of blocks with minimum y (fixed supports)."""
+    """Indices of blocks at minimum y (fixed supports)."""
     ymin = float(np.min(X0[:, 1]))
     return np.where(np.abs(X0[:, 1] - ymin) <= eps)[0].astype(int)
 
 
-# -----------------------------------------------------------------------------
-# Neighbor building (reference-based, built once)
-# -----------------------------------------------------------------------------
+# =============================================================================
+# Kernel functions (ported from the mod)
+# =============================================================================
 
-def build_neighbors(
-    X0: np.ndarray,
-    h_threshold: float,
-    *,
-    max_neighbors: Optional[int] = None,
-) -> List[np.ndarray]:
+def _eval_W_from_r(r: np.ndarray, h: float) -> np.ndarray:
     """
-    Build a neighbor list for each particle using reference coordinates X0.
-
-    This is equivalent in *meaning* to the Java boolean Neighbor_list matrix:
-      neighbor(i,j) = (||Xi - Xj|| < h_threshold)
-
-    We store the result as adjacency lists to avoid scanning all j each timestep.
-
-    Parameters
-    ----------
-    X0 : (n,3) ndarray
-        Reference coordinates.
-    h_threshold : float
-        Cutoff radius for neighbors.
-    max_neighbors : int or None
-        If provided, cap neighbors per particle by keeping the closest ones.
-
-    Returns
-    -------
-    neighbors : list of (k_i,) ndarrays
-        neighbors[i] is an array of neighbor indices for particle i.
+    Mod kernel:
+      W(r) = (15/pi/h^6) * (h - r)^3
+    with support r < h.
     """
-    n = X0.shape[0]
-    neighbors: List[List[int]] = [[] for _ in range(n)]
-
-    # O(n^2) build. For large n, a spatial hash/grid would be better.
-    for i in range(n):
-        Xi = X0[i]
-        for j in range(i + 1, n):
-            d = float(np.linalg.norm(Xi - X0[j]))
-            if d < h_threshold:
-                neighbors[i].append(j)
-                neighbors[j].append(i)
-
-    if max_neighbors is not None:
-        # Keep the closest max_neighbors for each i.
-        # This preserves the "radius-based" candidate set first, then caps by distance.
-        max_neighbors = int(max_neighbors)
-        for i in range(n):
-            if len(neighbors[i]) <= max_neighbors:
-                continue
-            Xi = X0[i]
-            js = np.asarray(neighbors[i], dtype=int)
-            ds = np.linalg.norm(X0[js] - Xi[None, :], axis=1)
-            keep = js[np.argsort(ds)[:max_neighbors]]
-            neighbors[i] = keep.tolist()
-
-    return [np.asarray(neighbors[i], dtype=int) for i in range(n)]
-
-
-# -----------------------------------------------------------------------------
-# SPH kernel W and gradW (ported from Java)
-# -----------------------------------------------------------------------------
-
-def _eval_W(Rij: np.ndarray, h: float) -> float:
-    """
-    Java:
-      W(R) = (15/pi/h^6) * (h - |R|)^3
-    """
-    r = float(np.linalg.norm(Rij))
     return (15.0 / (np.pi * (h ** 6))) * ((h - r) ** 3)
 
 
-def _eval_gradW(Rij: np.ndarray, h: float, eps: float = 1e-12) -> np.ndarray:
+def _eval_gradW_from_R(R: np.ndarray, r: np.ndarray, h: float, eps: float = 1e-12) -> np.ndarray:
     """
-    Java:
+    Mod gradient:
+      gradW = R * scale
       scale = -3 * (15/pi/h^6) * (h - r)^2 / r
-      gradW = Rij * scale
     """
-    r = float(np.linalg.norm(Rij))
-    if r < eps:
-        return np.zeros(3, dtype=float)
-    scale = -3.0 * ((15.0 / (np.pi * (h ** 6))) * ((h - r) ** 2)) / r
-    return Rij * scale
+    safe_r = np.maximum(r, eps)
+    scale = -3.0 * ((15.0 / (np.pi * (h ** 6))) * ((h - r) ** 2)) / safe_r
+    return R * scale[:, None]
 
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 # Linear algebra helpers
-# -----------------------------------------------------------------------------
+# =============================================================================
 
 def _safe_inv_3x3(A: np.ndarray, rcond: float = 1e-12) -> np.ndarray:
     """
-    Java directly inverts A.
-    Here we fall back to pseudo-inverse if singular/ill-conditioned.
+    Invert a 3x3 matrix; if singular, fall back to pseudo-inverse.
     """
     try:
         return np.linalg.inv(A)
@@ -201,45 +134,139 @@ def _safe_inv_3x3(A: np.ndarray, rcond: float = 1e-12) -> np.ndarray:
         return np.linalg.pinv(A, rcond=rcond)
 
 
-# -----------------------------------------------------------------------------
-# Mod-equivalent SPH routines
-# -----------------------------------------------------------------------------
+# =============================================================================
+# Precomputation: build edges + cached reference terms
+# =============================================================================
 
-def _calculate_FAinv(
-    i: int,
+def _build_edges_and_reference_cache(
     X0: np.ndarray,
-    x: np.ndarray,
-    neighbors: List[np.ndarray],
-    h: float,
+    h_threshold: float,
+    *,
+    max_neighbors: Optional[int],
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """
+    Build edge list (i,j) with i<j and cache reference-only quantities per edge.
+
+    Returns:
+      ei, ej: (m,) int arrays
+      Rij: (m,3) float
+      Rijmag: (m,) float
+      W: (m,) float
+      gradW: (m,3) float
+    """
+    n = X0.shape[0]
+    h = float(h_threshold)
+
+    # Naive O(n^2) edge build (simple and robust).
+    # For large n, replace this with a spatial hash/grid for near O(n*k).
+    ei_list: List[int] = []
+    ej_list: List[int] = []
+    d_list: List[float] = []
+
+    for i in range(n):
+        Xi = X0[i]
+        for j in range(i + 1, n):
+            d = float(np.linalg.norm(Xi - X0[j]))
+            if d < h:
+                ei_list.append(i)
+                ej_list.append(j)
+                d_list.append(d)
+
+    if len(ei_list) == 0:
+        # No edges -> no coupling; return empty caches.
+        ei = np.zeros((0,), dtype=int)
+        ej = np.zeros((0,), dtype=int)
+        Rij = np.zeros((0, 3), dtype=float)
+        Rijmag = np.zeros((0,), dtype=float)
+        W = np.zeros((0,), dtype=float)
+        gradW = np.zeros((0, 3), dtype=float)
+        return ei, ej, Rij, Rijmag, W, gradW
+
+    ei = np.asarray(ei_list, dtype=int)
+    ej = np.asarray(ej_list, dtype=int)
+
+    Rij = X0[ej] - X0[ei]                           # (m,3)
+    Rijmag = np.asarray(d_list, dtype=float)        # (m,)
+
+    # Cache reference-only kernel values
+    W = _eval_W_from_r(Rijmag, h)                   # (m,)
+    gradW = _eval_gradW_from_R(Rij, Rijmag, h)      # (m,3)
+
+    if max_neighbors is not None:
+        # Enforce a per-node neighbor cap by keeping closest edges.
+        # We first build a neighbor list by edges, sort by distance, and drop extras.
+        cap = int(max_neighbors)
+        keep = np.zeros((ei.shape[0],), dtype=bool)
+
+        # Collect edges by node using python lists (fast enough in preprocessing).
+        by_node: List[List[int]] = [[] for _ in range(n)]
+        for e in range(ei.shape[0]):
+            by_node[ei[e]].append(e)
+            by_node[ej[e]].append(e)
+
+        # Mark edges to keep based on distance ranking per node.
+        # If an edge is kept by either endpoint, we keep it (slightly looser but stable).
+        for node in range(n):
+            edges = by_node[node]
+            if len(edges) <= cap:
+                keep[np.asarray(edges, dtype=int)] = True
+                continue
+            edges_arr = np.asarray(edges, dtype=int)
+            order = np.argsort(Rijmag[edges_arr])
+            chosen = edges_arr[order[:cap]]
+            keep[chosen] = True
+
+        # Apply mask
+        ei = ei[keep]
+        ej = ej[keep]
+        Rij = Rij[keep]
+        Rijmag = Rijmag[keep]
+        W = W[keep]
+        gradW = gradW[keep]
+
+    return ei, ej, Rij, Rijmag, W, gradW
+
+
+def _precompute_Ainv(
+    n: int,
+    ei: np.ndarray,
+    ej: np.ndarray,
+    Rij: np.ndarray,
+    gradW: np.ndarray,
     pinv_rcond: float,
-) -> Tuple[np.ndarray, np.ndarray]:
+) -> np.ndarray:
     """
-    Equivalent to Java calculate_FAinv(pi,...):
+    Precompute Ainv per particle (reference-only):
 
-      F* = Σ_j (rij ⊗ ∇W(Rij))
-      A  = Σ_j (Rij ⊗ ∇W(Rij))
-      Ainv = inv(A)
-      F = F* @ Ainv
+      A_i = Σ_j (Rij ⊗ gradW(Rij))
 
-    Returns (F, Ainv).
+    Important symmetry note:
+    For an undirected edge (i,j) with Rij = Xj - Xi and gradW(Rij),
+    the mod uses for the opposite direction (j,i):
+      Rji = -Rij, gradW(Rji) = -gradW(Rij)
+    and outer(Rji, gradW(Rji)) = outer(Rij, gradW(Rij)).
+    Therefore the same outer product contributes to BOTH endpoints.
     """
-    Xi = X0[i]
-    xi = x[i]
+    A = np.zeros((n, 3, 3), dtype=float)  # (n,3,3)
 
-    Fstar = np.zeros((3, 3), dtype=float)
-    A = np.zeros((3, 3), dtype=float)
+    # For each edge, compute outer(Rij, gradW) and add to A[i] and A[j].
+    # outer: (m,3,3) where outer[e,a,b] = Rij[e,a] * gradW[e,b]
+    outer_rg = Rij[:, :, None] * gradW[:, None, :]  # (m,3,3)
 
-    for j in neighbors[i]:
-        Rij = X0[j] - Xi
-        rij = x[j] - xi
-        gradW = _eval_gradW(Rij, h)  # Vol_j = 1 in the mod
-        Fstar += np.outer(rij, gradW)
-        A += np.outer(Rij, gradW)
+    # Scatter-add to endpoints.
+    np.add.at(A, ei, outer_rg)
+    np.add.at(A, ej, outer_rg)
 
-    Ainv = _safe_inv_3x3(A, rcond=pinv_rcond)
-    F = Fstar @ Ainv
-    return F, Ainv
+    # Invert per particle (3x3). Looping n times is OK and stable.
+    Ainv = np.zeros_like(A)
+    for i in range(n):
+        Ainv[i] = _safe_inv_3x3(A[i], rcond=float(pinv_rcond))
+    return Ainv
 
+
+# =============================================================================
+# Stress / force / constitutive model (StVK + deviatoric viscosity) (ported)
+# =============================================================================
 
 def _calculate_P_stvk_with_viscosity(
     F: np.ndarray,
@@ -251,20 +278,18 @@ def _calculate_P_stvk_with_viscosity(
     pinv_rcond: float,
 ) -> np.ndarray:
     """
-    Port of Java calculate_P() for mat[0] == 1 (StVK + deviatoric viscosity):
+    Port of the mod's mat[0]==1 branch:
 
-    C = F^T F
-    E = 0.5 (C - I)
-    S = lambda*tr(E)*I + 2*mu*E
+      C = F^T F
+      E = 0.5 (C - I)
+      S = lambda*tr(E)*I + 2*mu*E
 
-    Viscosity:
       Fdot = (F - Ft)/dt
       L = Fdot * inv(F)
       d = 0.5(L + L^T)
-      d' = d - (tr(d)/3) I
-      P = F*S + d' * inv(F)^T * (2*J*eta)
+      d' = d - (tr(d)/3)*I
 
-    Note: if eta == 0, the viscosity term becomes zero.
+      P = F*S + d' * inv(F)^T * (2*J*eta)
     """
     I = np.eye(3)
     C = F.T @ F
@@ -272,84 +297,24 @@ def _calculate_P_stvk_with_viscosity(
     trE = float(np.trace(E))
     J = float(np.linalg.det(F))
 
-    # Same formulas as the mod for mat[0] == 1
     lame_lam = young * nu / ((1.0 + nu) * (1.0 - nu))
     lame_mu = young / (2.0 * (1.0 + nu))
-
     S = lame_lam * trE * I + 2.0 * lame_mu * E
 
-    # Deviatoric viscosity term
+    # Viscosity (becomes 0 if eta==0)
     Fdot = (F - Ft) / dt
-    Finv = _safe_inv_3x3(F, rcond=pinv_rcond)
+    Finv = _safe_inv_3x3(F, rcond=float(pinv_rcond))
     L = Fdot @ Finv
     d = 0.5 * (L + L.T)
     dprime = d - (np.trace(d) / 3.0) * I
 
-    P = F @ S + (dprime @ Finv.T) * (2.0 * J * eta)
-    return P
-
-
-def _calculate_Fint_with_hourglass(
-    i: int,
-    X0: np.ndarray,
-    x: np.ndarray,
-    neighbors: List[np.ndarray],
-    PP_tilde: np.ndarray,   # stored as P @ Ainv, like the mod
-    F_all: np.ndarray,
-    h: float,
-    alpha: float,
-    Ehg: float,
-) -> np.ndarray:
-    """
-    Port of Java calculate_Fint():
-
-      Fint += (PP_tilde[i] + PP_tilde[j]) @ gradW(Rij) * (Voli*Volj)
-      Fhg  += hourglass stabilization term
-
-    The mod uses Vol_i = Vol_j = 1.
-    """
-    Xi = X0[i]
-    xi = x[i]
-
-    Fint = np.zeros(3, dtype=float)
-    Fhg = np.zeros(3, dtype=float)
-
-    for j in neighbors[i]:
-        Rij = X0[j] - Xi
-        rij = x[j] - xi
-
-        rijmag = float(np.linalg.norm(rij))
-        Rijmag = float(np.linalg.norm(Rij))
-        if rijmag <= 1e-12 or Rijmag <= 1e-12:
-            continue
-
-        gradW = _eval_gradW(Rij, h)
-
-        # Internal force contribution (mod uses PP_tilde directly)
-        Fint += (PP_tilde[i] + PP_tilde[j]) @ gradW
-
-        # Hourglass control (exact mod logic)
-        rij_pred = F_all[i] @ Rij
-        rji_pred = F_all[j] @ (-Rij)
-
-        deltai = float(np.dot((rij_pred - rij), rij)) / rijmag
-        deltaj = float(np.dot((rji_pred + rij), (-rij))) / rijmag
-
-        W = _eval_W(Rij, h)
-        coeff = -0.5 * alpha * Ehg * W * (deltai + deltaj) / (rijmag * (Rijmag ** 3))
-        Fhg += rij * coeff
-
-    return Fint + Fhg
+    return (F @ S) + (dprime @ Finv.T) * (2.0 * J * eta)
 
 
 def _von_mises_from_sigma(sigma: np.ndarray) -> float:
     """
-    Same von Mises formula used in the Java mod:
-
-      vm = sqrt(
-            (s11-s22)^2 + (s22-s33)^2 + (s33-s11)^2
-            + 6*(s23^2 + s13^2 + s12^2)
-          ) / sqrt(2)
+    Mod von Mises formula:
+      vm = sqrt((s11-s22)^2 + (s22-s33)^2 + (s33-s11)^2 + 6*(s23^2+s13^2+s12^2)) / sqrt(2)
     """
     s = sigma
     return float(
@@ -362,9 +327,9 @@ def _von_mises_from_sigma(sigma: np.ndarray) -> float:
     )
 
 
-# -----------------------------------------------------------------------------
+# =============================================================================
 # Public API
-# -----------------------------------------------------------------------------
+# =============================================================================
 
 def compute_von_mises_stress(
     coords: Sequence[Dict[str, Any]],
@@ -375,9 +340,9 @@ def compute_von_mises_stress(
     # Material model (defaults match the mod)
     young: float = 1e9,
     nu: float = 0.4,
-    eta: float = 0,
+    eta: float = 0.0,
     # Mass/density and integration (defaults match typical "1999 step" runs)
-    rho: float = 15000.0,          # [kg/m^3], used as mass density (mass = rho*Vol; Vol=1)
+    rho: float = 15000.0,          # [kg/m^3], used as mass density (mass ~ rho*Vol; Vol=1)
     dt: float = 1e-4,              # global time step (mod default)
     n_t_steps: int = 2000,         # 2000 steps => last printed index is 1999
     loading_time_percent: float = 20.0,
@@ -395,81 +360,45 @@ def compute_von_mises_stress(
     # Progress bar
     progress: bool = True,
 ) -> VonMisesResult:
-    """
-    Run a mod-equivalent SPH simulation and return per-block von Mises stress.
-
-    Parameters
-    ----------
-    coords : list[dict]
-        Each dict has keys {"x","y","z"} and optional {"material"}.
-        Only x,y,z are used here.
-    h_threshold : float
-        Neighbor cutoff radius (kernel support).
-    max_neighbors : int or None
-        Optional cap on neighbors per block (closest kept within cutoff).
-    young, nu : float
-        Young's modulus and Poisson ratio (StVK).
-    eta : float
-        Viscosity coefficient. Set eta=0.0 for purely elastic.
-    rho : float
-        Density used as mass = rho*Vol. Vol is assumed 1 for each block.
-    dt : float
-        Time step size (seconds in mod printout style).
-    n_t_steps : int
-        Number of steps. If 2000, the last index is 1999.
-    loading_time_percent : float
-        Ramp duration as percent of total steps, matching the mod:
-          step_factor = ti / (loading_time_percent/100 * n_t_steps)
-    block_load, load_block_weight : float
-        Forces in the y direction applied to each block (and extra load blocks).
-    loaded_blocks : sequence[int] or None
-        Indices of blocks treated as "LoadBlock" blocks.
-    alpha, Ehg : float
-        Hourglass stabilization parameters (ported from the mod).
-    fix_min_y : bool
-        If True, blocks at minimum y are fixed each step.
-    progress : bool
-        If True and tqdm is installed, show a progress bar.
-
-    Returns
-    -------
-    VonMisesResult
-        Contains von_mises array of length len(coords), plus sigma, F, x, meta.
-    """
     if loaded_blocks is None:
         loaded_blocks = []
 
     X0 = _coords_to_X(coords)
     n = int(X0.shape[0])
 
-    # Handle empty input early.
+    # Trivial case
     if n == 0:
         return VonMisesResult(
             von_mises=np.zeros((0,), dtype=float),
             sigma=np.zeros((0, 3, 3), dtype=float),
             F=np.zeros((0, 3, 3), dtype=float),
             x=np.zeros((0, 3), dtype=float),
-            meta={"dt_used": float(dt), "steps": 0, "supports_count": 0},
+            meta={"dt_used": float(dt), "steps": 0, "supports_count": 0, "edges": 0},
         )
 
-    # Neighbor list is built once from reference coordinates (mod behavior).
-    neighbors = build_neighbors(X0, float(h_threshold), max_neighbors=max_neighbors)
-
-    # Supports are enforced each step by snapping x back to X0 for min-y blocks.
+    # Supports: fix all blocks with minimum y, as requested.
     supports = _min_y_supports(X0) if fix_min_y else np.zeros((0,), dtype=int)
 
-    # State initialization (mod behavior).
-    x = X0.copy()                          # current positions
-    V = np.zeros((n, 3), dtype=float)      # velocity
-    A = np.zeros((n, 3), dtype=float)      # acceleration
+    # Build edges and cache reference-only kernel quantities.
+    ei, ej, Rij, Rijmag, W, gradW = _build_edges_and_reference_cache(
+        X0, float(h_threshold), max_neighbors=max_neighbors
+    )
 
-    # Per-particle tensors.
+    # Precompute Ainv per particle (reference-only).
+    Ainv = _precompute_Ainv(n, ei, ej, Rij, gradW, float(pinv_rcond))
+
+    # State variables
+    x = X0.copy()                      # current positions
+    V = np.zeros((n, 3), dtype=float)  # velocities
+    A = np.zeros((n, 3), dtype=float)  # accelerations
+
     F = np.tile(np.eye(3)[None, :, :], (n, 1, 1)).copy()
     Ft_prev = F.copy()
-    Ainv = np.tile(np.eye(3)[None, :, :], (n, 1, 1)).copy()
-    PP_tilde = np.zeros((n, 3, 3), dtype=float)  # stores P @ Ainv, like the mod
 
-    # Helper to enforce fixed supports robustly.
+    # The mod stores PP_tilde = P * Ainv, and uses PP_tilde in internal forces.
+    PP_tilde = np.zeros((n, 3, 3), dtype=float)
+
+    # Helper: enforce fixed supports at every step.
     def enforce_supports() -> None:
         if supports.size == 0:
             return
@@ -477,48 +406,97 @@ def compute_von_mises_stress(
         V[supports] = 0.0
         A[supports] = 0.0
 
-    # Precompute ramp denominator (exact mod pattern).
+    # Load ramp setup (matches mod idea)
     denom_steps = (float(loading_time_percent) / 100.0) * float(n_t_steps)
     denom_steps = max(denom_steps, 1.0)
 
-    # Optional tqdm progress bar.
+    # Progress iterator
     if progress:
         try:
             from tqdm.auto import tqdm  # type: ignore
-            step_iter: Iterable[int] = tqdm(range(int(n_t_steps)), desc="SPH steps")
+            step_iter = tqdm(range(int(n_t_steps)), desc="SPH steps")
         except Exception:
             step_iter = range(int(n_t_steps))
     else:
         step_iter = range(int(n_t_steps))
 
+    # Precompute constants used in hourglass coefficient to reduce per-edge work.
+    # The mod uses: coeff ~ -0.5*alpha*Ehg*W / (rijmag * Rijmag^3) * (deltai+deltaj)
+    # Rijmag is reference-only, so 1/(Rijmag^3) can be cached.
+    eps = 1e-12
+    inv_Rijmag3 = 1.0 / np.maximum(Rijmag, eps) ** 3  # (m,)
+
     # -----------------------------------------------------------------------------
-    # Main timestep loop (ported structure)
+    # Time integration loop
     # -----------------------------------------------------------------------------
     for ti in step_iter:
-        # Keep previous deformation gradient for the viscosity term.
         Ft_prev = F.copy()
 
-        # 1) Compute F and Ainv for all particles.
-        for i in range(n):
-            Fi, Ainv_i = _calculate_FAinv(i, X0, x, neighbors, float(h_threshold), float(pinv_rcond))
-            F[i] = Fi
-            Ainv[i] = Ainv_i
+        # --- 1) Compute Fstar per node from current rij and cached gradW ---
+        # rij for each edge (i->j)
+        rij = x[ej] - x[ei]  # (m,3)
 
-        # 2) Compute P (StVK + viscosity), then store PP_tilde = P @ Ainv (mod behavior).
+        # Fstar contribution per edge: outer(rij, gradW)
+        outer_r_g = rij[:, :, None] * gradW[:, None, :]  # (m,3,3)
+
+        Fstar = np.zeros((n, 3, 3), dtype=float)
+        # As with A, the same outer product contributes to BOTH endpoints.
+        np.add.at(Fstar, ei, outer_r_g)
+        np.add.at(Fstar, ej, outer_r_g)
+
+        # F_i = Fstar_i @ Ainv_i  (batch)
+        F = np.einsum("nij,njk->nik", Fstar, Ainv)
+
+        # --- 2) Constitutive model: compute P and store PP_tilde = P @ Ainv ---
+        P = np.zeros((n, 3, 3), dtype=float)
         for i in range(n):
-            Pi = _calculate_P_stvk_with_viscosity(
+            P[i] = _calculate_P_stvk_with_viscosity(
                 F[i], Ft_prev[i], float(dt), float(young), float(nu), float(eta), float(pinv_rcond)
             )
-            PP_tilde[i] = Pi @ Ainv[i]
+        PP_tilde = np.einsum("nij,njk->nik", P, Ainv)
 
-        # 3) Compute internal forces (including hourglass control).
+        # --- 3) Internal forces using edge-based accumulation (Newton 3rd law enforced) ---
         Fint = np.zeros((n, 3), dtype=float)
-        for i in range(n):
-            Fint[i] = _calculate_Fint_with_hourglass(
-                i, X0, x, neighbors, PP_tilde, F, float(h_threshold), float(alpha), float(Ehg)
-            )
 
-        # 4) External loading ramp (mod behavior).
+        # Elastic/SPH force: contrib = (PP_i + PP_j) @ gradW_ij
+        PPsum = PP_tilde[ei] + PP_tilde[ej]                  # (m,3,3)
+        contrib = np.einsum("mij,mj->mi", PPsum, gradW)      # (m,3)
+        np.add.at(Fint, ei, contrib)
+        np.add.at(Fint, ej, -contrib)
+
+        # Hourglass stabilization (ported from the mod, but accumulated edge-wise)
+        rijmag = np.linalg.norm(rij, axis=1)                 # (m,)
+        rijmag_safe = np.maximum(rijmag, eps)
+
+        rij_pred = np.einsum("mij,mj->mi", F[ei], Rij)       # (m,3)  Fi @ Rij
+        rji_pred = np.einsum("mij,mj->mi", F[ej], -Rij)      # (m,3)  Fj @ (-Rij)
+
+        deltai = np.einsum("mi,mi->m", (rij_pred - rij), rij) / rijmag_safe
+        deltaj = np.einsum("mi,mi->m", (rji_pred + rij), (-rij)) / rijmag_safe
+
+        # Scalar coefficient per edge
+        hg_coeff = (
+            -0.5 * float(alpha) * float(Ehg)
+            * W
+            * (deltai + deltaj)
+            / (rijmag_safe * inv_Rijmag3)
+        )
+        # Wait: we cached inv_Rijmag3 = 1/Rijmag^3, and the formula needs /Rijmag^3,
+        # so we multiply by inv_Rijmag3, not divide by it.
+        # Also formula has / (rijmag * Rijmag^3).
+        hg_coeff = (
+            -0.5 * float(alpha) * float(Ehg)
+            * W
+            * (deltai + deltaj)
+            * inv_Rijmag3
+            / rijmag_safe
+        )
+
+        Fhg_edge = rij * hg_coeff[:, None]                    # (m,3)
+        np.add.at(Fint, ei, Fhg_edge)
+        np.add.at(Fint, ej, -Fhg_edge)
+
+        # --- 4) External force ramp ---
         step_factor = float(ti) / denom_steps
         if step_factor > 1.0:
             step_factor = 1.0
@@ -526,7 +504,6 @@ def compute_von_mises_stress(
         ext_force = float(block_load) * step_factor
         load_block_force = float(load_block_weight) * step_factor
 
-        # Force vector in y direction.
         Fext = np.zeros((n, 3), dtype=float)
         Fext[:, 1] = ext_force
 
@@ -536,20 +513,20 @@ def compute_von_mises_stress(
             if idx.size > 0:
                 Fext[idx, 1] = load_block_force + ext_force
 
-        # 5) Velocity-Verlet integration (exact mod style).
+        # --- 5) Velocity-Verlet integration ---
         V += A * (float(dt) / 2.0)
         x += V * float(dt)
 
-        # Acceleration from total force. Mod uses mass = rho*Vol, with Vol=1.
+        # Acceleration: a = F/m; here m ~ rho*Vol and Vol=1
         A = (Fint + Fext) * (1.0 / float(rho))
 
         V += A * (float(dt) / 2.0)
 
-        # 6) Enforce supports.
+        # --- 6) Enforce supports (Dirichlet) ---
         enforce_supports()
 
     # -----------------------------------------------------------------------------
-    # Postprocess: compute Cauchy stress sigma and von Mises (mod behavior)
+    # Postprocess: compute Cauchy stress sigma and von Mises
     # -----------------------------------------------------------------------------
     sigma = np.zeros((n, 3, 3), dtype=float)
     vm = np.zeros((n,), dtype=float)
@@ -557,28 +534,23 @@ def compute_von_mises_stress(
     for i in range(n):
         detF = float(np.linalg.det(F[i]))
         if not np.isfinite(detF) or abs(detF) < 1e-12:
-            # Singular/invalid deformation gradient => leave zero stress.
             continue
-
-        # In the mod:
-        #   PP_tilde = P @ Ainv
-        #   P_correct = PP_tilde @ inv(Ainv) = P
-        A_i = _safe_inv_3x3(Ainv[i], rcond=float(pinv_rcond))  # approximates inverse(Ainv)
-        P_correct = PP_tilde[i] @ A_i
-
-        # Cauchy stress: sigma = (1/J) * P * F^T
-        sigma[i] = (P_correct @ F[i].T) * (1.0 / detF)
+        # Cauchy stress in the mod: sigma = (1/J) * P * F^T
+        sigma[i] = (P[i] @ F[i].T) * (1.0 / detF)
         vm[i] = _von_mises_from_sigma(sigma[i])
 
-    # Some useful debug stats.
-    neighbor_counts = np.array([len(neighbors[i]) for i in range(n)], dtype=int)
+    # Metadata
+    # Average neighbors ~ 2*edges/n (each edge connects two nodes)
+    edges = int(ei.shape[0])
+    avg_neighbors = (2.0 * edges / n) if n > 0 else 0.0
+
     meta: Dict[str, Any] = {
         "dt_used": float(dt),
         "steps": int(n_t_steps),
         "supports_count": int(supports.size),
-        "neighbors_min": int(neighbor_counts.min()) if n > 0 else 0,
-        "neighbors_max": int(neighbor_counts.max()) if n > 0 else 0,
-        "neighbors_avg": float(neighbor_counts.mean()) if n > 0 else 0.0,
+        "edges": edges,
+        "avg_neighbors": float(avg_neighbors),
+        "max_neighbors_cap": None if max_neighbors is None else int(max_neighbors),
     }
 
     return VonMisesResult(von_mises=vm, sigma=sigma, F=F, x=x, meta=meta)
