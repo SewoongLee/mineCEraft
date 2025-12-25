@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Tuple
-from .utils import to_int, xyz_lists
+from .utils.coords import to_int, xyz_lists
 
 def center_of_mass(coords: List[Dict[str, Any]]) -> Tuple[float, float, float]:
     """

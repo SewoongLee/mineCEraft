@@ -1,6 +1,6 @@
 from collections import deque, defaultdict
 from typing import List, Dict, Any, Tuple, Set
-from .utils import to_int
+from .utils.coords import to_int
 
 def is_ground_connected(
     coords: List[Dict[str, Any]],

@@ -1,4 +1,4 @@
-# eval_code/stress.py
+# eval_code/utils/stress.py
 """
 Von Mises stress for Minecraft-like block structures (SPH / meshfree solid),
 ported from "Minecraft SPH V8" and optimized for Python.
