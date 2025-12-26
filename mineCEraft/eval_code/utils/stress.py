@@ -293,7 +293,7 @@ def compute_von_mises_stress(
     # Material model (defaults match the mod)
     young: float = 1e9,
     nu: float = 0.4,
-    eta: float = 0.0,
+    eta: float = 1.0e7,
     # Mass/density and integration (defaults match typical "1999 step" runs)
     rho: float = 15000.0,          # [kg/m^3], used as mass density (mass ~ rho*Vol; Vol=1)
     dt: float = 1e-4,              # global time step (mod default)
@@ -421,15 +421,8 @@ def compute_von_mises_stress(
         deltai = np.einsum("mi,mi->m", (rij_pred - rij), rij) / rijmag_safe
         deltaj = np.einsum("mi,mi->m", (rji_pred + rij), (-rij)) / rijmag_safe
 
-        # Scalar coefficient per edge
-        hg_coeff = (
-            -0.5 * float(alpha) * float(Ehg)
-            * W
-            * (deltai + deltaj)
-            / (rijmag_safe * inv_Rijmag3)
-        )
-        # Wait: we cached inv_Rijmag3 = 1/Rijmag^3, and the formula needs /Rijmag^3,
-        # so we multiply by inv_Rijmag3, not divide by it.
+        # We cached inv_Rijmag3 = 1/Rijmag^3, and the formula needs /Rijmag^3,
+        # so we multiply by inv_Rijmag3.
         # Also formula has / (rijmag * Rijmag^3).
         hg_coeff = (
             -0.5 * float(alpha) * float(Ehg)
