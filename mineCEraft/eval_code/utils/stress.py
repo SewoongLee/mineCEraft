@@ -31,23 +31,6 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
 
-
-# =============================================================================
-# Public result type
-# =============================================================================
-
-@dataclass
-class VonMisesResult:
-    """
-    Result of compute_von_mises_stress().
-    """
-    von_mises: np.ndarray  # (n,) Pa
-    sigma: np.ndarray      # (n,3,3) Pa
-    F: np.ndarray          # (n,3,3)
-    x: np.ndarray          # (n,3) final deformed positions
-    meta: Dict[str, Any]
-
-
 # =============================================================================
 # Helpers: coords -> arrays
 # =============================================================================
@@ -129,8 +112,6 @@ def _build_edges_and_reference_cache(
     n = X0.shape[0]
     h = float(h_threshold)
 
-    # Naive O(n^2) edge build (simple and robust).
-    # For large n, replace this with a spatial hash/grid for near O(n*k).
     ei_list: List[int] = []
     ej_list: List[int] = []
     d_list: List[float] = []
@@ -331,7 +312,7 @@ def compute_von_mises_stress(
     pinv_rcond: float = 1e-12,
     # Progress bar
     progress: bool = True,
-) -> VonMisesResult:
+) -> np.ndarray:
     if loaded_blocks is None:
         loaded_blocks = []
 
@@ -340,13 +321,7 @@ def compute_von_mises_stress(
 
     # Trivial case
     if n == 0:
-        return VonMisesResult(
-            von_mises=np.zeros((0,), dtype=float),
-            sigma=np.zeros((0, 3, 3), dtype=float),
-            F=np.zeros((0, 3, 3), dtype=float),
-            x=np.zeros((0, 3), dtype=float),
-            meta={"dt_used": float(dt), "steps": 0, "supports_count": 0, "edges": 0},
-        )
+        return np.zeros((0,), dtype=float)
 
     # Supports: fix all blocks with minimum y, as requested.
     supports = _min_y_supports(X0) if fix_min_y else np.zeros((0,), dtype=int)
@@ -511,18 +486,4 @@ def compute_von_mises_stress(
         sigma[i] = (P[i] @ F[i].T) * (1.0 / detF)
         vm[i] = _von_mises_from_sigma(sigma[i])
 
-    # Metadata
-    # Average neighbors ~ 2*edges/n (each edge connects two nodes)
-    edges = int(ei.shape[0])
-    avg_neighbors = (2.0 * edges / n) if n > 0 else 0.0
-
-    meta: Dict[str, Any] = {
-        "dt_used": float(dt),
-        "steps": int(n_t_steps),
-        "supports_count": int(supports.size),
-        "edges": edges,
-        "avg_neighbors": float(avg_neighbors),
-        "max_neighbors_cap": None if max_neighbors is None else int(max_neighbors),
-    }
-
-    return VonMisesResult(von_mises=vm, sigma=sigma, F=F, x=x, meta=meta)
+    return vm

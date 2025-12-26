@@ -1,0 +1,17 @@
+[
+    {
+        "prompt": "Build a 10 × 10 flat roof supported by exactly five 3 × 1 columns. Arrange the columns so that the roof is as structurally stable as possible.",
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "structural_stability.is_stress_safe",
+                "args": {
+                    "von_mises_stress": 102e9
+                }
+            }
+        ]
+    }
+]
