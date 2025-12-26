@@ -11,6 +11,12 @@
                 "args": {
                     "von_mises_stress": 102e9
                 }
+            },
+            {
+                "fn": "material.is_block_cnt_equal_to",
+                "args": {
+                    "expected_count": 115
+                }
             }
         ]
     }
