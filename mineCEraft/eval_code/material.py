@@ -23,9 +23,35 @@ def _material_matches(material: str, expected_material: str, use_substring_match
         return material_str == expected_material
 
 
-def is_block_cnt_equal_to(coords: List[Dict[str, Any]], expected_count: int) -> bool:
-    """Return True if number of blocks equals expected_count, else False."""
-    return len(coords) == expected_count
+def is_block_cnt_equal_to(
+    coords: List[Dict[str, Any]], 
+    expected_count: int,
+    expected_material: str = None,
+    use_substring_match: bool = False,
+) -> bool:
+    """
+    Return True if number of blocks (matching expected_material if provided) equals expected_count, else False.
+    
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        expected_count: The exact count that blocks must equal
+        expected_material: Optional material to filter by. If None, counts all blocks.
+        use_substring_match: If True, use substring matching (e.g., 'red' matches 'red_wool');
+                           if False, use exact matching (default). Only used if expected_material is provided.
+    
+    Returns:
+        True if count of matching blocks == expected_count, else False
+    """
+    if expected_material is None:
+        # Count all blocks
+        return len(coords) == expected_count
+    else:
+        # Count only blocks matching the expected material
+        matching_count = sum(
+            1 for c in coords
+            if _material_matches(c.get("material"), expected_material, use_substring_match)
+        )
+        return matching_count == expected_count
 
 
 def is_block_cnt_larger_than(

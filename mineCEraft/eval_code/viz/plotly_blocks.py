@@ -170,8 +170,8 @@ def plot(
             material = (c.get("material") or "").strip()
             cube_color = _material_to_color(material)
 
-            # Track this material if it's a known material (not the black fallback).
-            if material and material in MATERIAL_COLOR:
+            # Track all materials (including those not in MATERIAL_COLOR) for legend.
+            if material:
                 materials_used[material] = cube_color
 
         # Build the 8 cube vertices in Minecraft coords.
@@ -225,7 +225,8 @@ def plot(
                 x=[None], y=[None], z=[None],
                 mode="markers",
                 marker=dict(size=8, color=mat_color),
-                name=name
+                name=name,
+                showlegend=True,
             ))
         for tr in legend_traces:
             fig.add_trace(tr)
