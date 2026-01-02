@@ -1,0 +1,25 @@
+[
+    {
+        "prompt": "Build a two-bedroom house.",
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 2
+                }
+            },
+            {
+                "fn": "material.is_block_cnt_equal_to",
+                "args": {
+                    "expected_count": 2,
+                    "expected_material": "bed",
+                    "use_substring_match": true
+                }
+            }
+        ]
+    }
+]
