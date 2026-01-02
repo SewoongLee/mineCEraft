@@ -114,7 +114,7 @@ def plot(
     title: str = "",
     alpha: float = 0.5,
     cube_size: int = 1,
-    show_legend: bool = False,
+    show_legend: bool = True,
     color: Optional[Sequence[float]] = None,
     colorbar_title: Optional[str] = None,
 ) -> go.Figure:

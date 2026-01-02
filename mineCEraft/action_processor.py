@@ -69,7 +69,8 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     };
     global.bot = {
       interrupt_code: false,
-      entity: { position: _pos }
+      entity: { position: _pos },
+      chat: async () => {} // no-op mock for bot.chat()
     };
     global.world = {
       getPosition: (_bot) => ({ x: __X0__, y: __Y0__, z: __Z0__ }),
