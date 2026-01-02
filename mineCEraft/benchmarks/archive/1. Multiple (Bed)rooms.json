@@ -1,0 +1,32 @@
+[
+    {
+        "prompt": "Build a two-room house.",
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 2
+                }
+            }
+        ]
+    },
+    {
+        "prompt": "Build a two-bedroom house.",
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 2
+                }
+            }
+        ]
+    }
+]
