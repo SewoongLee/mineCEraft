@@ -117,6 +117,11 @@
       box-sizing:border-box;
     }
 
+    /* Guide cells exist but are visually shaded only when guides are ON. */
+    .grid.guides-on .cell.guide{
+      background: #f3f3f3;
+    }
+
     .cell:hover{
       outline: 1px solid #999;
       background: var(--hover);
@@ -125,6 +130,11 @@
     .cell.on{
       background: var(--on);
       border-color:#000;
+    }
+
+    /* Selected wins over guide shading when guides are ON. */
+    .grid.guides-on .cell.on.guide{
+      background: var(--on);
     }
 
     /* Mark the origin cell without changing layout (outline does not affect size). */
@@ -195,6 +205,7 @@
         <button id="btnClear" type="button">Clear All</button>
         <button id="btnCopy" type="button">Copy Output</button>
         <button id="btnInvert" type="button">Invert</button>
+        <button id="btnToggleGuides" type="button">Guides: Off</button>
         <span class="status" id="status">Selected: 0</span>
       </div>
 
@@ -224,6 +235,7 @@
 
       <div class="small">
         <div>Coordinate system: origin (0,0) is the highlighted center cell (red border). x increases to the right, y increases upward.</div>
+        <div>Guides: cells where x or y is a multiple of 5 can be shaded (toggle in toolbar). Default is Off.</div>
         <div>Sorting: x asc → y asc → z asc. Output is single-line, compact JSON.</div>
       </div>
     </div>
@@ -240,14 +252,14 @@
     const btnCopy = document.getElementById('btnCopy');
     const btnInvert = document.getElementById('btnInvert');
 
+    const btnToggleGuides = document.getElementById('btnToggleGuides');
+
     const zLayersInput = document.getElementById('zLayers');
     const btnApplyZ = document.getElementById('btnApplyZ');
 
     const materialInput = document.getElementById('material');
 
     // For an even grid (50), define the origin cell as the lower-left of the central 2x2 block.
-    // With columns 0..49, central columns are 24 and 25. Pick 24 as origin column.
-    // With rows 0..49 (bottom-left coordinates), central rows are 24 and 25. Pick 24 as origin row.
     const ORIGIN_COL = (GRID_SIZE / 2) - 1; // 24
     const ORIGIN_ROW = (GRID_SIZE / 2) - 1; // 24
 
@@ -264,6 +276,9 @@
 
     // Material string.
     let material = "stone";
+
+    // Guides toggle (default OFF).
+    let guidesOn = false;
 
     function keyOf(x, y) { return `${x},${y}`; }
 
@@ -344,18 +359,27 @@
       return el ? el.closest('.cell') : null;
     }
 
+    function isMultipleOf5(n) {
+      return n % 5 === 0;
+    }
+
+    function updateGuidesUI() {
+      gridEl.classList.toggle('guides-on', guidesOn);
+      btnToggleGuides.textContent = `Guides: ${guidesOn ? 'On' : 'Off'}`;
+    }
+
     function buildGrid() {
       gridEl.style.setProperty('--grid-size', GRID_SIZE);
 
       const frag = document.createDocumentFragment();
 
       // Build DOM rows top-to-bottom, but use bottom-left coordinates internally.
-      // We assign centered coordinates:
+      // Assign centered coordinates:
       //   x = col - ORIGIN_COL
       //   y = row - ORIGIN_ROW
-      // where row is bottom-left coordinate row index.
+      // where row is bottom-left row index.
       for (let domRow = 0; domRow < GRID_SIZE; domRow++) {
-        const row = (GRID_SIZE - 1) - domRow; // convert to bottom-left row index
+        const row = (GRID_SIZE - 1) - domRow; // bottom-left row index
         for (let col = 0; col < GRID_SIZE; col++) {
           const x = col - ORIGIN_COL;
           const y = row - ORIGIN_ROW;
@@ -365,6 +389,9 @@
           d.dataset.x = String(x);
           d.dataset.y = String(y);
           d.title = `(${x}, ${y})`;
+
+          // Tag guide cells (visual shading depends on toggle).
+          if (isMultipleOf5(x) || isMultipleOf5(y)) d.classList.add('guide');
 
           // Mark the origin cell (0,0).
           if (x === 0 && y === 0) d.classList.add('origin');
@@ -475,8 +502,14 @@
       updateOutput();
     });
 
+    btnToggleGuides.addEventListener('click', () => {
+      guidesOn = !guidesOn;
+      updateGuidesUI();
+    });
+
     // Init.
     buildGrid();
+    updateGuidesUI(); // Default is Off.
     updateOutput();
   </script>
 </body>
