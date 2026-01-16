@@ -145,7 +145,7 @@
 
     textarea{
       width:100%;
-      height:320px;
+      height:220px;
       resize:vertical;
       border:1px solid var(--border);
       border-radius:12px;
@@ -175,6 +175,14 @@
       font-size:13px;
     }
 
+    select{
+      padding:6px 8px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      font-size:13px;
+      background:#fff;
+    }
+
     .small{
       font-size:12px;
       opacity:.75;
@@ -190,6 +198,14 @@
       background:#fff;
       font-size:12px;
       opacity:.85;
+    }
+
+    .msg{
+      margin-top:8px;
+      font-size:12px;
+      opacity:.8;
+      min-height: 16px;
+      line-height:1.4;
     }
   </style>
 </head>
@@ -233,10 +249,32 @@
         <input id="material" type="text" value="stone" />
       </div>
 
+      <hr style="border:none;border-top:1px solid #eee;margin:14px 0;">
+
+      <div class="title" style="margin-bottom:6px;">
+        <h1>Import Coordinates (x,y)</h1>
+        <p class="hint">z is ignored</p>
+      </div>
+
+      <textarea id="importBox" spellcheck="false" placeholder='Examples:
+[{"x":0,"y":0},{"x":-3,"y":7,"z":2}]
+0,0
+-3,7  10,2'></textarea>
+
+      <div class="row">
+        <label for="importMode">Mode</label>
+        <select id="importMode">
+          <option value="replace" selected>Replace selection</option>
+          <option value="add">Add to selection</option>
+        </select>
+        <button id="btnImport" type="button">Import & Mark</button>
+      </div>
+
+      <div class="msg" id="importMsg"></div>
+
       <div class="small">
         <div>Coordinate system: origin (0,0) is the highlighted center cell (red border). x increases to the right, y increases upward.</div>
-        <div>Guides: cells where x or y is a multiple of 5 can be shaded (toggle in toolbar). Default is Off.</div>
-        <div>Sorting: x asc → y asc → z asc. Output is single-line, compact JSON.</div>
+        <div>Valid x/y range: x ∈ [-24..25], y ∈ [-24..25]. Out-of-range inputs are skipped.</div>
       </div>
     </div>
   </div>
@@ -259,9 +297,22 @@
 
     const materialInput = document.getElementById('material');
 
+    const importBox = document.getElementById('importBox');
+    const importModeEl = document.getElementById('importMode');
+    const btnImport = document.getElementById('btnImport');
+    const importMsg = document.getElementById('importMsg');
+
     // For an even grid (50), define the origin cell as the lower-left of the central 2x2 block.
     const ORIGIN_COL = (GRID_SIZE / 2) - 1; // 24
     const ORIGIN_ROW = (GRID_SIZE / 2) - 1; // 24
+
+    // With this origin, valid centered coordinates are:
+    // x in [-ORIGIN_COL .. GRID_SIZE-1-ORIGIN_COL] => [-24..25]
+    // y in [-ORIGIN_ROW .. GRID_SIZE-1-ORIGIN_ROW] => [-24..25]
+    const X_MIN = -ORIGIN_COL;
+    const X_MAX = (GRID_SIZE - 1) - ORIGIN_COL;
+    const Y_MIN = -ORIGIN_ROW;
+    const Y_MAX = (GRID_SIZE - 1) - ORIGIN_ROW;
 
     // Selected cells are stored as keys: "x,y" where x,y are centered coordinates.
     const selected = new Set();
@@ -293,6 +344,10 @@
       return Math.max(min, Math.min(max, Math.floor(n)));
     }
 
+    function inRange(x, y) {
+      return x >= X_MIN && x <= X_MAX && y >= Y_MIN && y <= Y_MAX;
+    }
+
     function getSortedXY() {
       const arr = Array.from(selected).map(parseKey);
       arr.sort((a, b) => (a.x - b.x) || (a.y - b.y));
@@ -320,16 +375,20 @@
     }
 
     function setAt(x, y, on) {
+      if (!inRange(x, y)) return false;
       const k = keyOf(x, y);
       const cell = document.querySelector(`.cell[data-x="${x}"][data-y="${y}"]`);
       if (on) selected.add(k);
       else selected.delete(k);
       if (cell) setCellVisual(cell, on);
+      return true;
     }
 
     function toggleAt(x, y) {
+      if (!inRange(x, y)) return false;
       const k = keyOf(x, y);
       setAt(x, y, !selected.has(k));
+      return true;
     }
 
     function paintCell(cell, ev) {
@@ -403,7 +462,88 @@
       gridEl.appendChild(frag);
     }
 
-    // Pointer interactions.
+    function clearAllSelection() {
+      selected.clear();
+      document.querySelectorAll('.cell.on').forEach(c => c.classList.remove('on'));
+    }
+
+    // ---- Import parsing ----
+
+    // Try to parse JSON array of objects: [{x:..,y:..}, ...]
+    function tryParseJsonXY(text) {
+      const t = text.trim();
+      if (!t) return null;
+
+      // Quick filter to avoid throwing for common non-JSON input.
+      if (!(t.startsWith('[') || t.startsWith('{'))) return null;
+
+      try {
+        const v = JSON.parse(t);
+        const arr = Array.isArray(v) ? v : [v];
+        const out = [];
+        for (const item of arr) {
+          if (!item || typeof item !== 'object') continue;
+          const x = Number(item.x);
+          const y = Number(item.y);
+          if (Number.isFinite(x) && Number.isFinite(y)) {
+            out.push({ x: Math.trunc(x), y: Math.trunc(y) });
+          }
+        }
+        return out;
+      } catch {
+        return null;
+      }
+    }
+
+    // Parse loose "x,y" pairs from any text:
+    // Accepts separators like commas, spaces, newlines; supports negatives.
+    function parseLoosePairs(text) {
+      const matches = text.match(/-?\d+\s*,\s*-?\d+/g);
+      if (!matches) return [];
+      const out = [];
+      for (const m of matches) {
+        const [xs, ys] = m.split(',').map(s => s.trim());
+        const x = Number(xs), y = Number(ys);
+        if (Number.isFinite(x) && Number.isFinite(y)) out.push({ x: Math.trunc(x), y: Math.trunc(y) });
+      }
+      return out;
+    }
+
+    function importAndMark() {
+      const raw = importBox.value || "";
+      const mode = importModeEl.value; // "replace" | "add"
+
+      const fromJson = tryParseJsonXY(raw);
+      const points = fromJson ?? parseLoosePairs(raw);
+
+      if (points.length === 0) {
+        importMsg.textContent = "No valid (x,y) pairs found.";
+        return;
+      }
+
+      let added = 0;
+      let skipped = 0;
+
+      if (mode === "replace") {
+        clearAllSelection();
+      }
+
+      // Apply marking (ignore z entirely; we only use x,y).
+      for (const p of points) {
+        if (!inRange(p.x, p.y)) { skipped++; continue; }
+        const k = keyOf(p.x, p.y);
+        const wasOn = selected.has(k);
+        if (!wasOn) {
+          setAt(p.x, p.y, true);
+          added++;
+        }
+      }
+
+      updateOutput();
+      importMsg.textContent = `Imported: ${points.length} pairs. Newly marked: ${added}. Skipped (out of range): ${skipped}.`;
+    }
+
+    // ---- Pointer interactions ----
     gridEl.addEventListener('pointerdown', (ev) => {
       const cell = ev.target.closest('.cell');
       if (!cell) return;
@@ -450,10 +590,11 @@
     gridEl.addEventListener('pointerup', () => endDrag());
     gridEl.addEventListener('pointercancel', () => endDrag());
 
+    // ---- Toolbar ----
     btnClear.addEventListener('click', () => {
-      selected.clear();
-      document.querySelectorAll('.cell.on').forEach(c => c.classList.remove('on'));
+      clearAllSelection();
       updateOutput();
+      importMsg.textContent = "";
     });
 
     btnInvert.addEventListener('click', () => {
@@ -472,6 +613,7 @@
       selected.clear();
       newSelected.forEach(k => selected.add(k));
       updateOutput();
+      importMsg.textContent = "";
     });
 
     btnCopy.addEventListener('click', async () => {
@@ -479,8 +621,7 @@
         await navigator.clipboard.writeText(outEl.value);
         statusEl.textContent = `Copied! (Selected: ${selected.size}, Z layers: ${zLayers})`;
         setTimeout(updateOutput, 800);
-      } catch (e) {
-        // Fallback when clipboard permission is not available.
+      } catch {
         outEl.focus();
         outEl.select();
         document.execCommand('copy');
@@ -495,7 +636,6 @@
       updateOutput();
     });
 
-    // Update material live (and default to "stone" if empty).
     materialInput.addEventListener('input', () => {
       const v = (materialInput.value ?? "").trim();
       material = v.length ? v : "stone";
@@ -507,9 +647,21 @@
       updateGuidesUI();
     });
 
+    btnImport.addEventListener('click', () => {
+      importAndMark();
+    });
+
+    // Also allow Ctrl/Cmd+Enter to import quickly.
+    importBox.addEventListener('keydown', (ev) => {
+      if ((ev.ctrlKey || ev.metaKey) && ev.key === 'Enter') {
+        ev.preventDefault();
+        importAndMark();
+      }
+    });
+
     // Init.
     buildGrid();
-    updateGuidesUI(); // Default is Off.
+    updateGuidesUI(); // Default Off.
     updateOutput();
   </script>
 </body>
