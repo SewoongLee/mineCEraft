@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>50x50 Coordinate Marker</title>
+  <style>
+    :root{
+      --grid-size: 50;
+      --cell: 12px; /* Fixed size */
+      --gap: 1px;
+      --border: #d0d0d0;
+      --on: #111;
+      --off: #fff;
+      --hover: #f0f0f0;
+      --bg: #fafafa;
+      --text: #111;
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .wrap{
+      max-width: 1100px;
+      margin: 16px auto;
+      padding: 0 16px 24px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 16px;
+    }
+
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .title{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 0 0 8px;
+    }
+
+    .title h1{
+      font-size:16px;
+      margin:0;
+    }
+
+    .hint{
+      font-size:12px;
+      opacity:.7;
+      margin:0;
+    }
+
+    .toolbar{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+
+    button{
+      appearance:none;
+      border:1px solid var(--border);
+      background:#fff;
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    button:hover{ background:#f7f7f7; }
+
+    .status{
+      margin-left:auto;
+      font-size:12px;
+      opacity:.75;
+      white-space:nowrap;
+    }
+
+    .gridHost{
+      overflow:auto;
+      max-height: calc(100vh - 170px);
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:#fff;
+      padding:10px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(var(--grid-size), var(--cell));
+      grid-template-rows: repeat(var(--grid-size), var(--cell));
+      gap: var(--gap);
+      user-select:none;
+      -webkit-user-select:none;
+      touch-action:none;
+    }
+
+    .cell{
+      width: var(--cell);
+      height: var(--cell);
+      background: var(--off);
+      border:1px solid var(--border);
+      box-sizing:border-box;
+    }
+
+    .cell:hover{
+      outline: 1px solid #999;
+      background: var(--hover);
+    }
+
+    .cell.on{
+      background: var(--on);
+      border-color:#000;
+    }
+
+    /* Mark the origin cell without changing layout (outline does not affect size). */
+    .cell.origin{
+      outline: 2px solid red !important;
+      outline-offset: -2px;
+    }
+
+    textarea{
+      width:100%;
+      height:320px;
+      resize:vertical;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px;
+      line-height:1.4;
+      box-sizing:border-box;
+      background:#fcfcfc;
+    }
+
+    .row{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    label{ font-size:12px; opacity:.8; }
+
+    input[type="number"], input[type="text"]{
+      width: 180px;
+      padding:6px 8px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      font-size:13px;
+    }
+
+    .small{
+      font-size:12px;
+      opacity:.75;
+      margin-top:10px;
+      line-height:1.45;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:2px 8px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      font-size:12px;
+      opacity:.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <div class="title">
+        <h1>50×50 Coordinate Marker</h1>
+        <p class="hint">Click: toggle · Drag: paint · <b>Shift+Drag</b>: erase</p>
+      </div>
+
+      <div class="toolbar">
+        <button id="btnClear" type="button">Clear All</button>
+        <button id="btnCopy" type="button">Copy Output</button>
+        <button id="btnInvert" type="button">Invert</button>
+        <span class="status" id="status">Selected: 0</span>
+      </div>
+
+      <div class="gridHost">
+        <div class="grid" id="grid" aria-label="50x50 grid"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="title">
+        <h1>Output (Compact JSON)</h1>
+        <p class="hint"><span class="pill">{"x":0,"y":0,"z":0,"material":"stone"}</span></p>
+      </div>
+
+      <textarea id="out" readonly spellcheck="false"></textarea>
+
+      <div class="row">
+        <label for="zLayers">Z layers</label>
+        <input id="zLayers" type="number" min="1" step="1" value="1" />
+        <button id="btnApplyZ" type="button">Apply</button>
+      </div>
+
+      <div class="row">
+        <label for="material">Material</label>
+        <input id="material" type="text" value="stone" />
+      </div>
+
+      <div class="small">
+        <div>Coordinate system: origin (0,0) is the highlighted center cell (red border). x increases to the right, y increases upward.</div>
+        <div>Sorting: x asc → y asc → z asc. Output is single-line, compact JSON.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GRID_SIZE = 50;
+
+    const gridEl = document.getElementById('grid');
+    const outEl = document.getElementById('out');
+    const statusEl = document.getElementById('status');
+
+    const btnClear = document.getElementById('btnClear');
+    const btnCopy = document.getElementById('btnCopy');
+    const btnInvert = document.getElementById('btnInvert');
+
+    const zLayersInput = document.getElementById('zLayers');
+    const btnApplyZ = document.getElementById('btnApplyZ');
+
+    const materialInput = document.getElementById('material');
+
+    // For an even grid (50), define the origin cell as the lower-left of the central 2x2 block.
+    // With columns 0..49, central columns are 24 and 25. Pick 24 as origin column.
+    // With rows 0..49 (bottom-left coordinates), central rows are 24 and 25. Pick 24 as origin row.
+    const ORIGIN_COL = (GRID_SIZE / 2) - 1; // 24
+    const ORIGIN_ROW = (GRID_SIZE / 2) - 1; // 24
+
+    // Selected cells are stored as keys: "x,y" where x,y are centered coordinates.
+    const selected = new Set();
+
+    // Pointer paint state.
+    let isPointerDown = false;
+    let dragMode = null; // "add" | "remove"
+    let lastKey = null;
+
+    // Z layer count (>= 1).
+    let zLayers = 1;
+
+    // Material string.
+    let material = "stone";
+
+    function keyOf(x, y) { return `${x},${y}`; }
+
+    function parseKey(k) {
+      const [x, y] = k.split(',').map(Number);
+      return { x, y };
+    }
+
+    function clampInt(v, min, max) {
+      const n = Number(v);
+      if (!Number.isFinite(n)) return min;
+      return Math.max(min, Math.min(max, Math.floor(n)));
+    }
+
+    function getSortedXY() {
+      const arr = Array.from(selected).map(parseKey);
+      arr.sort((a, b) => (a.x - b.x) || (a.y - b.y));
+      return arr;
+    }
+
+    function buildXYZList() {
+      const xy = getSortedXY();
+      const out = [];
+      for (let z = 0; z < zLayers; z++) {
+        for (const p of xy) out.push({ x: p.x, y: p.y, z, material });
+      }
+      out.sort((a, b) => (a.x - b.x) || (a.y - b.y) || (a.z - b.z));
+      return out;
+    }
+
+    function updateOutput() {
+      const xyz = buildXYZList();
+      outEl.value = JSON.stringify(xyz); // Compact, single-line JSON.
+      statusEl.textContent = `Selected: ${selected.size} (Output points: ${xyz.length}, Z layers: ${zLayers})`;
+    }
+
+    function setCellVisual(cell, on) {
+      cell.classList.toggle('on', on);
+    }
+
+    function setAt(x, y, on) {
+      const k = keyOf(x, y);
+      const cell = document.querySelector(`.cell[data-x="${x}"][data-y="${y}"]`);
+      if (on) selected.add(k);
+      else selected.delete(k);
+      if (cell) setCellVisual(cell, on);
+    }
+
+    function toggleAt(x, y) {
+      const k = keyOf(x, y);
+      setAt(x, y, !selected.has(k));
+    }
+
+    function paintCell(cell, ev) {
+      const x = Number(cell.dataset.x);
+      const y = Number(cell.dataset.y);
+      const k = keyOf(x, y);
+
+      // Avoid repainting the same cell repeatedly during drag.
+      if (k === lastKey) return;
+      lastKey = k;
+
+      // Shift key always forces erase during drag.
+      if (ev.shiftKey) {
+        setAt(x, y, false);
+        return;
+      }
+
+      if (dragMode === 'add') setAt(x, y, true);
+      else if (dragMode === 'remove') setAt(x, y, false);
+      else toggleAt(x, y);
+    }
+
+    // During pointer capture, ev.target can remain the original element.
+    // Use elementFromPoint to find the cell currently under the pointer.
+    function cellFromPointerEvent(ev) {
+      const el = document.elementFromPoint(ev.clientX, ev.clientY);
+      return el ? el.closest('.cell') : null;
+    }
+
+    function buildGrid() {
+      gridEl.style.setProperty('--grid-size', GRID_SIZE);
+
+      const frag = document.createDocumentFragment();
+
+      // Build DOM rows top-to-bottom, but use bottom-left coordinates internally.
+      // We assign centered coordinates:
+      //   x = col - ORIGIN_COL
+      //   y = row - ORIGIN_ROW
+      // where row is bottom-left coordinate row index.
+      for (let domRow = 0; domRow < GRID_SIZE; domRow++) {
+        const row = (GRID_SIZE - 1) - domRow; // convert to bottom-left row index
+        for (let col = 0; col < GRID_SIZE; col++) {
+          const x = col - ORIGIN_COL;
+          const y = row - ORIGIN_ROW;
+
+          const d = document.createElement('div');
+          d.className = 'cell';
+          d.dataset.x = String(x);
+          d.dataset.y = String(y);
+          d.title = `(${x}, ${y})`;
+
+          // Mark the origin cell (0,0).
+          if (x === 0 && y === 0) d.classList.add('origin');
+
+          frag.appendChild(d);
+        }
+      }
+
+      gridEl.appendChild(frag);
+    }
+
+    // Pointer interactions.
+    gridEl.addEventListener('pointerdown', (ev) => {
+      const cell = ev.target.closest('.cell');
+      if (!cell) return;
+
+      ev.preventDefault();
+      gridEl.setPointerCapture(ev.pointerId);
+
+      isPointerDown = true;
+      lastKey = null;
+
+      const x = Number(cell.dataset.x);
+      const y = Number(cell.dataset.y);
+      const k = keyOf(x, y);
+      const currentlyOn = selected.has(k);
+
+      // Shift+click should erase immediately.
+      if (ev.shiftKey) {
+        dragMode = 'remove';
+        setAt(x, y, false);
+      } else {
+        // Decide drag mode based on initial cell state.
+        dragMode = currentlyOn ? 'remove' : 'add';
+        toggleAt(x, y);
+      }
+
+      updateOutput();
+    });
+
+    gridEl.addEventListener('pointermove', (ev) => {
+      if (!isPointerDown) return;
+      const cell = cellFromPointerEvent(ev);
+      if (!cell) return;
+
+      paintCell(cell, ev);
+      updateOutput();
+    });
+
+    function endDrag() {
+      isPointerDown = false;
+      dragMode = null;
+      lastKey = null;
+    }
+
+    gridEl.addEventListener('pointerup', () => endDrag());
+    gridEl.addEventListener('pointercancel', () => endDrag());
+
+    btnClear.addEventListener('click', () => {
+      selected.clear();
+      document.querySelectorAll('.cell.on').forEach(c => c.classList.remove('on'));
+      updateOutput();
+    });
+
+    btnInvert.addEventListener('click', () => {
+      const newSelected = new Set();
+
+      document.querySelectorAll('.cell').forEach(cell => {
+        const x = Number(cell.dataset.x);
+        const y = Number(cell.dataset.y);
+        const k = keyOf(x, y);
+
+        const nextOn = !selected.has(k);
+        if (nextOn) newSelected.add(k);
+        setCellVisual(cell, nextOn);
+      });
+
+      selected.clear();
+      newSelected.forEach(k => selected.add(k));
+      updateOutput();
+    });
+
+    btnCopy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(outEl.value);
+        statusEl.textContent = `Copied! (Selected: ${selected.size}, Z layers: ${zLayers})`;
+        setTimeout(updateOutput, 800);
+      } catch (e) {
+        // Fallback when clipboard permission is not available.
+        outEl.focus();
+        outEl.select();
+        document.execCommand('copy');
+        statusEl.textContent = `Copied! (fallback) (Selected: ${selected.size}, Z layers: ${zLayers})`;
+        setTimeout(updateOutput, 800);
+      }
+    });
+
+    btnApplyZ.addEventListener('click', () => {
+      zLayers = clampInt(zLayersInput.value, 1, 999);
+      zLayersInput.value = String(zLayers);
+      updateOutput();
+    });
+
+    // Update material live (and default to "stone" if empty).
+    materialInput.addEventListener('input', () => {
+      const v = (materialInput.value ?? "").trim();
+      material = v.length ? v : "stone";
+      updateOutput();
+    });
+
+    // Init.
+    buildGrid();
+    updateOutput();
+  </script>
+</body>
+</html>
