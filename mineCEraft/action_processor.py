@@ -24,6 +24,33 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     const code = fs.readFileSync(FILENAME, 'utf8');
 
     // ---- mocks ----
+    // Vec3 constructor mock (from vec3 package)
+    function Vec3(x, y, z) {
+      if (this instanceof Vec3) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+      } else {
+        return new Vec3(x, y, z);
+      }
+    }
+    Vec3.prototype.floored = function() {
+      return new Vec3(Math.floor(this.x), Math.floor(this.y), Math.floor(this.z));
+    };
+    Vec3.prototype.clone = function() {
+      return new Vec3(this.x, this.y, this.z);
+    };
+    Vec3.prototype.offset = function(dx, dy, dz) {
+      return new Vec3(this.x + dx, this.y + dy, this.z + dz);
+    };
+    Vec3.prototype.distanceTo = function(other) {
+      const dx = this.x - other.x;
+      const dy = this.y - other.y;
+      const dz = this.z - other.z;
+      return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    };
+    global.Vec3 = Vec3;
+    
     // Provide a Vec3-like object with .floored(), .clone(), .offset(), and .distanceTo() as Mineflayer does.
     const _pos = {
       x: __X0__, y: __Y0__, z: __Z0__,
