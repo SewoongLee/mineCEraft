@@ -3,13 +3,14 @@
     
     "model": "claude-3-7-sonnet-20250219",
     
-    "model37l": "claude-3-7-sonnet-latest",
-    "model35t": "gpt-3.5-turbo",
-    "model4m": "gpt-4.1-mini",
+    "model1": "claude-3-7-sonnet-latest",
+    "model2": "gpt-3.5-turbo",
+    "model3": "gpt-4.1-mini",
     "model4": "gpt-4",
-    "model5n": "gpt-5-nano",
-    "model5m": "gpt-5-mini",
-    "model25f": "gemini-2.5-flash",
+    "model5": "gpt-5-nano",
+    "model6": "gpt-5-mini",
+    "model7": "gemini-2.5-flash",
+    "model8": "meta-llama/llama-4-scout-17b-16e-instruct",
 
     "modes": {
         "self_preservation": false,
