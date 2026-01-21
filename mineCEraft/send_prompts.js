@@ -6,9 +6,65 @@ import fs from "fs";
 import path from "path";
 
 const SERVER = "http://localhost:8080";
-const agentName = "andy";
 const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000;
 const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid"];
+
+/**
+ * Read agent name from settings.js by parsing the first profile.
+ * Returns the agent name or null if not found.
+ */
+function getAgentNameFromSettings() {
+  try {
+    const settingsPath = path.join(process.cwd(), "..", "settings.js");
+    if (!fs.existsSync(settingsPath)) {
+      console.error(`⚠️ settings.js not found at ${settingsPath}`);
+      return null;
+    }
+
+    // Read settings.js
+    const settingsContent = fs.readFileSync(settingsPath, "utf8");
+    
+    // Extract first profile path using regex (more reliable than parsing JS)
+    // Match: "profiles": [\n        "./builder.json",
+    const profileMatch = settingsContent.match(/"profiles"\s*:\s*\[\s*"([^"]+)"/);
+    if (!profileMatch || !profileMatch[1]) {
+      console.error("⚠️ Could not find profiles array in settings.js");
+      return null;
+    }
+
+    const firstProfilePath = profileMatch[1];
+    const profileFullPath = path.join(process.cwd(), "..", firstProfilePath);
+    
+    if (!fs.existsSync(profileFullPath)) {
+      console.error(`⚠️ Profile file not found: ${profileFullPath}`);
+      return null;
+    }
+
+    // Read and parse profile JSON
+    const profileContent = fs.readFileSync(profileFullPath, "utf8");
+    const profile = JSON.parse(profileContent);
+    
+    if (!profile.name) {
+      console.error(`⚠️ No 'name' field found in profile: ${firstProfilePath}`);
+      return null;
+    }
+
+    return profile.name;
+  } catch (error) {
+    console.error(`⚠️ Error reading agent name from settings: ${error.message}`);
+    return null;
+  }
+}
+
+// Get agent name dynamically
+const agentName = getAgentNameFromSettings() || "builder"; // fallback to "builder" if failed
+
+if (!agentName) {
+  console.error("❌ Failed to determine agent name. Exiting.");
+  process.exit(1);
+}
+
+console.log(`ℹ️ Using agent name: ${agentName}`);
 
 /** Return true if text contains any completion keyword (case-insensitive). */
 function hasCompletionKeyword(text) {
@@ -17,7 +73,7 @@ function hasCompletionKeyword(text) {
   return COMPLETION_KEYWORDS.some((kw) => lower.includes(kw));
 }
 
-/** Delete all files in bots/andy/action-code. */
+/** Delete all files in bots/<agentName>/action-code. */
 function clearActionCodeDir() {
   const dirPath = path.join(process.cwd(), "..", "bots", agentName, "action-code");
   if (!fs.existsSync(dirPath)) {
