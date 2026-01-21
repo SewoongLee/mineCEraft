@@ -1,8 +1,8 @@
 {
     "name": "builder",
-
+    
     "model": "claude-3-7-sonnet-20250219",
-
+    
     "model37l": "claude-3-7-sonnet-latest",
     "model35t": "gpt-3.5-turbo",
     "model4m": "gpt-4.1-mini",
