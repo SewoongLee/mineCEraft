@@ -6,8 +6,8 @@ import fs from "fs";
 import path from "path";
 
 const SERVER = "http://localhost:8080";
-const RESPONSE_TIMEOUT_MS = 20 * 60 * 1000;
-const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid"];
+const RESPONSE_TIMEOUT_MS = 10 * 60 * 1000;
+const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid", "accomplished"];
 
 /**
  * Read agent name from settings.js by parsing the first profile.
