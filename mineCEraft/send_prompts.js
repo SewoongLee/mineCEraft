@@ -7,7 +7,7 @@ import path from "path";
 
 const SERVER = "http://localhost:8080";
 const RESPONSE_TIMEOUT_MS = 10 * 60 * 1000;
-const COMPLETION_KEYWORDS = ["complete", "finished", "done", "built", "I've laid", "accomplished"];
+const COMPLETION_KEYWORDS = ["complete", "finished", "done", "successfully", "built", "i've laid", "i've installed", "as requested", "is there anything else"];
 
 /**
  * Read agent name from settings.js by parsing the first profile.
@@ -168,6 +168,44 @@ function waitForCompletion(agent, timeoutMs = RESPONSE_TIMEOUT_MS) {
   });
 }
 
+/**
+ * Wait for command completion confirmation from the agent.
+ * Used to wait for commands like !clearChat to finish.
+ */
+function waitForCommandCompletion(commandMessage) {
+  return new Promise((resolve) => {
+    const messages = [];
+    let timeoutId = null;
+
+    const handler = (fromAgent, message) => {
+      if (fromAgent !== agentName) return;
+      const text =
+        typeof message === "string" ? message : message?.text ?? JSON.stringify(message);
+      messages.push(text);
+      console.log(`📨 [${fromAgent}] ${text}`);
+
+      // Check if command completed (look for confirmation message)
+      if (text.includes("chat history was cleared") || text.includes("cleared")) {
+        cleanup();
+        resolve({ ok: true, messages });
+      }
+    };
+
+    function cleanup() {
+      socket.off("bot-output", handler);
+      if (timeoutId) clearTimeout(timeoutId);
+    }
+
+    socket.on("bot-output", handler);
+
+    // Timeout after 5 seconds if no response
+    timeoutId = setTimeout(() => {
+      cleanup();
+      resolve({ ok: false, reason: "timeout", messages });
+    }, 5000);
+  });
+}
+
 // === Main ===
 clearActionCodeDir();
 
@@ -176,8 +214,8 @@ const socket = io(SERVER, { transports: ["websocket", "polling"] });
 socket.on("connect", async () => {
   console.log(`✅ Connected to MindServer at ${SERVER} (socket id=${socket.id})`);
 
-  // Read prompts once from stdin (expects {"prompts":[...]})
-  const prompts = await (async function getPromptsFromStdin() {
+  // Read prompts and options from stdin (expects {"prompts":[...], "clear_between": true/false})
+  const inputData = await (async function getPromptsFromStdin() {
     const stdin = await new Promise((resolve) => {
       const { stdin } = process;
       if (stdin.isTTY) return resolve("");
@@ -187,14 +225,24 @@ socket.on("connect", async () => {
       stdin.on("end", () => resolve(data.trim()));
       setTimeout(() => resolve(data.trim()), 100); // safety timeout
     });
-    if (!stdin) return [];
+    if (!stdin) return { prompts: [], clear_between: false };
     try {
       const j = JSON.parse(stdin);
-      return Array.isArray(j) ? j : j.prompts;
+      // Support both old format (array) and new format (object)
+      if (Array.isArray(j)) {
+        return { prompts: j, clear_between: false };
+      }
+      return {
+        prompts: j.prompts || [],
+        clear_between: j.clear_between === true, // default to false if not specified
+      };
     } catch {
-      return [];
+      return { prompts: [], clear_between: false };
     }
   })();
+
+  const prompts = inputData.prompts;
+  const clearBetween = inputData.clear_between;
 
   if (!prompts.length) {
     console.log("ℹ️ No prompts provided. Exiting.");
@@ -202,8 +250,26 @@ socket.on("connect", async () => {
     process.exit(0);
   }
 
-  for (const p of prompts) {
-    console.log(`\n➡️ Sending to ${agentName}: "${p}"`);
+  for (let i = 0; i < prompts.length; i++) {
+    const p = prompts[i];
+
+    // Clear history between prompts if enabled (skip for first prompt)
+    if (clearBetween && i > 0) {
+      console.log(`\n🧹 Clearing history before prompt ${i + 1}/${prompts.length}...`);
+      socket.emit("send-message", agentName, { from: "ADMIN", message: "!clearChat" });
+      
+      // Wait for clearChat to complete (with timeout)
+      const clearRes = await waitForCommandCompletion("!clearChat");
+      if (clearRes.ok) {
+        console.log(`✅ History cleared.`);
+      } else {
+        console.log(`⚠️ ClearChat timeout, proceeding anyway...`);
+      }
+      // Additional small delay to ensure state is settled
+      await new Promise((r) => setTimeout(r, 500));
+    }
+
+    console.log(`\n➡️ Sending to ${agentName} (${i + 1}/${prompts.length}): "${p}"`);
     socket.emit("send-message", agentName, { from: "ADMIN", message: p });
 
     console.log(
