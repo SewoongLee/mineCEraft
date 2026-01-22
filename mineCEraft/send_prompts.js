@@ -225,16 +225,17 @@ socket.on("connect", async () => {
       stdin.on("end", () => resolve(data.trim()));
       setTimeout(() => resolve(data.trim()), 100); // safety timeout
     });
-    if (!stdin) return { prompts: [], clear_between: false };
+    if (!stdin) return { prompts: [], clear_between: false, inter_prompt_command: null };
     try {
       const j = JSON.parse(stdin);
       // Support both old format (array) and new format (object)
       if (Array.isArray(j)) {
-        return { prompts: j, clear_between: false };
+        return { prompts: j, clear_between: false, inter_prompt_command: null };
       }
       return {
         prompts: j.prompts || [],
         clear_between: j.clear_between === true, // default to false if not specified
+        inter_prompt_command: j.inter_prompt_command || null, // command to send between prompts (not evaluated)
       };
     } catch {
       return { prompts: [], clear_between: false };
@@ -243,6 +244,7 @@ socket.on("connect", async () => {
 
   const prompts = inputData.prompts;
   const clearBetween = inputData.clear_between;
+  const interPromptCommand = inputData.inter_prompt_command;
 
   if (!prompts.length) {
     console.log("ℹ️ No prompts provided. Exiting.");
@@ -253,7 +255,19 @@ socket.on("connect", async () => {
   for (let i = 0; i < prompts.length; i++) {
     const p = prompts[i];
 
+    // Send inter-prompt command if specified (not evaluated, just executed)
+    // This runs BEFORE clearChat so the command history is also cleared
+    if (interPromptCommand && i > 0) {
+      console.log(`\n🔄 Sending inter-prompt command (not evaluated): "${interPromptCommand}"`);
+      socket.emit("send-message", agentName, { from: "ADMIN", message: interPromptCommand });
+      
+      // Wait a bit for the command to be processed, but don't wait for completion
+      // This is a non-evaluation command, so we just give it time to execute
+      await new Promise((r) => setTimeout(r, 3000)); // Wait 3 seconds for movement/action
+    }
+
     // Clear history between prompts if enabled (skip for first prompt)
+    // This clears both previous evaluation history AND inter-prompt command history
     if (clearBetween && i > 0) {
       console.log(`\n🧹 Clearing history before prompt ${i + 1}/${prompts.length}...`);
       socket.emit("send-message", agentName, { from: "ADMIN", message: "!clearChat" });
