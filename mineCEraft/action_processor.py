@@ -37,6 +37,7 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     Vec3.prototype.floored = function() {
       return new Vec3(Math.floor(this.x), Math.floor(this.y), Math.floor(this.z));
     };
+    Vec3.prototype.floor = Vec3.prototype.floored; // alias for compatibility
     Vec3.prototype.clone = function() {
       return new Vec3(this.x, this.y, this.z);
     };
@@ -51,49 +52,33 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     };
     global.Vec3 = Vec3;
     
-    // Provide a Vec3-like object with .floored(), .clone(), .offset(), and .distanceTo() as Mineflayer does.
-    const _pos = {
-      x: __X0__, y: __Y0__, z: __Z0__,
-      floored() {
-        return {
-          x: Math.floor(this.x),
-          y: Math.floor(this.y),
-          z: Math.floor(this.z),
-          floored: this.floored,
-          clone: this.clone,
-          offset: this.offset,
-          distanceTo: this.distanceTo
-        };
-      },
-      clone() {
-        return {
-          x: this.x,
-          y: this.y,
-          z: this.z,
-          floored: this.floored,
-          clone: this.clone,
-          offset: this.offset,
-          distanceTo: this.distanceTo
-        };
-      },
-      offset(dx, dy, dz) {
-        return {
-          x: this.x + dx,
-          y: this.y + dy,
-          z: this.z + dz,
-          floored: this.floored,
-          clone: this.clone,
-          offset: this.offset,
-          distanceTo: this.distanceTo
-        };
-      },
-      distanceTo(other) {
-        const dx = this.x - other.x;
-        const dy = this.y - other.y;
-        const dz = this.z - other.z;
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
-      }
-    };
+    // Helper function to create position objects with all methods
+    function createPosObj(x, y, z, baseMethods) {
+      return {
+        x, y, z,
+        floored() {
+          return createPosObj(Math.floor(this.x), Math.floor(this.y), Math.floor(this.z), baseMethods);
+        },
+        floor() {
+          return this.floored(); // alias for compatibility
+        },
+        clone() {
+          return createPosObj(this.x, this.y, this.z, baseMethods);
+        },
+        offset(dx, dy, dz) {
+          return createPosObj(this.x + dx, this.y + dy, this.z + dz, baseMethods);
+        },
+        distanceTo(other) {
+          const dx = this.x - other.x;
+          const dy = this.y - other.y;
+          const dz = this.z - other.z;
+          return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        }
+      };
+    }
+    
+    // Provide a Vec3-like object with .floored(), .floor(), .clone(), .offset(), and .distanceTo() as Mineflayer does.
+    const _pos = createPosObj(__X0__, __Y0__, __Z0__, {});
     global.bot = {
       interrupt_code: false,
       entity: { position: _pos },
