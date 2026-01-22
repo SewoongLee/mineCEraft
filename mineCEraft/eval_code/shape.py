@@ -108,6 +108,9 @@ def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:
 
     Connectivity uses 8-neighborhood (including diagonals). This makes corner leaks
     (missing corner blocks) invalidate rooms connected diagonally to the outside.
+    
+    Returns:
+        True if there are at least room_cnt rooms, else False.
     """
     if room_cnt <= 0:
         return True
