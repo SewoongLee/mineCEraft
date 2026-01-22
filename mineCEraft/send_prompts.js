@@ -225,17 +225,18 @@ socket.on("connect", async () => {
       stdin.on("end", () => resolve(data.trim()));
       setTimeout(() => resolve(data.trim()), 100); // safety timeout
     });
-    if (!stdin) return { prompts: [], clear_between: false, inter_prompt_command: null };
+    if (!stdin) return { prompts: [], clear_between: false, inter_prompt_command: null, inter_prompt_delay: 3000 };
     try {
       const j = JSON.parse(stdin);
       // Support both old format (array) and new format (object)
       if (Array.isArray(j)) {
-        return { prompts: j, clear_between: false, inter_prompt_command: null };
+        return { prompts: j, clear_between: false, inter_prompt_command: null, inter_prompt_delay: 3000 };
       }
       return {
         prompts: j.prompts || [],
         clear_between: j.clear_between === true, // default to false if not specified
         inter_prompt_command: j.inter_prompt_command || null, // command to send between prompts (not evaluated)
+        inter_prompt_delay: j.inter_prompt_delay || 3000, // delay in milliseconds after sending inter-prompt command (default 3000ms)
       };
     } catch {
       return { prompts: [], clear_between: false };
@@ -245,6 +246,7 @@ socket.on("connect", async () => {
   const prompts = inputData.prompts;
   const clearBetween = inputData.clear_between;
   const interPromptCommand = inputData.inter_prompt_command;
+  const interPromptDelay = inputData.inter_prompt_delay || 3000;
 
   if (!prompts.length) {
     console.log("ℹ️ No prompts provided. Exiting.");
@@ -261,9 +263,10 @@ socket.on("connect", async () => {
       console.log(`\n🔄 Sending inter-prompt command (not evaluated): "${interPromptCommand}"`);
       socket.emit("send-message", agentName, { from: "ADMIN", message: interPromptCommand });
       
-      // Wait a bit for the command to be processed, but don't wait for completion
+      // Wait for the command to be processed (configurable delay)
       // This is a non-evaluation command, so we just give it time to execute
-      await new Promise((r) => setTimeout(r, 3000)); // Wait 3 seconds for movement/action
+      console.log(`⏳ Waiting ${interPromptDelay}ms for inter-prompt command to execute...`);
+      await new Promise((r) => setTimeout(r, interPromptDelay));
     }
 
     // Clear history between prompts if enabled (skip for first prompt)
