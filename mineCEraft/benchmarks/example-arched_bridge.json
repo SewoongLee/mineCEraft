@@ -1,0 +1,16 @@
+[
+    {
+        "prompt": "Build an arched bridge.",
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.center_column_above_center",
+                "args": {}
+            }
+        ]
+    }
+]
+
