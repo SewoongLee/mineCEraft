@@ -7,7 +7,7 @@
                 "args": {}
             },
             {
-                "fn": "shape.is_convex_from_above",
+                "fn": "shape.is_top_surface_concave",
                 "args": {"strict": true}
             }
         ]

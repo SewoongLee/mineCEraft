@@ -13,33 +13,32 @@ def _center_of_mass(coords: List[Dict[str, Any]]) -> Tuple[float, float, float]:
     n = len(xs)
     return (sum(xs) / n, sum(ys) / n, sum(zs) / n)
 
-def is_convex_from_above(
+def is_top_surface_concave(
     coords: List[Dict[str, Any]], 
     strict: bool = False,
     verbose: bool = False
 ) -> bool:
     """
-    Check if the structure is convex when viewed from above.
+    Check if the top surface of the structure is concave.
     
     Mathematical Definition:
-    A structure is "convex from above" if, when viewing from above (looking down the -y axis),
-    the top surface forms a convex shape. This means:
+    A top surface is concave if:
     - For any two points p1=(x1,z1) and p2=(x2,z2) on the top surface with heights y1 and y2,
     - For any point p=(x,z) on the line segment between p1 and p2 with linearly interpolated height:
         expected_y = y1 + t*(y2 - y1), where t ∈ [0,1] is the parameter along the line
     - The actual height at p must satisfy: actual_y >= expected_y
-    - This ensures the surface bulges upward (convex when viewed from above), not downward (concave)
+    - This ensures the surface bulges upward (concave), not downward
     
     Examples:
-    - Arch shape [1, 2, 1]: middle is higher → convex from above ✓
-    - Inverted arch [2, 1, 2]: middle is lower → concave from above ✗
-    - Flat surface [2, 2, 2]: all equal → convex from above (non-strict) ✓
+    - Arch shape [1, 2, 1]: middle is higher → concave ✓
+    - Inverted arch [2, 1, 2]: middle is lower → not concave ✗
+    - Flat surface [2, 2, 2]: all equal → concave (non-strict) ✓
     
     When strict=True, use strict inequalities (<, >).
     When strict=False (mathematical standard), use non-strict inequalities (<=, >=); 
-    equality is allowed (flat surfaces/planes are considered convex).
+    equality is allowed (flat surfaces/planes are considered concave).
     When strict='non-flat', equality is allowed, but the top surface should not be 
-    completely flat without any convexity (i.e., must have some upward bulge).
+    completely flat without any concavity (i.e., must have some upward bulge).
     
     Args:
         coords: List of block coordinate dictionaries with 'x', 'y', 'z' keys.
@@ -49,7 +48,7 @@ def is_convex_from_above(
         verbose: If True, print detailed diagnostic messages.
     
     Returns:
-        True if the structure is convex from above, else False.
+        True if the top surface is concave, else False.
     """
     if not coords:
         return True
@@ -76,17 +75,17 @@ def is_convex_from_above(
         # 0 or 1 points are always convex (trivial cases)
         return True
     
-    # Step 2: Check convexity by verifying that for any two points in the top surface,
+    # Step 2: Check concavity by verifying that for any two points in the top surface,
     # the y-values at all points on the line segment between them satisfy:
     # actual_y >= expected_y (where expected_y is the linear interpolation)
-    # This ensures the surface bulges upward, making it convex when viewed from above.
+    # This ensures the surface bulges upward, making it concave.
     # 
     # Mathematical formulation:
     # For points p1=(x1,z1,y1) and p2=(x2,z2,y2), and any point p=(x,z) on the line segment:
     #   t = distance(p, p1) / distance(p2, p1)  [parameter along the line, 0 ≤ t ≤ 1]
     #   expected_y = y1 + t*(y2 - y1)  [linear interpolation]
     #   actual_y = top_surface[(x, z)]
-    # Condition: actual_y >= expected_y  (for convex from above)
+    # Condition: actual_y >= expected_y  (for concave)
     
     def get_line_points(p1: Tuple[int, int], p2: Tuple[int, int]) -> List[Tuple[int, int]]:
         """
@@ -125,7 +124,7 @@ def is_convex_from_above(
         all_y_values = list(top_surface.values())
         if len(all_y_values) > 0 and all(y == all_y_values[0] for y in all_y_values):
             if verbose:
-                print(f"Non-convex: entire structure is completely flat (all y={all_y_values[0]})")
+                print(f"Not concave: entire structure is completely flat (all y={all_y_values[0]})")
             return False
     
     # Check all pairs of points to verify convexity condition
@@ -146,19 +145,19 @@ def is_convex_from_above(
             # and they have the same y-value, it's a flat line and should be rejected
             if strict is True and len(line_points) == 2 and y1 == y2:
                 if verbose:
-                    print(f"Non-convex: flat line from {p1} (y={y1}) to {p2} (y={y2})")
+                    print(f"Not concave: flat line from {p1} (y={y1}) to {p2} (y={y2})")
                 return False
             
-            # For convexity, all points on the line segment should be in the top surface
+            # For concavity, all points on the line segment should be in the top surface
             # (the set of (x, z) points should form a convex set in 2D)
             # This ensures there are no "holes" or missing blocks on the line segment
             for (x, z) in line_points:
                 if (x, z) not in top_surface:
                     if verbose:
-                        print(f"Non-convex: point ({x}, {z}) on line from {p1} to {p2} is not in top surface")
+                        print(f"Not concave: point ({x}, {z}) on line from {p1} to {p2} is not in top surface")
                     return False
             
-            # Check y-values: for convexity from above, the y-values should bulge upward
+            # Check y-values: for concavity, the y-values should bulge upward
             # (i.e., actual_y >= linearly interpolated expected_y)
             # This is the key condition: the surface must be above or on the line connecting endpoints
             for k, (x, z) in enumerate(line_points):
@@ -171,17 +170,17 @@ def is_convex_from_above(
                 
                 actual_y = top_surface[(x, z)]
                 
-                # For convexity from above: actual_y >= expected_y
-                # If actual_y < expected_y, the surface bulges downward, making it concave from above
+                # For concavity: actual_y >= expected_y
+                # If actual_y < expected_y, the surface bulges downward, making it not concave
                 if strict is True:
-                    # For strict convexity, reject downward bulges (actual_y < expected_y)
+                    # For strict concavity, reject downward bulges (actual_y < expected_y)
                     # and flat surfaces (actual_y == expected_y). 
                     # Only accept upward bulges (actual_y > expected_y).
                     # Note: endpoints will always have actual_y == expected_y, so we skip them
                     is_endpoint = (k == 0) or (k == len(line_points) - 1)
                     if not is_endpoint and actual_y <= expected_y:
                         if verbose:
-                            print(f"Non-convex: point ({x}, {z}) has y={actual_y} <= expected {expected_y:.2f} "
+                            print(f"Not concave: point ({x}, {z}) has y={actual_y} <= expected {expected_y:.2f} "
                                   f"on line from {p1} (y={y1}) to {p2} (y={y2})")
                         return False
                 else:
@@ -189,7 +188,7 @@ def is_convex_from_above(
                     # Use small epsilon to handle floating point precision issues
                     if actual_y < expected_y - 1e-9:
                         if verbose:
-                            print(f"Non-convex: point ({x}, {z}) has y={actual_y} < expected {expected_y:.2f} "
+                            print(f"Not concave: point ({x}, {z}) has y={actual_y} < expected {expected_y:.2f} "
                                   f"on line from {p1} (y={y1}) to {p2} (y={y2})")
                         return False
     
