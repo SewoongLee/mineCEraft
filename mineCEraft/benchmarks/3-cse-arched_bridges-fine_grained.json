@@ -1,6 +1,8 @@
 [
     {
-        "prompts": ["Construct an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4."],
+        "prompts": [
+            "Construct an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4."
+        ],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",

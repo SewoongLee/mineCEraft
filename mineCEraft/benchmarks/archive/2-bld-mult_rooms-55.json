@@ -1,0 +1,110 @@
+[
+    {
+        "prompts": [
+            "Build a two-room house.",
+            "Build a house with two rooms.",
+            "Build a house with 2 rooms.",
+            "Create a two-room house.",
+            "Create a house with two rooms.",
+            "Create a house with 2 rooms.",
+            "Construct a two-room house.",
+            "Construct a house with two rooms.",
+            "Construct a house with 2 rooms.",
+            "Step by step, build a two-room house.",
+            "First plan, then build a two-room house."
+        ],
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 2
+                }
+            }
+        ]
+    },
+    {
+        "prompts": [
+            "Build a three-room house.",
+            "Build a house with three rooms.",
+            "Build a house with 3 rooms.",
+            "Create a three-room house.",
+            "Create a house with three rooms.",
+            "Create a house with 3 rooms.",
+            "Construct a three-room house.",
+            "Construct a house with three rooms.",
+            "Construct a house with 3 rooms.",
+            "Step by step, build a three-room house.",
+            "First plan, then build a three-room house."
+        ],
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 3
+                }
+            }
+        ]
+    },
+    {
+        "prompts": [
+            "Build a four-room house.",
+            "Build a house with four rooms.",
+            "Build a house with 4 rooms.",
+            "Create a four-room house.",
+            "Create a house with four rooms.",
+            "Create a house with 4 rooms.",
+            "Construct a four-room house.",
+            "Construct a house with four rooms.",
+            "Construct a house with 4 rooms.",
+            "Step by step, build a four-room house.",
+            "First plan, then build a four-room house."
+        ],
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 4
+                }
+            }
+        ]
+    },
+    {
+        "prompts": [
+            "Build a five-room house.",
+            "Build a house with five rooms.",
+            "Build a house with 5 rooms.",
+            "Create a five-room house.",
+            "Create a house with five rooms.",
+            "Create a house with 5 rooms.",
+            "Construct a five-room house.",
+            "Construct a house with five rooms.",
+            "Construct a house with 5 rooms.",
+            "Step by step, build a five-room house.",
+            "First plan, then build a five-room house."
+        ],
+        "checks": [
+            {
+                "fn": "structural_stability.is_ground_connected",
+                "args": {}
+            },
+            {
+                "fn": "shape.has_rooms",
+                "args": {
+                    "room_cnt": 5
+                }
+            }
+        ]
+    }
+]

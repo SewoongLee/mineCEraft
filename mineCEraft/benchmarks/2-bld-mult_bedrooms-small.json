@@ -11,6 +11,14 @@
                 "args": {
                     "room_cnt": 2
                 }
+            },
+            {
+                "fn": "material.is_block_cnt_equal_to",
+                "args": {
+                    "expected_count": 2,
+                    "expected_material": "bed",
+                    "use_substring_match": true
+                }
             }
         ]
     }
