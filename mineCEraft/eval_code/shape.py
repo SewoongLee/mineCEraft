@@ -13,89 +13,98 @@ def center_of_mass(coords: List[Dict[str, Any]]) -> Tuple[float, float, float]:
     n = len(xs)
     return (sum(xs) / n, sum(ys) / n, sum(zs) / n)
 
-def edges_lower_than_center(coords: List[Dict[str, Any]], verbose: bool = False) -> int:
+def is_convex_from_above(
+    coords: List[Dict[str, Any]], 
+    strict: bool = False,
+    verbose: bool = False
+) -> int:
     """
-    Condition (1): All boundary blocks (x in {minX,maxX} OR z in {minZ,maxZ})
-    must have strictly lower height (y) than the global center-of-mass y.
-
+    Check if the structure is convex when viewed from above.
+    
+    A structure is considered convex if:
+    1. All edge blocks (boundary blocks) are lower than or equal to the center of mass y-coordinate.
+    2. The center column (at COM's x,z position) has at least one block above or equal to the COM y-coordinate.
+    
+    When strict=False (default, mathematical standard), equality is allowed (flat surfaces/planes are considered convex).
+    When strict=True, edges must be strictly lower and center must be strictly above (useful for arched bridges).
+    
+    Args:
+        coords: List of block coordinate dictionaries with 'x', 'y', 'z' keys.
+        strict: If False (default), use non-strict inequalities (<=, >=). If True, use strict inequalities (<, >).
+        verbose: If True, print detailed diagnostic messages.
+    
     Returns:
-        1 if condition holds, else 0.
+        1 if the structure is convex, else 0.
     """
     if not coords:
         if verbose:
-            print("[edges_lower_than_center] Empty coords.")
+            print("[is_convex_from_above] Empty coords.")
         return 0
-
+    
     xs, ys, zs = xyz_lists(coords)
     com_x, com_y, com_z = center_of_mass(coords)
-
     min_x, max_x = min(xs), max(xs)
     min_z, max_z = min(zs), max(zs)
-
-    # Collect edge blocks (x==min/max or z==min/max)
+    
+    # Collect edge blocks (boundary blocks)
     edge_blocks: List[Dict[str, int]] = []
     for c in coords:
         x, y, z = to_int(c["x"]), to_int(c["y"]), to_int(c["z"])
         if x == min_x or x == max_x or z == min_z or z == max_z:
             edge_blocks.append({"x": x, "y": y, "z": z})
-
+    
     if not edge_blocks:
         if verbose:
-            print("[edges_lower_than_center] No boundary blocks detected.")
+            print("[is_convex_from_above] FAIL: No boundary blocks detected.")
             print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f})")
         return 0
-
-    offenders = [b for b in edge_blocks if b["y"] >= com_y]
-    if offenders:
+    
+    # Check condition 1: All edges must be lower (or equal if not strict)
+    if strict:
+        edge_offenders = [b for b in edge_blocks if b["y"] >= com_y]
+    else:
+        edge_offenders = [b for b in edge_blocks if b["y"] > com_y]
+    
+    if edge_offenders:
         if verbose:
-            print("[edges_lower_than_center] FAIL: edge block(s) not strictly lower than COM.y")
+            strict_msg = "strictly " if strict else ""
+            print(f"[is_convex_from_above] FAIL: edge block(s) not {strict_msg}lower than COM.y")
             print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f})")
-            for b in offenders[:5]:
-                print(f"  offending edge block @ (x={b['x']}, y={b['y']}, z={b['z']}) >= COM.y")
-            if len(offenders) > 5:
-                print(f"  ... and {len(offenders) - 5} more")
+            for b in edge_offenders[:5]:
+                print(f"  offending edge block @ (x={b['x']}, y={b['y']}, z={b['z']})")
+            if len(edge_offenders) > 5:
+                print(f"  ... and {len(edge_offenders) - 5} more")
         return 0
-
-    if verbose:
-        print("[edges_lower_than_center] PASS")
-        print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f})")
-    return 1
-
-def center_column_above_center(coords: List[Dict[str, Any]], verbose: bool = False) -> int:
-    """
-    Condition (2): There exists at least one block exactly above the COM's (x,z)
-    column (rounded), and the highest y on that column is strictly greater than COM.y.
-
-    Returns:
-        1 if condition holds, else 0.
-    """
-    if not coords:
-        if verbose:
-            print("[center_column_above_center] Empty coords.")
-        return 0
-
-    com_x, com_y, com_z = center_of_mass(coords)
+    
+    # Check condition 2: Center column must be higher (or equal if not strict)
     cx, cz = round(com_x), round(com_z)
-
     center_col_y = [to_int(c["y"]) for c in coords
-                    if to_int(c["x"]) == cx and to_int(c["z"]) == cz]
-
+                   if to_int(c["x"]) == cx and to_int(c["z"]) == cz]
+    
     if not center_col_y:
         if verbose:
-            print("[center_column_above_center] FAIL: no block on center column (x,z)=({},{})".format(cx, cz))
+            print("[is_convex_from_above] FAIL: no block on center column (x,z)=({},{})".format(cx, cz))
             print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f})")
         return 0
-
+    
     top_y = max(center_col_y)
-    if top_y <= com_y:
+    if strict:
+        center_ok = top_y > com_y
+    else:
+        center_ok = top_y >= com_y
+    
+    if not center_ok:
         if verbose:
-            print("[center_column_above_center] FAIL: tallest center-column block not above COM.y")
+            strict_msg = "strictly " if strict else ""
+            print(f"[is_convex_from_above] FAIL: tallest center-column block not {strict_msg}above COM.y")
             print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f}), tallest y on column = {top_y}")
         return 0
-
+    
     if verbose:
-        print("[center_column_above_center] PASS")
-        print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f}), tallest y on column = {top_y}")
+        strict_msg = " (strict)" if strict else " (non-strict)"
+        print(f"[is_convex_from_above] PASS{strict_msg}")
+        print(f"  COM = ({com_x:.3f}, {com_y:.3f}, {com_z:.3f})")
+        print(f"  All {len(edge_blocks)} edge blocks are lower, center column top = {top_y}")
     return 1
 
 def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:

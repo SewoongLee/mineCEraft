@@ -7,8 +7,8 @@
                 "args": {}
             },
             {
-                "fn": "shape.center_column_above_center",
-                "args": {}
+                "fn": "shape.is_convex_from_above",
+                "args": {"strict": true}
             }
         ]
     }
