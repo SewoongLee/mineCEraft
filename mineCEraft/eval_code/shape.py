@@ -213,10 +213,16 @@ def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:
         return True
 
     # 1) Collect occupied cells at the given height y.
+    #    Door blocks are 2 blocks tall, so a door at height y-1 also occupies height y.
     occupied: Set[Tuple[int, int]] = set()
     for p in coords:
         if p.get("y") == y:
             occupied.add((int(p["x"]), int(p["z"])))
+        elif p.get("y") == y - 1:
+            # Check if this is a door block (doors are 2 blocks tall)
+            block_name = p.get("material", "")
+            if "door" in block_name.lower():
+                occupied.add((int(p["x"]), int(p["z"])))
 
     if not occupied:
         return False

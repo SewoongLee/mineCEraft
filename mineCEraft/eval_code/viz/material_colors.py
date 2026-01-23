@@ -46,7 +46,7 @@ MATERIAL_COLOR: Dict[str, str] = {
     "oak_fence": "#a0522d",
     "oak_stairs": "#b8860b",
     "oak_slab": "#b8860b",
-    "oak_door": "#b8860b",
+    "oak_door": "#5c4305",
     "oak_trapdoor": "#b8860b",
     
     # Wood - Spruce
@@ -140,6 +140,7 @@ MATERIAL_COLOR: Dict[str, str] = {
     
     # Glass
     "glass": "#c0e0e0",
+    "glass_pane": "#bfdadd",
     "white_stained_glass": "#e0e0e0",
     "black_stained_glass": "#1a1a1a",
     "blue_stained_glass": "#2a3a9a",
@@ -191,6 +192,7 @@ MATERIAL_COLOR: Dict[str, str] = {
     "purpur_pillar": "#8a6a8a",
     
     # Special blocks
+    "bed": "#c63c3c",
     "torch": "#f1c40f",
     "lantern": "#f1c40f",
     "soul_torch": "#4a3a2a",
