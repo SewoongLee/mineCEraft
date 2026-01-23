@@ -1,6 +1,6 @@
 [
     {
-        "prompt": "Build an arched bridge.",
+        "prompts": ["Build an arched bridge."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",

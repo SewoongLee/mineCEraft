@@ -1,6 +1,6 @@
 [
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of red.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of red."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -54,7 +54,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of blue.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of blue."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -108,7 +108,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of green.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of green."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -162,7 +162,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of yellow.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of yellow."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -216,7 +216,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of orange.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of orange."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -270,7 +270,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of purple.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of purple."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -324,7 +324,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of black.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of black."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -378,7 +378,7 @@
         ]
     },
     {
-        "prompt": "Let's build a house with pillars made of stone, walls made of dirt, and a roof made of white.",
+        "prompts": ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of white."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",

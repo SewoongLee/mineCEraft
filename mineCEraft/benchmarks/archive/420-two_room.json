@@ -1,6 +1,6 @@
 [
     {
-        "prompt": "Build a two-room house.",
+        "prompts": ["Build a two-room house."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",

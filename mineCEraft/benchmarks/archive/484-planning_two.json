@@ -1,6 +1,6 @@
 [
     {
-        "prompt": "Build a two-story house:\n- Stone SOG\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling",
+        "prompts": ["Build a two-story house:\n- Stone SOG\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
@@ -15,7 +15,7 @@
         ]
     },
     {
-        "prompt": "Build a two-story house:\n- Stone foundation\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling",
+        "prompts": ["Build a two-story house:\n- Stone foundation\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",

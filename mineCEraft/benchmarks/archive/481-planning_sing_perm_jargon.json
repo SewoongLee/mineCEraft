@@ -1,6 +1,6 @@
 [
     {
-        "prompt": "Build a single-story house:\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks\n- Concrete SOG",
+        "prompts": ["Build a single-story house:\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks\n- Concrete SOG"],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",

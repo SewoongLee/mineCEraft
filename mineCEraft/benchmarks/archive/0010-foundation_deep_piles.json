@@ -1,6 +1,6 @@
 [
     {
-        "prompt": "Install four drilled piles in 7 blocks deep with span length of 5 blocks.",
+        "prompts": ["Install four drilled piles in 7 blocks deep with span length of 5 blocks."],
         "checks": [
             {
                 "fn": "structural_stability.is_ground_connected",
