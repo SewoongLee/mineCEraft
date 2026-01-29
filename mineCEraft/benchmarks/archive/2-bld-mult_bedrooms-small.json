@@ -13,6 +13,10 @@
                 }
             },
             {
+                "fn": "shape.are_doors_passable",
+                "args": {}
+            },
+            {
                 "fn": "material.is_block_cnt_equal_to",
                 "args": {
                     "expected_count": 2,
@@ -34,6 +38,10 @@
                 "args": {
                     "room_cnt": 3
                 }
+            },
+            {
+                "fn": "shape.are_doors_passable",
+                "args": {}
             },
             {
                 "fn": "material.is_block_cnt_equal_to",

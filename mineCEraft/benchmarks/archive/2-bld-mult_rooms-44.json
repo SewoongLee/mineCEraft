@@ -23,6 +23,10 @@
                 "args": {
                     "room_cnt": 2
                 }
+            },
+            {
+                "fn": "shape.are_doors_passable",
+                "args": {}
             }
         ]
     },
@@ -50,6 +54,10 @@
                 "args": {
                     "room_cnt": 3
                 }
+            },
+            {
+                "fn": "shape.are_doors_passable",
+                "args": {}
             }
         ]
     },
@@ -77,6 +85,10 @@
                 "args": {
                     "room_cnt": 4
                 }
+            },
+            {
+                "fn": "shape.are_doors_passable",
+                "args": {}
             }
         ]
     },
@@ -104,6 +116,10 @@
                 "args": {
                     "room_cnt": 5
                 }
+            },
+            {
+                "fn": "shape.are_doors_passable",
+                "args": {}
             }
         ]
     }
