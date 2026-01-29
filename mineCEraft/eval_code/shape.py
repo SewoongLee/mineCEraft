@@ -2,17 +2,6 @@ from collections import deque
 from typing import List, Dict, Any, Tuple, Set, Optional
 from .utils.coords import to_int, xyz_lists
 
-def _center_of_mass(coords: List[Dict[str, Any]]) -> Tuple[float, float, float]:
-    """
-    Compute the (x, y, z) center of mass assuming equal weights per block.
-    Returns floats.
-    """
-    if not coords:
-        return (0.0, 0.0, 0.0)
-    xs, ys, zs = xyz_lists(coords)
-    n = len(xs)
-    return (sum(xs) / n, sum(ys) / n, sum(zs) / n)
-
 def is_top_surface_concave(
     coords: List[Dict[str, Any]], 
     strict: bool = False,
