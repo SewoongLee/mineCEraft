@@ -410,21 +410,21 @@ def _clusters_at_y(
     return clusters
 
 
-def _min_distance_linf(
+def _min_distance_l2(
     cluster_a: Set[Tuple[int, int]],
     cluster_b: Set[Tuple[int, int]],
-) -> int:
+) -> float:
     """
-    Minimum L_inf (Chebyshev) distance between any block in cluster_a and any in cluster_b.
-    L_inf(a, b) = max(|ax - bx|, |az - bz|).
+    Minimum L2 (Euclidean) distance between any block in cluster_a and any in cluster_b.
+    L2(a, b) = sqrt((ax - bx)^2 + (az - bz)^2).
     """
     best = float("inf")
     for (ax, az) in cluster_a:
         for (bx, bz) in cluster_b:
-            d = max(abs(ax - bx), abs(az - bz))
+            d = ((ax - bx) ** 2 + (az - bz) ** 2) ** 0.5
             if d < best:
                 best = d
-    return int(best) if best != float("inf") else 0
+    return best if best != float("inf") else 0.0
 
 
 def cluster_count_at_y_is(
@@ -465,28 +465,29 @@ def clusters_at_y_have_min_span(
     coords: List[Dict[str, Any]],
     *,
     y: int,
-    min_span: int,
+    min_span: float,
     use_8_neighbors: bool = False,
     verbose: bool = False,
 ) -> bool:
     """
     Check that at a given y level every pair of clusters is at least `min_span` apart.
 
-    Span is the minimum L_inf (Chebyshev) distance between any two blocks from
+    Span is the minimum L2 (Euclidean) distance between any two blocks from
     different clusters. So min_span = 5 means the closest blocks of any two
-    clusters are at least 5 (L_inf) apart.
+    clusters are at least 5 apart in straight-line distance. Using L2 correctly
+    handles diagonal and triangular layouts (e.g. equilateral triangle).
 
     If there are 0 or 1 cluster at y, the condition is vacuously satisfied (True).
 
     Args:
         coords: List of block coordinate dicts with "x", "y", "z".
         y: The y level at which to evaluate (depth or height).
-        min_span: Minimum required L_inf distance between any two clusters.
+        min_span: Minimum required L2 (Euclidean) distance between any two clusters.
         use_8_neighbors: If True, use 8-neighborhood for clustering (diagonals count).
         verbose: If True, print why the check failed.
 
     Returns:
-        True if every pair of clusters at y has min L_inf distance >= min_span;
+        True if every pair of clusters at y has min L2 distance >= min_span;
         otherwise False.
     """
     clusters = _clusters_at_y(coords, y, use_8_neighbors=use_8_neighbors)
@@ -495,9 +496,9 @@ def clusters_at_y_have_min_span(
         return True
     for i in range(n):
         for j in range(i + 1, n):
-            d = _min_distance_linf(clusters[i], clusters[j])
+            d = _min_distance_l2(clusters[i], clusters[j])
             if d < min_span:
                 if verbose:
-                    print(f"clusters_at_y_have_min_span: clusters {i} and {j} have min L_inf distance {d}, required >= {min_span}")
+                    print(f"clusters_at_y_have_min_span: clusters {i} and {j} have min L2 distance {d:.4f}, required >= {min_span}")
                 return False
     return True
