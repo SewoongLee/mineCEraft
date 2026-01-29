@@ -214,7 +214,10 @@ const socket = io(SERVER, { transports: ["websocket", "polling"] });
 socket.on("connect", async () => {
   console.log(`✅ Connected to MindServer at ${SERVER} (socket id=${socket.id})`);
 
-  // Read prompts and options from stdin (expects {"prompts":[...], "clear_between": true/false})
+  // Read prompts and options from stdin
+  // Expects: { prompts: [...], run_lengths?: [n1, n2, ...], clear_between?: bool, ... }
+  // run_lengths: number of prompts per run; chat is cleared only between runs, not between turns in a run.
+  // If run_lengths omitted, treated as [1,1,...,1] (one run per prompt).
   const inputData = await (async function getPromptsFromStdin() {
     const stdin = await new Promise((resolve) => {
       const { stdin } = process;
@@ -225,25 +228,28 @@ socket.on("connect", async () => {
       stdin.on("end", () => resolve(data.trim()));
       setTimeout(() => resolve(data.trim()), 100); // safety timeout
     });
-    if (!stdin) return { prompts: [], clear_between: false, inter_prompt_command: null, inter_prompt_delay: 3000 };
+    if (!stdin) return { prompts: [], run_lengths: [], clear_between: false, inter_prompt_command: null, inter_prompt_delay: 3000 };
     try {
       const j = JSON.parse(stdin);
-      // Support both old format (array) and new format (object)
       if (Array.isArray(j)) {
-        return { prompts: j, clear_between: false, inter_prompt_command: null, inter_prompt_delay: 3000 };
+        return { prompts: j, run_lengths: j.map(() => 1), clear_between: false, inter_prompt_command: null, inter_prompt_delay: 3000 };
       }
+      const prompts = j.prompts || [];
+      const runLengths = j.run_lengths && j.run_lengths.length > 0 ? j.run_lengths : prompts.map(() => 1);
       return {
-        prompts: j.prompts || [],
-        clear_between: j.clear_between === true, // default to false if not specified
-        inter_prompt_command: j.inter_prompt_command || null, // command to send between prompts (not evaluated)
-        inter_prompt_delay: j.inter_prompt_delay || 3000, // delay in milliseconds after sending inter-prompt command (default 3000ms)
+        prompts,
+        run_lengths: runLengths,
+        clear_between: j.clear_between === true,
+        inter_prompt_command: j.inter_prompt_command || null,
+        inter_prompt_delay: j.inter_prompt_delay || 3000,
       };
     } catch {
-      return { prompts: [], clear_between: false };
+      return { prompts: [], run_lengths: [], clear_between: false };
     }
   })();
 
   const prompts = inputData.prompts;
+  const runLengths = inputData.run_lengths;
   const clearBetween = inputData.clear_between;
   const interPromptCommand = inputData.inter_prompt_command;
   const interPromptDelay = inputData.inter_prompt_delay || 3000;
@@ -254,55 +260,50 @@ socket.on("connect", async () => {
     process.exit(0);
   }
 
-  for (let i = 0; i < prompts.length; i++) {
-    const p = prompts[i];
+  // run_lengths: prompts per run; clearChat only between runs, not between turns in a run
+  let globalIndex = 0;
+  for (let runIdx = 0; runIdx < runLengths.length; runIdx++) {
+    const runLen = runLengths[runIdx] || 0;
+    if (runLen <= 0) continue;
 
-    // Send inter-prompt command if specified (not evaluated, just executed)
-    // This runs BEFORE clearChat so the command history is also cleared
-    if (interPromptCommand && i > 0) {
-      console.log(`\n🔄 Sending inter-prompt command (not evaluated): "${interPromptCommand}"`);
-      socket.emit("send-message", agentName, { from: "ADMIN", message: interPromptCommand });
-      
-      // Wait for the command to be processed (configurable delay)
-      // This is a non-evaluation command, so we just give it time to execute
-      console.log(`⏳ Waiting ${interPromptDelay}ms for inter-prompt command to execute...`);
-      await new Promise((r) => setTimeout(r, interPromptDelay));
+    if (globalIndex > 0) {
+      if (interPromptCommand) {
+        console.log(`\n🔄 Sending inter-prompt command (not evaluated): "${interPromptCommand}"`);
+        socket.emit("send-message", agentName, { from: "ADMIN", message: interPromptCommand });
+        console.log(`⏳ Waiting ${interPromptDelay}ms for inter-prompt command to execute...`);
+        await new Promise((r) => setTimeout(r, interPromptDelay));
+      }
+      if (clearBetween) {
+        console.log(`\n🧹 Clearing history before run ${runIdx + 1}/${runLengths.length}...`);
+        socket.emit("send-message", agentName, { from: "ADMIN", message: "!clearChat" });
+        const clearRes = await waitForCommandCompletion("!clearChat");
+        if (clearRes.ok) console.log(`✅ History cleared.`);
+        else console.log(`⚠️ ClearChat timeout, proceeding anyway...`);
+        await new Promise((r) => setTimeout(r, 500));
+      }
     }
 
-    // Clear history between prompts if enabled (skip for first prompt)
-    // This clears both previous evaluation history AND inter-prompt command history
-    if (clearBetween && i > 0) {
-      console.log(`\n🧹 Clearing history before prompt ${i + 1}/${prompts.length}...`);
-      socket.emit("send-message", agentName, { from: "ADMIN", message: "!clearChat" });
-      
-      // Wait for clearChat to complete (with timeout)
-      const clearRes = await waitForCommandCompletion("!clearChat");
-      if (clearRes.ok) {
-        console.log(`✅ History cleared.`);
+    for (let turnInRun = 0; turnInRun < runLen; turnInRun++) {
+      const p = prompts[globalIndex];
+      globalIndex++;
+
+      console.log(`\n➡️ Sending to ${agentName} (run ${runIdx + 1}, turn ${turnInRun + 1}/${runLen}): "${p}"`);
+      socket.emit("send-message", agentName, { from: "ADMIN", message: p });
+
+      console.log(
+        `⏳ Waiting for completion keyword (timeout ${Math.round(RESPONSE_TIMEOUT_MS / 60000)} min)...`
+      );
+      const res = await waitForCompletion(agentName);
+
+      if (res.ok) {
+        console.log(`✅ Completion detected for "${p}".`);
+        reportMaxActionFile();
       } else {
-        console.log(`⚠️ ClearChat timeout, proceeding anyway...`);
+        console.log(`⚠️ Timeout waiting for completion of "${p}".`);
+        reportMaxActionFile();
       }
-      // Additional small delay to ensure state is settled
       await new Promise((r) => setTimeout(r, 500));
     }
-
-    console.log(`\n➡️ Sending to ${agentName} (${i + 1}/${prompts.length}): "${p}"`);
-    socket.emit("send-message", agentName, { from: "ADMIN", message: p });
-
-    console.log(
-      `⏳ Waiting for completion keyword (timeout ${Math.round(RESPONSE_TIMEOUT_MS / 60000)} min)...`
-    );
-    const res = await waitForCompletion(agentName);
-
-    if (res.ok) {
-      console.log(`✅ Completion detected for "${p}".`);
-      reportMaxActionFile(); // ← print the current max file
-    } else {
-      console.log(`⚠️ Timeout waiting for completion of "${p}".`);
-      reportMaxActionFile(); // even on timeout, report what's there
-    }
-
-    await new Promise((r) => setTimeout(r, 500));
   }
 
   console.log("\n✅ All prompts processed. Disconnecting socket.");

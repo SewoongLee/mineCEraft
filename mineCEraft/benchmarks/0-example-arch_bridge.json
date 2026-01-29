@@ -1,0 +1,17 @@
+[
+    {
+        "prompts": [["Build a stone arch bridge."]],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.is_top_surface_concave",
+                    "args": {"strict": "non-flat"}
+                }
+            ]
+        ]
+    }
+]

@@ -2,15 +2,32 @@
 import subprocess
 import textwrap
 import json
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 
 def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict[str, Any]]:
     """
     Execute a JavaScript action file with a minimal mocked environment and
     capture all skills.placeBlock(...) calls as coords (including material).
+    Ignores skills.breakBlockAt (use read_placed_and_removed_from_action for multi-turn).
 
     Returns:
         [{"x": int, "y": int, "z": int, "material": str}, ...]
+    """
+    placed, _ = read_placed_and_removed_from_action(file_name, start_pos=start_pos)
+    return placed
+
+
+def read_placed_and_removed_from_action(
+    file_name: str, *, start_pos=(0, 0, 0)
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Execute a JavaScript action file and capture skills.placeBlock (placed)
+    and skills.breakBlockAt (removed) as lists of coords.
+
+    Returns:
+        (placed, removed)
+        - placed: [{"x", "y", "z", "material"}, ...]
+        - removed: [{"x", "y", "z"}, ...]
     """
     x0, y0, z0 = map(int, start_pos)
 
@@ -92,10 +109,11 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
     global.log = function () {}; // no-op
 
     global.skills = {
-      breakBlockAt: async () => {},
+      breakBlockAt: async (_bot, x, y, z) => {
+        console.log(JSON.stringify({ action: 'remove', x, y, z }));
+      },
       placeBlock: async (_bot, block, x, y, z, ...rest) => {
-        // print one JSON object per line (parsed by Python)
-        console.log(JSON.stringify({ x, y, z, material: block }));
+        console.log(JSON.stringify({ action: 'place', x, y, z, material: block }));
       },
       // wait mock to avoid runtime errors in your action code
       wait: async (_bot, ms) => {
@@ -122,24 +140,27 @@ def read_coords_from_action(file_name: str, *, start_pos=(0, 0, 0)) -> List[Dict
 
     res = subprocess.run(["node", "-e", js_wrapper], capture_output=True, text=True)
 
-    coords: List[Dict[str, Any]] = []
+    placed: List[Dict[str, Any]] = []
+    removed: List[Dict[str, Any]] = []
     for line in res.stdout.splitlines():
         line = line.strip()
         if not line:
             continue
         try:
             obj = json.loads(line)
-            # normalize types
-            obj["x"] = int(str(obj["x"]).strip())
-            obj["y"] = int(str(obj["y"]).strip())
-            obj["z"] = int(str(obj["z"]).strip())
-            obj["material"] = str(obj.get("material", "unknown"))
-            coords.append(obj)
+            x = int(str(obj["x"]).strip())
+            y = int(str(obj["y"]).strip())
+            z = int(str(obj["z"]).strip())
+            act = obj.get("action")
+            if act == "remove":
+                removed.append({"x": x, "y": y, "z": z})
+            else:
+                # "place" or legacy line without action
+                placed.append({"x": x, "y": y, "z": z, "material": str(obj.get("material", "unknown"))})
         except (json.JSONDecodeError, ValueError, KeyError):
             pass
 
-    # If nothing was captured, surface Node's error output to help debugging.
-    if not coords and res.stderr:
-        print("[read_coords_from_action] stderr:", res.stderr)
+    if not placed and not removed and res.stderr:
+        print("[read_placed_and_removed_from_action] stderr:", res.stderr)
 
-    return coords
+    return (placed, removed)

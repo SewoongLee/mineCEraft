@@ -1,17 +1,21 @@
 [
     {
-        "prompts": ["Build a single-story house:\n- Concrete SOG\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks"],
+        "prompts": [
+            ["Build a single-story house:\n- Concrete SOG\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks"]
+        ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "planning.material_sequence_order",
-                "args": {
-                    "material_sequence": ["concrete", "stone", "dirt", "oak_planks"]
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "planning.material_sequence_order",
+                    "args": {
+                        "material_sequence": ["concrete", "stone", "dirt", "oak_planks"]
+                    }
                 }
-            }
+            ]
         ]
     }
 ]

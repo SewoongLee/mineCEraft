@@ -1,66 +1,70 @@
 [
     {
         "prompts": [
-            "Install four 1×1 drilled piles, each 7 blocks deep, with a span length of 5 blocks beneath a 10×10 pile cap.",
-            "Construct a 10×10 pile cap supported by four 1×1 drilled piles, each extending 7 blocks deep with a 5-block span.",
-            "Install a 10×10 pile cap with four underlying drilled piles of size 1×1 and depth 7 blocks, arranged with a 5-block span."
+            ["Install four 1×1 drilled piles, each 7 blocks deep, with a span length of 5 blocks beneath a 10×10 pile cap."],
+            ["Construct a 10×10 pile cap supported by four 1×1 drilled piles, each extending 7 blocks deep with a 5-block span."],
+            ["Install a 10×10 pile cap with four underlying drilled piles of size 1×1 and depth 7 blocks, arranged with a 5-block span."]
         ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "size.min_y_is_equal",
-                "args": {
-                    "expected_y": -7
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "size.min_y_is_equal",
+                    "args": {
+                        "expected_y": -7
+                    }
+                },
+                {
+                    "fn": "shape.cluster_count_at_y_is",
+                    "args": {
+                        "y": -7,
+                        "expected_count": 4
+                    }
+                },
+                {
+                    "fn": "shape.clusters_at_y_have_min_span",
+                    "args": {
+                        "y": -7,
+                        "min_span": 5
+                    }
                 }
-            },
-            {
-                "fn": "shape.cluster_count_at_y_is",
-                "args": {
-                    "y": -7,
-                    "expected_count": 4
-                }
-            },
-            {
-                "fn": "shape.clusters_at_y_have_min_span",
-                "args": {
-                    "y": -7,
-                    "min_span": 5
-                }
-            }
+            ]
         ]
     },
     {
         "prompts": [
-            "Install seven 2×2 drilled piles, each 10 blocks deep, with a span length of 8 blocks beneath a 20×20 pile cap."
+            ["Install seven 2×2 drilled piles, each 10 blocks deep, with a span length of 8 blocks beneath a 20×20 pile cap."]
         ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "size.min_y_is_equal",
-                "args": {
-                    "expected_y": -10
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "size.min_y_is_equal",
+                    "args": {
+                        "expected_y": -10
+                    }
+                },
+                {
+                    "fn": "shape.cluster_count_at_y_is",
+                    "args": {
+                        "y": -10,
+                        "expected_count": 7
+                    }
+                },
+                {
+                    "fn": "shape.clusters_at_y_have_min_span",
+                    "args": {
+                        "y": -10,
+                        "min_span": 8
+                    }
                 }
-            },
-            {
-                "fn": "shape.cluster_count_at_y_is",
-                "args": {
-                    "y": -10,
-                    "expected_count": 7
-                }
-            },
-            {
-                "fn": "shape.clusters_at_y_have_min_span",
-                "args": {
-                    "y": -10,
-                    "min_span": 8
-                }
-            }
+            ]
         ]
     }
 ]

@@ -1,65 +1,71 @@
 [
     {
         "prompts": [
-            "Build a two-room house."
+            ["Build a two-room house."]
         ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 2
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 2
+                    }
+                },
+                {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
                 }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            }
+            ]
         ]
     },
     {
         "prompts": [
-            "Build a three-room house."
+            ["Build a three-room house."]
         ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 3
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 3
+                    }
+                },
+                {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
                 }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            }
+            ]
         ]
     },
     {
         "prompts": [
-            "Build a four-room house."
+            ["Build a four-room house."]
         ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 4
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 4
+                    }
+                },
+                {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
                 }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            }
+            ]
         ]
     }
 ]

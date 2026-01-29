@@ -1,32 +1,22 @@
 [
     {
-        "prompts": ["Build a two-story house:\n- Stone SOG\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"],
+        "prompts": [
+            ["Build a two-story house:\n- Stone SOG\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"],
+            ["Build a two-story house:\n- Stone foundation\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"]
+        ],
         "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "planning.material_sequence_order",
-                "args": {
-                    "material_sequence": ["stone", "white_concrete", "oak_planks", "red"]
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "planning.material_sequence_order",
+                    "args": {
+                        "material_sequence": ["stone", "white_concrete", "oak_planks", "red"]
+                    }
                 }
-            }
-        ]
-    },
-    {
-        "prompts": ["Build a two-story house:\n- Stone foundation\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"],
-        "checks": [
-            {
-                "fn": "structural_stability.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "planning.material_sequence_order",
-                "args": {
-                    "material_sequence": ["stone", "white_concrete", "oak_planks", "red"]
-                }
-            }
+            ]
         ]
     }
 ]
