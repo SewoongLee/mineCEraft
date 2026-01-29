@@ -193,6 +193,45 @@ def is_top_surface_concave(
                         return False
     
     return True
+
+
+
+def are_doors_passable(coords: List[Dict[str, Any]], verbose: bool = False) -> bool:
+    """
+    Check if all doors are passable. A door fails if at either y or y+1 level,
+    3 or more of the 4 adjacent positions are blocked.
+    """
+    if not coords:
+        return True
+    
+    blocks: Set[Tuple[int, int, int]] = set()
+    doors: List[Tuple[int, int, int]] = []
+    
+    for p in coords:
+        pos = (int(p["x"]), int(p["y"]), int(p["z"]))
+        blocks.add(pos)
+        if "door" in p.get("material", "").lower():
+            doors.append(pos)
+    
+    if not doors:
+        return True
+    
+    neighbors = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    seen = set()
+    
+    for x, y, z in doors:
+        if (x, z) in seen:
+            continue
+        seen.add((x, z))
+        
+        for cy in [y, y + 1]:
+            blocked_count = sum(1 for dx, dz in neighbors if (x + dx, cy, z + dz) in blocks)
+            if blocked_count >= 3:
+                if verbose:
+                    print(f"Door at ({x}, {cy}, {z}): {blocked_count}/4 sides blocked")
+                return False
+    
+    return True
     
     
 def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:
