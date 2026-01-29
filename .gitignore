@@ -21,6 +21,7 @@ jill_*.json
 src/models/logs/*
 server_data/*
 results/*
+mineCEraft/eval_results/
 tasks/construction_tasks/test_multiagent_construction_tasks.json
 tasks/construction_tasks/train_multiagent_construction_tasks.json
 tasks/construction_tasks/test/**
