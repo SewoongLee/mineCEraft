@@ -256,14 +256,4 @@ def plot(
             showlegend=False
         ))
 
-    return fig
-
-
-# Example:
-# fig = plot(coords, title="Bridge (Cubes)", alpha=0.6, show_legend=True)
-# fig.show()
-#
-# Heatmap example:
-# values = [0.1, 0.2, 0.3, 1.0]
-# fig = plot(coords, color=values, colorbar_title="von Mises (Pa)")
-# fig.show()
+    fig.show()
