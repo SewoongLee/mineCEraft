@@ -1,11 +1,129 @@
 from collections import deque
-from typing import List, Dict, Any, Tuple, Set, Optional
+from typing import List, Dict, Any, Tuple, Set, Optional, Literal
 from .utils.coords import to_int, xyz_lists
 
+
+def _extract_surface(
+    coords: List[Dict[str, Any]],
+    mode: Literal["top", "bottom"],
+) -> Dict[Tuple[int, int], int]:
+    """
+    Extract the top or bottom surface: for each (x, z), the max y (top) or min y (bottom).
+    Returns a dict mapping (x, z) -> y.
+    """
+    surface: Dict[Tuple[int, int], int] = {}
+    for coord in coords:
+        x = to_int(coord["x"])
+        y = to_int(coord["y"])
+        z = to_int(coord["z"])
+        key = (x, z)
+        if key not in surface:
+            surface[key] = y
+        elif mode == "top" and y > surface[key]:
+            surface[key] = y
+        elif mode == "bottom" and y < surface[key]:
+            surface[key] = y
+    return surface
+
+
+def _get_line_points(p1: Tuple[int, int], p2: Tuple[int, int]) -> List[Tuple[int, int]]:
+    """
+    Get all integer grid points on the line segment from p1 to p2.
+    Uses Bresenham's line algorithm for discrete grid traversal.
+    """
+    x1, z1 = p1
+    x2, z2 = p2
+    points = []
+    dx = abs(x2 - x1)
+    dz = abs(z2 - z1)
+    sx = 1 if x1 < x2 else -1
+    sz = 1 if z1 < z2 else -1
+    err = dx - dz
+    x, z = x1, z1
+    while True:
+        points.append((x, z))
+        if x == x2 and z == z2:
+            break
+        e2 = 2 * err
+        if e2 > -dz:
+            err -= dz
+            x += sx
+        if e2 < dx:
+            err += dx
+            z += sz
+    return points
+
+
+def _surface_concave(
+    surface: Dict[Tuple[int, int], int],
+    strict: bool | Literal["non-flat"],
+    verbose: bool,
+    sign: int,
+    surface_name: str,
+) -> bool:
+    """
+    Check if a 2D surface (x,z) -> y is concave along the given sign.
+    sign=1: top surface concavity (actual_y >= expected_y, bulge upward).
+    sign=-1: bottom surface concavity (actual_y <= expected_y, bulge downward when viewed from above).
+    """
+    if not surface:
+        return True
+    points = set(surface.keys())
+    if len(points) <= 1:
+        return True
+
+    if strict == "non-flat":
+        ys = list(surface.values())
+        if ys and all(y == ys[0] for y in ys):
+            if verbose:
+                print(f"Not concave: entire {surface_name} is completely flat (all y={ys[0]})")
+            return False
+
+    points_list = list(points)
+    for i in range(len(points_list)):
+        for j in range(i + 1, len(points_list)):
+            p1, p2 = points_list[i], points_list[j]
+            line_points = _get_line_points(p1, p2)
+            y1, y2 = surface[p1], surface[p2]
+
+            if strict is True and len(line_points) == 2 and y1 == y2:
+                if verbose:
+                    print(f"Not concave: flat line from {p1} (y={y1}) to {p2} (y={y2}) on {surface_name}")
+                return False
+
+            for (x, z) in line_points:
+                if (x, z) not in surface:
+                    if verbose:
+                        print(f"Not concave: point ({x}, {z}) on line from {p1} to {p2} is not in {surface_name}")
+                    return False
+
+            for k, (x, z) in enumerate(line_points):
+                if len(line_points) > 1:
+                    t = k / (len(line_points) - 1)
+                    expected_y = y1 + t * (y2 - y1)
+                else:
+                    expected_y = y1
+                actual_y = surface[(x, z)]
+                diff = sign * (actual_y - expected_y)
+
+                if strict is True:
+                    is_endpoint = (k == 0) or (k == len(line_points) - 1)
+                    if not is_endpoint and diff <= 0:
+                        if verbose:
+                            print(f"Not concave: point ({x}, {z}) diff={diff:.2f} on line {p1}->{p2} on {surface_name}")
+                        return False
+                else:
+                    if diff < -1e-9:
+                        if verbose:
+                            print(f"Not concave: point ({x}, {z}) diff={diff:.2f} on line {p1}->{p2} on {surface_name}")
+                        return False
+    return True
+
+
 def is_top_surface_concave(
-    coords: List[Dict[str, Any]], 
-    strict: bool = False,
-    verbose: bool = False
+    coords: List[Dict[str, Any]],
+    strict: bool | Literal["non-flat"] = False,
+    verbose: bool = False,
 ) -> bool:
     """
     Check if the top surface of the structure is concave.
@@ -41,147 +159,38 @@ def is_top_surface_concave(
     """
     if not coords:
         return True
+    surface = _extract_surface(coords, "top")
+    return _surface_concave(surface, strict, verbose, sign=1, surface_name="top surface")
+
+
+def is_bottom_surface_concave(
+    coords: List[Dict[str, Any]],
+    strict: bool | Literal["non-flat"] = False,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check if the bottom surface of the structure is concave (when viewed from below).
     
-    # Step 1: Extract top surface - for each (x, z) pair, get the maximum y value
-    # This represents the highest block at each (x, z) position
-    top_surface: Dict[Tuple[int, int], int] = {}
-    for coord in coords:
-        x = to_int(coord["x"])
-        y = to_int(coord["y"])
-        z = to_int(coord["z"])
-        key = (x, z)
-        
-        if key not in top_surface or y > top_surface[key]:
-            top_surface[key] = y
+    The bottom surface is defined as the minimum y at each (x, z). For an arch,
+    the underside should also be curved: between any two points on the bottom
+    surface, the actual y should be <= the linearly interpolated expected y
+    (i.e., the bottom bulges downward / dips in the middle).
     
-    if not top_surface:
+    When strict=True, use strict inequalities; when strict=False, allow equality.
+    When strict='non-flat', reject completely flat bottom surfaces.
+    
+    Args:
+        coords: List of block coordinate dictionaries with 'x', 'y', 'z' keys.
+        strict: Same semantics as is_top_surface_concave.
+        verbose: If True, print detailed diagnostic messages.
+    
+    Returns:
+        True if the bottom surface is concave, else False.
+    """
+    if not coords:
         return True
-    
-    # Get all (x, z) points from the top surface
-    top_points = set(top_surface.keys())
-    
-    if len(top_points) <= 1:
-        # 0 or 1 points are always convex (trivial cases)
-        return True
-    
-    # Step 2: Check concavity by verifying that for any two points in the top surface,
-    # the y-values at all points on the line segment between them satisfy:
-    # actual_y >= expected_y (where expected_y is the linear interpolation)
-    # This ensures the surface bulges upward, making it concave.
-    # 
-    # Mathematical formulation:
-    # For points p1=(x1,z1,y1) and p2=(x2,z2,y2), and any point p=(x,z) on the line segment:
-    #   t = distance(p, p1) / distance(p2, p1)  [parameter along the line, 0 ≤ t ≤ 1]
-    #   expected_y = y1 + t*(y2 - y1)  [linear interpolation]
-    #   actual_y = top_surface[(x, z)]
-    # Condition: actual_y >= expected_y  (for concave)
-    
-    def get_line_points(p1: Tuple[int, int], p2: Tuple[int, int]) -> List[Tuple[int, int]]:
-        """
-        Get all integer grid points on the line segment from p1 to p2.
-        Uses Bresenham's line algorithm for discrete grid traversal.
-        """
-        x1, z1 = p1
-        x2, z2 = p2
-        
-        points = []
-        dx = abs(x2 - x1)
-        dz = abs(z2 - z1)
-        sx = 1 if x1 < x2 else -1
-        sz = 1 if z1 < z2 else -1
-        err = dx - dz
-        
-        x, z = x1, z1
-        while True:
-            points.append((x, z))
-            if x == x2 and z == z2:
-                break
-            
-            e2 = 2 * err
-            if e2 > -dz:
-                err -= dz
-                x += sx
-            if e2 < dx:
-                err += dx
-                z += sz
-        
-        return points
-    
-    # Handle strict='non-flat' mode: check if the entire structure is completely flat
-    # If all points have the same y-value, it's completely flat and should be rejected
-    if strict == 'non-flat':
-        all_y_values = list(top_surface.values())
-        if len(all_y_values) > 0 and all(y == all_y_values[0] for y in all_y_values):
-            if verbose:
-                print(f"Not concave: entire structure is completely flat (all y={all_y_values[0]})")
-            return False
-    
-    # Check all pairs of points to verify convexity condition
-    top_points_list = list(top_points)
-    for i in range(len(top_points_list)):
-        for j in range(i + 1, len(top_points_list)):
-            p1 = top_points_list[i]
-            p2 = top_points_list[j]
-            
-            # Get all points on the line segment between p1 and p2
-            line_points = get_line_points(p1, p2)
-            
-            # Get y-values at endpoints
-            y1 = top_surface[p1]
-            y2 = top_surface[p2]
-            
-            # For strict=True mode: if the line segment has only 2 points (endpoints) 
-            # and they have the same y-value, it's a flat line and should be rejected
-            if strict is True and len(line_points) == 2 and y1 == y2:
-                if verbose:
-                    print(f"Not concave: flat line from {p1} (y={y1}) to {p2} (y={y2})")
-                return False
-            
-            # For concavity, all points on the line segment should be in the top surface
-            # (the set of (x, z) points should form a convex set in 2D)
-            # This ensures there are no "holes" or missing blocks on the line segment
-            for (x, z) in line_points:
-                if (x, z) not in top_surface:
-                    if verbose:
-                        print(f"Not concave: point ({x}, {z}) on line from {p1} to {p2} is not in top surface")
-                    return False
-            
-            # Check y-values: for concavity, the y-values should bulge upward
-            # (i.e., actual_y >= linearly interpolated expected_y)
-            # This is the key condition: the surface must be above or on the line connecting endpoints
-            for k, (x, z) in enumerate(line_points):
-                # Linear interpolation: expected_y = y1 + t*(y2 - y1), where t = k/(n-1)
-                if len(line_points) > 1:
-                    t = k / (len(line_points) - 1)
-                    expected_y = y1 + t * (y2 - y1)
-                else:
-                    expected_y = y1
-                
-                actual_y = top_surface[(x, z)]
-                
-                # For concavity: actual_y >= expected_y
-                # If actual_y < expected_y, the surface bulges downward, making it not concave
-                if strict is True:
-                    # For strict concavity, reject downward bulges (actual_y < expected_y)
-                    # and flat surfaces (actual_y == expected_y). 
-                    # Only accept upward bulges (actual_y > expected_y).
-                    # Note: endpoints will always have actual_y == expected_y, so we skip them
-                    is_endpoint = (k == 0) or (k == len(line_points) - 1)
-                    if not is_endpoint and actual_y <= expected_y:
-                        if verbose:
-                            print(f"Not concave: point ({x}, {z}) has y={actual_y} <= expected {expected_y:.2f} "
-                                  f"on line from {p1} (y={y1}) to {p2} (y={y2})")
-                        return False
-                else:
-                    # Non-strict mode: allow actual_y >= expected_y (including equality for flat surfaces)
-                    # Use small epsilon to handle floating point precision issues
-                    if actual_y < expected_y - 1e-9:
-                        if verbose:
-                            print(f"Not concave: point ({x}, {z}) has y={actual_y} < expected {expected_y:.2f} "
-                                  f"on line from {p1} (y={y1}) to {p2} (y={y2})")
-                        return False
-    
-    return True
+    surface = _extract_surface(coords, "bottom")
+    return _surface_concave(surface, strict, verbose, sign=-1, surface_name="bottom surface")
 
 
 

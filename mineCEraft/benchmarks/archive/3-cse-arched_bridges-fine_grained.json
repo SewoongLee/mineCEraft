@@ -14,6 +14,10 @@
                     "args": {"strict": "non-flat"}
                 },
                 {
+                    "fn": "shape.is_bottom_surface_concave",
+                    "args": {"strict": "non-flat"}
+                },
+                {
                     "fn": "structural_stability.is_stress_safe",
                     "args": {
                         "von_mises_stress": 5337
