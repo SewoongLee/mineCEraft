@@ -427,61 +427,77 @@ def _min_distance_linf(
     return int(best) if best != float("inf") else 0
 
 
-def clusters_at_y_have_span(
+def cluster_count_at_y_is(
     coords: List[Dict[str, Any]],
     *,
     y: int,
     expected_count: int,
+    use_8_neighbors: bool = False,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check that at a given y level the number of clusters equals `expected_count`.
+
+    Applies to both depth (below ground) and height (above ground). Clusters are
+    computed on the x-z plane at the given y (4-neighbors by default so 1×1
+    elements do not merge diagonally).
+
+    Args:
+        coords: List of block coordinate dicts with "x", "y", "z".
+        y: The y level at which to count clusters (depth or height).
+        expected_count: Expected number of clusters (e.g. number of piles or columns).
+        use_8_neighbors: If True, use 8-neighborhood for clustering (diagonals count).
+        verbose: If True, print why the check failed.
+
+    Returns:
+        True if the number of clusters at y equals expected_count; otherwise False.
+    """
+    clusters = _clusters_at_y(coords, y, use_8_neighbors=use_8_neighbors)
+    n = len(clusters)
+    if n != expected_count:
+        if verbose:
+            print(f"cluster_count_at_y_is: at y={y} found {n} clusters, expected {expected_count}")
+        return False
+    return True
+
+
+def clusters_at_y_have_min_span(
+    coords: List[Dict[str, Any]],
+    *,
+    y: int,
     min_span: int,
     use_8_neighbors: bool = False,
     verbose: bool = False,
 ) -> bool:
     """
-    Evaluate that at a given y level, there are exactly `expected_count` clusters
-    (e.g. piles or columns), and that every pair of clusters is at least `min_span` apart.
+    Check that at a given y level every pair of clusters is at least `min_span` apart.
 
-    Applies to both depth (below ground) and height (above ground): use any y where
-    you want to count and space clusters—e.g. y = -7 for the bottom of drilled piles,
-    or y = 5 for a floor where columns stand.
+    Span is the minimum L_inf (Chebyshev) distance between any two blocks from
+    different clusters. So min_span = 5 means the closest blocks of any two
+    clusters are at least 5 (L_inf) apart.
 
-    Example (deep foundations): "four 1×1 piles, 7 blocks deep, span length of 5 blocks"
-    → y = -7 (bottom of piles), expected_count = 4, min_span = 5.
-
-    Example (columns): "six columns on the ground floor" with 8-block span
-    → y = 0 (or the floor level), expected_count = 6, min_span = 8.
-
-    - Clusters are computed on the x-z plane at the given y (4-neighbors by default
-      so 1×1 elements do not merge diagonally).
-    - Span is the minimum L_inf distance between any two blocks from different
-      clusters. So min_span = 5 means the closest blocks of any two clusters are
-      at least 5 (L_inf) apart.
+    If there are 0 or 1 cluster at y, the condition is vacuously satisfied (True).
 
     Args:
         coords: List of block coordinate dicts with "x", "y", "z".
-        y: The y level at which to evaluate clusters (depth or height).
-        expected_count: Expected number of clusters (e.g. number of piles or columns).
+        y: The y level at which to evaluate (depth or height).
         min_span: Minimum required L_inf distance between any two clusters.
         use_8_neighbors: If True, use 8-neighborhood for clustering (diagonals count).
         verbose: If True, print why the check failed.
 
     Returns:
-        True if there are exactly expected_count clusters and every pair has
-        min L_inf distance >= min_span; otherwise False.
+        True if every pair of clusters at y has min L_inf distance >= min_span;
+        otherwise False.
     """
     clusters = _clusters_at_y(coords, y, use_8_neighbors=use_8_neighbors)
     n = len(clusters)
-
-    if n != expected_count:
-        if verbose:
-            print(f"clusters_at_y_have_span: at y={y} found {n} clusters, expected {expected_count}")
-        return False
-
+    if n <= 1:
+        return True
     for i in range(n):
         for j in range(i + 1, n):
             d = _min_distance_linf(clusters[i], clusters[j])
             if d < min_span:
                 if verbose:
-                    print(f"clusters_at_y_have_span: clusters {i} and {j} have min L_inf distance {d}, required >= {min_span}")
+                    print(f"clusters_at_y_have_min_span: clusters {i} and {j} have min L_inf distance {d}, required >= {min_span}")
                 return False
-
     return True

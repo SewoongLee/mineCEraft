@@ -17,10 +17,16 @@
                 }
             },
             {
-                "fn": "shape.clusters_at_y_have_span",
+                "fn": "shape.cluster_count_at_y_is",
                 "args": {
                     "y": -7,
-                    "expected_count": 4,
+                    "expected_count": 4
+                }
+            },
+            {
+                "fn": "shape.clusters_at_y_have_min_span",
+                "args": {
+                    "y": -7,
                     "min_span": 5
                 }
             }
@@ -42,10 +48,16 @@
                 }
             },
             {
-                "fn": "shape.clusters_at_y_have_span",
+                "fn": "shape.cluster_count_at_y_is",
                 "args": {
                     "y": -10,
-                    "expected_count": 7,
+                    "expected_count": 7
+                }
+            },
+            {
+                "fn": "shape.clusters_at_y_have_min_span",
+                "args": {
+                    "y": -10,
                     "min_span": 8
                 }
             }
