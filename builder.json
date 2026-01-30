@@ -2,7 +2,6 @@
     "name": "builder",
     
     "model": "claude-3-7-sonnet-20250219",
-    
     "model2": "gemini-2.5-flash",
     "model3": "gpt-5-mini",
     "model4": "meta-llama/llama-4-scout-17b-16e-instruct",
