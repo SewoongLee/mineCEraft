@@ -96,10 +96,17 @@ def read_placed_and_removed_from_action(
     
     // Provide a Vec3-like object with .floored(), .floor(), .clone(), .offset(), and .distanceTo() as Mineflayer does.
     const _pos = createPosObj(__X0__, __Y0__, __Z0__, {});
+    // Minimal block mock for bot.blockAt (action code may call it e.g. in safePlaceBlock).
+    const airTypeId = 0;
+    const mockRegistry = { blocks: { [airTypeId]: { name: 'air' } } };
     global.bot = {
       interrupt_code: false,
       entity: { position: _pos },
-      chat: async () => {} // no-op mock for bot.chat()
+      chat: async () => {}, // no-op mock for bot.chat()
+      registry: mockRegistry,
+      blockAt(pos) {
+        return { type: airTypeId, position: pos };
+      },
     };
     global.world = {
       getPosition: (_bot) => ({ x: __X0__, y: __Y0__, z: __Z0__ }),
