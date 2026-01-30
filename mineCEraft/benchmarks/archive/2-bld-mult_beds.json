@@ -1,0 +1,187 @@
+[
+    {
+        "prompts": [
+            ["Build a one-bed house."],
+            ["Build a house with one bed."],
+            ["Build a house with 1 bed."],
+            ["Create a one-bed house."],
+            ["Create a house with one bed."],
+            ["Create a house with 1 bed."],
+            ["Construct a one-bed house."],
+            ["Construct a house with one bed."],
+            ["Construct a house with 1 bed."],
+            ["Step by step, build a one-bed house."],
+            ["First plan, then build a one-bed house."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 1
+                    }
+                },
+                {
+                    "fn": "material.is_block_cnt_equal_to",
+                    "args": {
+                        "expected_count": 1,
+                        "expected_material": "bed",
+                        "use_substring_match": true
+                    }
+                }
+            ]
+        ]
+    },
+    {
+        "prompts": [
+            ["Build a two-bed house."],
+            ["Build a house with two beds."],
+            ["Build a house with 2 beds."],
+            ["Create a two-bed house."],
+            ["Create a house with two beds."],
+            ["Create a house with 2 beds."],
+            ["Construct a two-bed house."],
+            ["Construct a house with two beds."],
+            ["Construct a house with 2 beds."],
+            ["Step by step, build a two-bed house."],
+            ["First plan, then build a two-bed house."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 2
+                    }
+                },
+                {
+                    "fn": "material.is_block_cnt_equal_to",
+                    "args": {
+                        "expected_count": 2,
+                        "expected_material": "bed",
+                        "use_substring_match": true
+                    }
+                }
+            ]
+        ]
+    },
+    {
+        "prompts": [
+            ["Build a three-bed house."],
+            ["Build a house with three beds."],
+            ["Build a house with 3 beds."],
+            ["Create a three-bed house."],
+            ["Create a house with three beds."],
+            ["Create a house with 3 beds."],
+            ["Construct a three-bed house."],
+            ["Construct a house with three beds."],
+            ["Construct a house with 3 beds."],
+            ["Step by step, build a three-bed house."],
+            ["First plan, then build a three-bed house."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 3
+                    }
+                },
+                {
+                    "fn": "material.is_block_cnt_equal_to",
+                    "args": {
+                        "expected_count": 3,
+                        "expected_material": "bed",
+                        "use_substring_match": true
+                    }
+                }
+            ]
+        ]
+    },
+    {
+        "prompts": [
+            ["Build a four-bed house."],
+            ["Build a house with four beds."],
+            ["Build a house with 4 beds."],
+            ["Create a four-bed house."],
+            ["Create a house with four beds."],
+            ["Create a house with 4 beds."],
+            ["Construct a four-bed house."],
+            ["Construct a house with four beds."],
+            ["Construct a house with 4 beds."],
+            ["Step by step, build a four-bed house."],
+            ["First plan, then build a four-bed house."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 4
+                    }
+                },
+                {
+                    "fn": "material.is_block_cnt_equal_to",
+                    "args": {
+                        "expected_count": 4,
+                        "expected_material": "bed",
+                        "use_substring_match": true
+                    }
+                }
+            ]
+        ]
+    },
+    {
+        "prompts": [
+            ["Build a five-bed house."],
+            ["Build a house with five beds."],
+            ["Build a house with 5 beds."],
+            ["Create a five-bed house."],
+            ["Create a house with five beds."],
+            ["Create a house with 5 beds."],
+            ["Construct a five-bed house."],
+            ["Construct a house with five beds."],
+            ["Construct a house with 5 beds."],
+            ["Step by step, build a five-bed house."],
+            ["First plan, then build a five-bed house."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 5
+                    }
+                },
+                {
+                    "fn": "material.is_block_cnt_equal_to",
+                    "args": {
+                        "expected_count": 5,
+                        "expected_material": "bed",
+                        "use_substring_match": true
+                    }
+                }
+            ]
+        ]
+    }
+]
