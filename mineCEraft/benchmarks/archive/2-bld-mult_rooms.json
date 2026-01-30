@@ -1,6 +1,40 @@
 [
     {
         "prompts": [
+            ["Build a one-room house."],
+            ["Build a house with one room."],
+            ["Build a house with 1 room."],
+            ["Build a studio."],
+            ["Create a one-room house."],
+            ["Create a house with one room."],
+            ["Create a studio."],
+            ["Construct a one-room house."],
+            ["Construct a house with one room."],
+            ["Construct a house with 1 room."],
+            ["Step by step, build a one-room house."],
+            ["First plan, then build a one-room house."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "structural_stability.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "shape.has_rooms",
+                    "args": {
+                        "room_cnt": 1
+                    }
+                },
+                {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
+                }
+            ]
+        ]
+    },
+    {
+        "prompts": [
             ["Build a two-room house."],
             ["Build a house with two rooms."],
             ["Build a house with 2 rooms."],
