@@ -26,6 +26,10 @@
                     }
                 },
                 {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
+                },
+                {
                     "fn": "material.is_block_cnt_equal_to",
                     "args": {
                         "expected_count": 1,
@@ -61,6 +65,10 @@
                     "args": {
                         "room_cnt": 2
                     }
+                },
+                {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
                 },
                 {
                     "fn": "material.is_block_cnt_equal_to",
@@ -100,6 +108,10 @@
                     }
                 },
                 {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
+                },
+                {
                     "fn": "material.is_block_cnt_equal_to",
                     "args": {
                         "expected_count": 3,
@@ -137,6 +149,10 @@
                     }
                 },
                 {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
+                },
+                {
                     "fn": "material.is_block_cnt_equal_to",
                     "args": {
                         "expected_count": 4,
@@ -172,6 +188,10 @@
                     "args": {
                         "room_cnt": 5
                     }
+                },
+                {
+                    "fn": "shape.are_doors_passable",
+                    "args": {}
                 },
                 {
                     "fn": "material.is_block_cnt_equal_to",
