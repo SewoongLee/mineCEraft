@@ -38,7 +38,8 @@ def read_placed_and_removed_from_action(
     // file path injected as a proper JS string literal
     const FILENAME = __FILENAME__;
 
-    const code = fs.readFileSync(FILENAME, 'utf8');
+    let code = fs.readFileSync(FILENAME, 'utf8');
+    code = code.replace(/^\\s*export\\s+default\\s+/m, '');
 
     // ---- mocks ----
     // Vec3 constructor mock (from vec3 package)
