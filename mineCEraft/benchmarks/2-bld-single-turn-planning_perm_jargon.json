@@ -10,7 +10,7 @@
                     "args": {}
                 },
                 {
-                    "fn": "planning.material_sequence_order",
+                    "fn": "dependency.material_sequence_order",
                     "args": {
                         "material_sequence": ["concrete", "stone", "dirt", "oak_planks"]
                     }
