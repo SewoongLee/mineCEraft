@@ -1,12 +1,13 @@
 {
     "name": "builder",
     
-    "model": "claude-3-7-sonnet-20250219",
+    "model": "claude-sonnet-4-5-20250929",
     "model2": "gemini-2.5-flash",
     "model3": "gpt-5-mini",
     "model4": "meta-llama/llama-4-scout-17b-16e-instruct",
-
+    
     "model-x1": "claude-3-7-sonnet-latest",
+    "model-x1-1": "claude-3-7-sonnet-20250219",
     "model-x2": "gpt-3.5-turbo",
     "model-x3": "gpt-4.1-mini",
     "model-x4": "gpt-4",
