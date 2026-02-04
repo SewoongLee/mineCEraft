@@ -1,0 +1,5 @@
+{
+    "accuracy": ["material", "shape", "size"],
+    "safety": ["physical_plausibility", "structural_stability"],
+    "planning": ["efficiency", "dependency"]
+}
