@@ -7,7 +7,7 @@
         "checks": [
             [
                 {
-                    "fn": "structural_stability.is_ground_connected",
+                    "fn": "physical_plausibility.is_ground_connected",
                     "args": {}
                 },
                 {

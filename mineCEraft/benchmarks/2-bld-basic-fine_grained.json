@@ -5,7 +5,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -22,7 +22,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -39,7 +39,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -56,7 +56,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -73,7 +73,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -90,7 +90,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -107,7 +107,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
@@ -124,7 +124,7 @@
         ],
         "checks": [
             [
-                {"fn": "structural_stability.is_ground_connected", "args": {}},
+                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
                 {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
                 {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
                 {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
