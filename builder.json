@@ -1,22 +1,21 @@
 {
     "name": "builder",
     
-    "model1": "claude-sonnet-4-5-20250929",
-    "model": "gemini-3-pro-preview",
-    "model2": "gemini-2.5-flash",
-    "model3": "gpt-5-mini",
-    "model4": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "model": "claude-sonnet-4-5-20250929",
+    "model-2": "gemini-3-pro-preview",
+    "model-3": "gpt-5-mini",
+    "model-4": "meta-llama/llama-4-scout-17b-16e-instruct",
     
     "model-x1": "claude-3-7-sonnet-latest",
-    "model-x1-1": "claude-3-7-sonnet-20250219",
-    "model-x2": "gpt-3.5-turbo",
-    "model-x3": "gpt-4.1-mini",
-    "model-x4": "gpt-4",
-    "model-x5": "gpt-5-nano",
-    "model-x6": "gpt-5",
-    "model-x7": "gemini-2.5-pro",
-    "model-x8": "gemini-3-flash-preview",
-    "model-x9": "gemini-3-pro-preview",
+    "model-x2": "claude-3-7-sonnet-20250219",
+    "model-x3": "gpt-3.5-turbo",
+    "model-x4": "gpt-4.1-mini",
+    "model-x5": "gpt-4",
+    "model-x6": "gpt-5-nano",
+    "model-x7": "gpt-5",
+    "model-x8": "gemini-2.5-flash",
+    "model-x9": "gemini-2.5-pro",
+    "model-x10": "gemini-3-flash-preview",
     
     "modes": {
         "self_preservation": false,
@@ -26,8 +25,8 @@
         "hunting": false,
         "item_collecting": false,
         "torch_placing": false,
-        "elbow_room": true,
-        "idle_staring": true,
+        "elbow_room": false,
+        "idle_staring": false,
         "cheat": true
     },
 
