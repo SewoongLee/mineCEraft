@@ -1,48 +1,61 @@
 [
     {
-        "_comment": "inorder",
         "prompts": [
-            ["Build a single-story house:\n- Concrete Foundation\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks"]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "dependency.material_sequence_order",
-                    "args": {
-                        "material_sequence": ["concrete", "stone", "dirt", "oak_planks"]
-                    }
-                }
-            ]
-        ]
-    },
-    {
-        "_comment": "inorder with jargon",
-        "prompts": [
-            ["Build a single-story house:\n- Concrete SOG\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks"]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "dependency.material_sequence_order",
-                    "args": {
-                        "material_sequence": ["concrete", "stone", "dirt", "oak_planks"]
-                    }
-                }
-            ]
-        ]
-    },
-    {
-        "_comment": "perm with jargon",
-        "prompts": [
-            ["Build a single-story house:\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks\n- Concrete SOG"]
+            ["Build a single-story house:\n- Concrete Foundation\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Concrete Foundation\n- Stone columns\n- Ceiling made of oak planks\n- Dirt walls"],
+            ["Build a single-story house:\n- Concrete Foundation\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Concrete Foundation\n- Dirt walls\n- Ceiling made of oak planks\n- Stone columns"],
+            ["Build a single-story house:\n- Concrete Foundation\n- Ceiling made of oak planks\n- Stone columns\n- Dirt walls"],
+            ["Build a single-story house:\n- Concrete Foundation\n- Ceiling made of oak planks\n- Dirt walls\n- Stone columns"],
+          
+            ["Build a single-story house:\n- Stone columns\n- Concrete Foundation\n- Dirt walls\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Stone columns\n- Concrete Foundation\n- Ceiling made of oak planks\n- Dirt walls"],
+            ["Build a single-story house:\n- Stone columns\n- Dirt walls\n- Concrete Foundation\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks\n- Concrete Foundation"],
+            ["Build a single-story house:\n- Stone columns\n- Ceiling made of oak planks\n- Concrete Foundation\n- Dirt walls"],
+            ["Build a single-story house:\n- Stone columns\n- Ceiling made of oak planks\n- Dirt walls\n- Concrete Foundation"],
+          
+            ["Build a single-story house:\n- Dirt walls\n- Concrete Foundation\n- Stone columns\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Dirt walls\n- Concrete Foundation\n- Ceiling made of oak planks\n- Stone columns"],
+            ["Build a single-story house:\n- Dirt walls\n- Stone columns\n- Concrete Foundation\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks\n- Concrete Foundation"],
+            ["Build a single-story house:\n- Dirt walls\n- Ceiling made of oak planks\n- Concrete Foundation\n- Stone columns"],
+            ["Build a single-story house:\n- Dirt walls\n- Ceiling made of oak planks\n- Stone columns\n- Concrete Foundation"],
+          
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Concrete Foundation\n- Stone columns\n- Dirt walls"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Concrete Foundation\n- Dirt walls\n- Stone columns"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Stone columns\n- Concrete Foundation\n- Dirt walls"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Stone columns\n- Dirt walls\n- Concrete Foundation"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Dirt walls\n- Concrete Foundation\n- Stone columns"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Dirt walls\n- Stone columns\n- Concrete Foundation"],        
+
+            ["Build a single-story house:\n- Concrete SOG\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Concrete SOG\n- Stone columns\n- Ceiling made of oak planks\n- Dirt walls"],
+            ["Build a single-story house:\n- Concrete SOG\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Concrete SOG\n- Dirt walls\n- Ceiling made of oak planks\n- Stone columns"],
+            ["Build a single-story house:\n- Concrete SOG\n- Ceiling made of oak planks\n- Stone columns\n- Dirt walls"],
+            ["Build a single-story house:\n- Concrete SOG\n- Ceiling made of oak planks\n- Dirt walls\n- Stone columns"],
+          
+            ["Build a single-story house:\n- Stone columns\n- Concrete SOG\n- Dirt walls\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Stone columns\n- Concrete SOG\n- Ceiling made of oak planks\n- Dirt walls"],
+            ["Build a single-story house:\n- Stone columns\n- Dirt walls\n- Concrete SOG\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Stone columns\n- Dirt walls\n- Ceiling made of oak planks\n- Concrete SOG"],
+            ["Build a single-story house:\n- Stone columns\n- Ceiling made of oak planks\n- Concrete SOG\n- Dirt walls"],
+            ["Build a single-story house:\n- Stone columns\n- Ceiling made of oak planks\n- Dirt walls\n- Concrete SOG"],
+          
+            ["Build a single-story house:\n- Dirt walls\n- Concrete SOG\n- Stone columns\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Dirt walls\n- Concrete SOG\n- Ceiling made of oak planks\n- Stone columns"],
+            ["Build a single-story house:\n- Dirt walls\n- Stone columns\n- Concrete SOG\n- Ceiling made of oak planks"],
+            ["Build a single-story house:\n- Dirt walls\n- Stone columns\n- Ceiling made of oak planks\n- Concrete SOG"],
+            ["Build a single-story house:\n- Dirt walls\n- Ceiling made of oak planks\n- Concrete SOG\n- Stone columns"],
+            ["Build a single-story house:\n- Dirt walls\n- Ceiling made of oak planks\n- Stone columns\n- Concrete SOG"],
+          
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Concrete SOG\n- Stone columns\n- Dirt walls"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Concrete SOG\n- Dirt walls\n- Stone columns"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Stone columns\n- Concrete SOG\n- Dirt walls"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Stone columns\n- Dirt walls\n- Concrete SOG"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Dirt walls\n- Concrete SOG\n- Stone columns"],
+            ["Build a single-story house:\n- Ceiling made of oak planks\n- Dirt walls\n- Stone columns\n- Concrete SOG"]
         ],
         "checks": [
             [
