@@ -1,18 +1,10 @@
 [
   {
     "prompts": [
-      [
-        "Build a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Create a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
-      ]
+      ["Build a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Create a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Construct a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Erect a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."]
     ],
     "checks": [
       [
@@ -53,18 +45,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Create a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
-      ]
+      ["Build a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Create a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Construct a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Erect a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."]
     ],
     "checks": [
       [
@@ -105,18 +89,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Create a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
-      ]
+      ["Build a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Create a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Construct a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Erect a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."]
     ],
     "checks": [
       [
@@ -157,18 +133,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Create a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
-      ]
+      ["Build a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Create a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Construct a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Erect a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."]
     ],
     "checks": [
       [
@@ -209,18 +177,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Create a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
-      ]
+      ["Build a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Create a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Construct a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Erect a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."]
     ],
     "checks": [
       [
@@ -261,18 +221,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Create a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
-      ]
+      ["Build a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Create a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Construct a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Erect a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."]
     ],
     "checks": [
       [
@@ -313,18 +265,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Create a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
-      ]
+      ["Build a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Create a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Construct a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Erect a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."]
     ],
     "checks": [
       [
@@ -365,18 +309,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Create a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
-      ]
+      ["Build a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Create a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Construct a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Erect a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."]
     ],
     "checks": [
       [
@@ -417,18 +353,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Create a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
-      ]
+      ["Build a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Create a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Construct a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."],
+      ["Erect a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."]
     ],
     "checks": [
       [
@@ -469,18 +397,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Create a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
-      ]
+      ["Build a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Create a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Construct a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."],
+      ["Erect a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."]
     ],
     "checks": [
       [
@@ -521,18 +441,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Create a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
-      ]
+      ["Build a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Create a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Construct a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."],
+      ["Erect a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."]
     ],
     "checks": [
       [
@@ -573,18 +485,10 @@
   },
   {
     "prompts": [
-      [
-        "Build a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Create a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Construct a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
-      ],
-      [
-        "Erect a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
-      ]
+      ["Build a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Create a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Construct a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."],
+      ["Erect a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."]
     ],
     "checks": [
       [
