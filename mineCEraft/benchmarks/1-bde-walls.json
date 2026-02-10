@@ -1,86 +1,626 @@
 [
   {
     "prompts": [
-      ["Build a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."],
-      ["Erect a wall using stone blocks: 5 blocks wide, 1 block thick, 5 blocks tall."]
+      [
+        "Build a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Create a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 5 blocks wide, 1 block thick, and 5 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":25}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[1,5],"y":5}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 25
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              1,
+              5
+            ],
+            "y": 5
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."],
-      ["Erect a wall using stone blocks: 5 blocks wide, 1 block thick, 7 blocks tall."]
+      [
+        "Build a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Create a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 5 blocks wide, 1 block thick, and 7 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":35}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[1,5],"y":7}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 35
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              1,
+              5
+            ],
+            "y": 7
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."],
-      ["Erect a wall using stone blocks: 5 blocks wide, 2 blocks thick, 5 blocks tall."]
+      [
+        "Build a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Create a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 5 blocks wide, 2 blocks thick, and 5 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":50}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[2,5],"y":5}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 50
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              2,
+              5
+            ],
+            "y": 5
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."],
-      ["Erect a wall using stone blocks: 5 blocks wide, 2 blocks thick, 7 blocks tall."]
+      [
+        "Build a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Create a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 5 blocks wide, 2 blocks thick, and 7 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":70}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[2,5],"y":7}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 70
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              2,
+              5
+            ],
+            "y": 7
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."],
-      ["Erect a wall using stone blocks: 7 blocks wide, 1 block thick, 5 blocks tall."]
+      [
+        "Build a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Create a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 7 blocks wide, 1 block thick, and 5 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":35}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[1,7],"y":5}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 35
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              1,
+              7
+            ],
+            "y": 5
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."],
-      ["Erect a wall using stone blocks: 7 blocks wide, 1 block thick, 7 blocks tall."]
+      [
+        "Build a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Create a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 7 blocks wide, 1 block thick, and 7 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":49}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[1,7],"y":7}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 49
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              1,
+              7
+            ],
+            "y": 7
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."],
-      ["Erect a wall using stone blocks: 7 blocks wide, 2 blocks thick, 5 blocks tall."]
+      [
+        "Build a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Create a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 7 blocks wide, 2 blocks thick, and 5 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":70}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[2,7],"y":5}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 70
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              2,
+              7
+            ],
+            "y": 5
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."],
-      ["Erect a wall using stone blocks: 7 blocks wide, 2 blocks thick, 7 blocks tall."]
+      [
+        "Build a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Create a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 7 blocks wide, 2 blocks thick, and 7 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":98}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[2,7],"y":7}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 98
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              2,
+              7
+            ],
+            "y": 7
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."],
-      ["Erect a wall using stone blocks: 10 blocks wide, 1 block thick, 5 blocks tall."]
+      [
+        "Build a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Create a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 10 blocks wide, 1 block thick, and 5 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":50}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[1,10],"y":5}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 50
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              1,
+              10
+            ],
+            "y": 5
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."],
-      ["Erect a wall using stone blocks: 10 blocks wide, 1 block thick, 7 blocks tall."]
+      [
+        "Build a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Create a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 10 blocks wide, 1 block thick, and 7 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":70}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[1,10],"y":7}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 70
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              1,
+              10
+            ],
+            "y": 7
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."],
-      ["Erect a wall using stone blocks: 10 blocks wide, 2 blocks thick, 5 blocks tall."]
+      [
+        "Build a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Create a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 10 blocks wide, 2 blocks thick, and 5 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":100}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[2,10],"y":5}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 100
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              2,
+              10
+            ],
+            "y": 5
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   },
   {
     "prompts": [
-      ["Build a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."],
-      ["Erect a wall using stone blocks: 10 blocks wide, 2 blocks thick, 7 blocks tall."]
+      [
+        "Build a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Create a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Construct a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
+      ],
+      [
+        "Erect a stone wall that is 10 blocks wide, 2 blocks thick, and 7 blocks high."
+      ]
     ],
-    "checks": [[{"fn":"material.is_block_cnt_equal_to","args":{"expected_count":140}},{"fn":"material.is_all_material_equal_to","args":{"expected_material":"stone"}},{"fn":"size.is_equal","args":{"xz":[2,10],"y":7}},{"fn":"physical_plausibility.is_ground_connected","args":{}},{"fn":"efficiency.l1_dist","args":{"required_step":1}}]]
+    "checks": [
+      [
+        {
+          "fn": "material.is_block_cnt_equal_to",
+          "args": {
+            "expected_count": 140
+          }
+        },
+        {
+          "fn": "material.is_all_material_equal_to",
+          "args": {
+            "expected_material": "stone"
+          }
+        },
+        {
+          "fn": "size.is_equal",
+          "args": {
+            "xz": [
+              2,
+              10
+            ],
+            "y": 7
+          }
+        },
+        {
+          "fn": "physical_plausibility.is_ground_connected",
+          "args": {}
+        },
+        {
+          "fn": "efficiency.l1_dist",
+          "args": {
+            "required_step": 1
+          }
+        }
+      ]
+    ]
   }
 ]
