@@ -211,8 +211,8 @@ def plot(
         if coords:
             x_vals = [c["x"] for c in coords]
             z_vals = [c["z"] for c in coords]
-            x_min, x_max = min(x_vals) - 1, max(x_vals) + 1
-            z_min, z_max = min(z_vals) - 1, max(z_vals) + 1
+            x_min, x_max = min(x_vals) - 2, max(x_vals) + 2
+            z_min, z_max = min(z_vals) - 2, max(z_vals) + 2
         else:
             x_min, x_max, z_min, z_max = -2, 2, -2, 2
         xx, yy = np.meshgrid(
@@ -226,6 +226,8 @@ def plot(
                 colorscale=[[0, GROUND_COLOR], [1, GROUND_COLOR]],
                 showscale=False,
                 opacity=0.6,
+                name="Ground",
+                showlegend=show_legend,
             )
         )
 
