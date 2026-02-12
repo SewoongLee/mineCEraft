@@ -6,6 +6,7 @@
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 4}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]
@@ -17,6 +18,7 @@
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 8}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]
@@ -28,6 +30,7 @@
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 12}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]

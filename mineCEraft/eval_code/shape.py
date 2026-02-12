@@ -500,3 +500,71 @@ def clusters_at_y_have_min_span(
                     print(f"clusters_at_y_have_min_span: clusters {i} and {j} have min L2 distance {d:.4f}, required >= {min_span}")
                 return False
     return True
+
+
+def is_reachable_by_stairs(
+    coords: List[Dict[str, Any]],
+    min_floor_y: int,
+) -> int:
+    """
+    Return 1 if a 2-block-tall, 1x1 human can reach a floor at y >= min_floor_y
+    by walking and stepping up only +1 blocks (stairs) from some ground block at y=0.
+
+    - BFS from any block at y=0 that has head clearance (y+1, y+2 empty).
+    - Human can move horizontally on the same floor, or step up +1 to an adjacent block.
+    - When stepping up to block at (x, y, z), requires (x,y+1,z) and (x,y+2,z) empty (no head bump).
+    - 2-story: min_floor_y=4; 3-story: min_floor_y=8; etc.
+
+    Args:
+        coords: [{"x":..,"y":..,"z":.., ...}, ...] solid blocks
+        min_floor_y: minimum y (floor level) that must be reachable
+    """
+    if not coords:
+        return 0
+
+    blocks: Set[Tuple[int, int, int]] = set()
+    for c in coords:
+        x, y, z = to_int(c["x"]), to_int(c["y"]), to_int(c["z"])
+        blocks.add((x, y, z))
+
+    def has_clearance(px: int, py: int, pz: int) -> bool:
+        """Standing on block (px,py,pz): need (px,py+1,pz) and (px,py+2,pz) empty."""
+        return (px, py + 1, pz) not in blocks and (px, py + 2, pz) not in blocks
+
+    # Start from all ground blocks at y=0 with clearance
+    queue: deque[Tuple[int, int, int]] = deque()
+    visited: Set[Tuple[int, int, int]] = set()
+
+    for (x, y, z) in blocks:
+        if y == 0 and has_clearance(x, y, z):
+            if (x, y, z) not in visited:
+                visited.add((x, y, z))
+                queue.append((x, y, z))
+
+    if not queue:
+        return 0
+
+    # 4-neighbor in xz for horizontal and step-up
+    xz_deltas = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+    while queue:
+        x, y, z = queue.popleft()
+        if y >= min_floor_y:
+            return 1
+
+        for dx, dz in xz_deltas:
+            # Same level
+            nx, ny, nz = x + dx, y, z + dz
+            npos = (nx, ny, nz)
+            if npos in blocks and has_clearance(nx, ny, nz) and npos not in visited:
+                visited.add(npos)
+                queue.append(npos)
+
+            # Step up +1
+            nx, ny, nz = x + dx, y + 1, z + dz
+            npos = (nx, ny, nz)
+            if npos in blocks and has_clearance(nx, ny, nz) and npos not in visited:
+                visited.add(npos)
+                queue.append(npos)
+
+    return 0
