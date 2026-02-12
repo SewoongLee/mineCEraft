@@ -1,0 +1,13 @@
+[
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of a two-story building using concrete."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  }
+]
