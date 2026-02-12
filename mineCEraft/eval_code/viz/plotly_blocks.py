@@ -43,20 +43,21 @@ RAINBOW_SCALE = [
 ]
 
 
-def _cube_vertices(x: int, y: int, z: int, size: int = 1) -> List[Tuple[int, int, int]]:
+def _cube_vertices(x: int, y: int, z: int, size: int = 1) -> List[Tuple[float, float, float]]:
     """
-    Return the 8 vertices of an axis-aligned cube located at (x, y, z)
+    Return the 8 vertices of an axis-aligned cube centered at (x, y, z)
     with edge length `size`. Vertices are ordered to simplify face construction.
     """
+    h = size / 2.0
     return [
-        (x,         y,         z        ),
-        (x + size,  y,         z        ),
-        (x + size,  y + size,  z        ),
-        (x,         y + size,  z        ),
-        (x,         y,         z + size ),
-        (x + size,  y,         z + size ),
-        (x + size,  y + size,  z + size ),
-        (x,         y + size,  z + size ),
+        (x - h,  y - h,  z - h),
+        (x + h,  y - h,  z - h),
+        (x + h,  y + h,  z - h),
+        (x - h,  y + h,  z - h),
+        (x - h,  y - h,  z + h),
+        (x + h,  y - h,  z + h),
+        (x + h,  y + h,  z + h),
+        (x - h,  y + h,  z + h),
     ]
 
 
@@ -108,6 +109,11 @@ def _values_to_hex_colors(values: Sequence[float]) -> List[str]:
     return sample_colorscale(RAINBOW_SCALE, t.tolist())
 
 
+# Ground plane at y=-0.5 (between block y=0 and y=-1). Plot z = mc_y.
+GROUND_Y = -0.5
+GROUND_COLOR = "#8B7355"  # dirt brown
+
+
 def plot(
     coords: Iterable[Dict[str, Any]],
     *,
@@ -115,6 +121,7 @@ def plot(
     alpha: float = 0.5,
     cube_size: int = 1,
     show_legend: bool = True,
+    show_ground: bool = True,
     color: Optional[Sequence[float]] = None,
     colorbar_title: Optional[str] = None,
 ) -> go.Figure:
@@ -128,6 +135,7 @@ def plot(
         cube_size: edge length for each cube (usually 1).
         show_legend: if True, add a simple color legend for known materials.
                      Ignored when `color` is provided (heatmap mode).
+        show_ground: if True, show a ground plane at y=-0.5 (between block y=0 and y=-1).
         color: optional numeric array with the same length as coords. If provided,
                cubes are colored by value using RAINBOW_SCALE.
         colorbar_title: if provided (truthy) and `color` is provided, show a colorbar
@@ -196,13 +204,48 @@ def plot(
             tri_i.append(i0); tri_j.append(i2); tri_k.append(i3)
             face_colors.append(cube_color)
 
-    fig = go.Figure(data=[go.Mesh3d(
+    traces: List[go.Trace] = []
+
+    # Ground plane at y=-0.5 (plot z = mc_y). Rendered first so it appears behind blocks.
+    if show_ground:
+        if coords:
+            x_vals = [c["x"] for c in coords]
+            z_vals = [c["z"] for c in coords]
+            x_min, x_max = min(x_vals) - 1, max(x_vals) + 1
+            z_min, z_max = min(z_vals) - 1, max(z_vals) + 1
+        else:
+            x_min, x_max, z_min, z_max = -2, 2, -2, 2
+        xx, yy = np.meshgrid(
+            np.linspace(x_min, x_max, 2),
+            np.linspace(z_min, z_max, 2),
+        )
+        zz = np.full_like(xx, GROUND_Y)
+        traces.append(
+            go.Surface(
+                x=xx, y=yy, z=zz,
+                colorscale=[[0, GROUND_COLOR], [1, GROUND_COLOR]],
+                showscale=False,
+                opacity=0.6,
+            )
+        )
+
+    traces.append(go.Mesh3d(
         x=plot_x, y=plot_y, z=plot_z,
         i=tri_i, j=tri_j, k=tri_k,
         facecolor=face_colors,   # one color per triangle
         opacity=alpha,
         flatshading=True,
-    )])
+    ))
+
+    fig = go.Figure(data=traces)
+
+    # Place ticks at integers only (avoid duplicate labels from tickformat on 0.5-spaced ticks).
+    def _int_ticks(vals: List[float]) -> dict:
+        if not vals:
+            return dict(tickmode="linear", tick0=0, dtick=1)
+        lo, hi = min(vals), max(vals)
+        tick0 = int(np.floor(lo))
+        return dict(tickmode="linear", tick0=tick0, dtick=1, tickformat=",d")
 
     fig.update_layout(
         title=title,
@@ -211,6 +254,9 @@ def plot(
             yaxis_title="Z",
             zaxis_title="Y (Height)",
             aspectmode="data",
+            xaxis=_int_ticks(plot_x),
+            yaxis=_int_ticks(plot_y),
+            zaxis=_int_ticks(plot_z),
         ),
         legend=dict(itemsizing="constant"),
         margin=dict(l=0, r=0, t=40, b=0),
