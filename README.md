@@ -14,6 +14,12 @@ Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
 | `2-bld` | Building |
 | `3-cse` | Civil/Structural Engineering |
 
+Subcategories:
+
+- **Building Elements**: Foundations, Walls, Roofs and Columns, Frames
+- **Buildings**: Basic Buildings, Multiple Rooms, Multiple Bedrooms, Multi-story Building, Accessibility & Human Factors, Unusual/Creative Requests, Resource Optimization, Single-turn Planning, Multi-turn Planning & Revision
+- **Civil/Structural Engineering**: Basic Bridges, Arched Bridges, Vault, Dome
+
 ## Quick Start
 
 1. Follow Mindcraft's setup to configure the connection (Minecraft server + MindServer on port 8080).
