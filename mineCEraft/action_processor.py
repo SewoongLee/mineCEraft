@@ -110,7 +110,7 @@ def read_placed_and_removed_from_action(
       },
     };
     global.world = {
-      getPosition: (_bot) => ({ x: __X0__, y: __Y0__, z: __Z0__ }),
+      getPosition: (_bot) => _pos,
       getBlockAtPosition: (_bot, _x, _y, _z) => ({ name: 'air' })
     };
 
