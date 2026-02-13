@@ -16,6 +16,46 @@
         ]
     ]
   },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Create a bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Construct a bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":10}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":5}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Create a bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Construct a bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":10}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":6}}
+        ]
+    ]
+  },
+
   {
     "prompts": [
       ["Build a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
@@ -33,6 +73,46 @@
         ]
     ]
   },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Create a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Construct a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":13}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":5}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Create a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Construct a bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":13}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":6}}
+        ]
+    ]
+  },
+
   {
     "prompts": [
       ["Build a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
@@ -50,6 +130,46 @@
         ]
     ]
   },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Create a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Construct a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":17}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":5}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Create a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Construct a bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":17}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":6}}
+        ]
+    ]
+  },
+
   {
     "prompts": [
       ["Build a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
@@ -66,5 +186,45 @@
             {"fn": "size.max_y_is_geq", "args": {"min_y":4}}
         ]
     ]
+  },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Create a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
+      ["Construct a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":20}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":5}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Build a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Create a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
+      ["Construct a bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":20}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y":6}}
+        ]
+    ]
   }
+
 ]
