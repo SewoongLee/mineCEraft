@@ -1,7 +1,9 @@
 [
   {
     "prompts": [
-      ["Build the frame (including stairs) of a two-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+      ["Build the frame (including stairs) of a two-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a two-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a two-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
     ],
     "checks": [
       [
@@ -14,7 +16,9 @@
   },
   {
     "prompts": [
-      ["Build the frame (including stairs) of a three-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+      ["Build the frame (including stairs) of a three-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a three-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a three-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
     ],
     "checks": [
       [
@@ -27,13 +31,105 @@
   },
   {
     "prompts": [
-      ["Build the frame (including stairs) of a four-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+      ["Build the frame (including stairs) of a four-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a four-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a four-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
     ],
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
         {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 12}},
         {"fn": "size.max_y_is_geq", "args": {"min_y": 16}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of a five-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a five-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a five-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 16}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 20}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of a six-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a six-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a six-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 20}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 24}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of a seven-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a seven-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a seven-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 24}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 28}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of an eight-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of an eight-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of an eight-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 28}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 32}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of a nine-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a nine-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a nine-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 32}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 36}},
+        {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build the frame (including stairs) of a ten-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Create the frame (including stairs) of a ten-story building using concrete. Each upper floor should be 4 blocks above the one below it."],
+      ["Construct the frame (including stairs) of a ten-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 36}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 40}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]
