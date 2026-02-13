@@ -1,0 +1,91 @@
+[
+  {
+    "prompts": [
+      ["Build a building with at least three different ceiling heights."],
+      ["Create a building with at least three different ceiling heights."],
+      ["Construct a building with at least three different ceiling heights."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a two-room house with at least three different ceiling heights."],
+      ["Create a two-room house with at least three different ceiling heights."],
+      ["Construct a two-room house with at least three different ceiling heights."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a three-room house with at least three different ceiling heights."],
+      ["Create a three-room house with at least three different ceiling heights."],
+      ["Construct a three-room house with at least three different ceiling heights."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a two-bed house with at least three different ceiling heights."],
+      ["Create a two-bed house with at least three different ceiling heights."],
+      ["Construct a two-bed house with at least three different ceiling heights."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 2, "expected_material": "bed", "use_substring_match": true}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a three-bed house with at least three different ceiling heights."],
+      ["Create a three-bed house with at least three different ceiling heights."],
+      ["Construct a three-bed house with at least three different ceiling heights."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 3, "expected_material": "bed", "use_substring_match": true}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a two-story building with at least three different ceiling heights. The second floor must be reachable by stairs."],
+      ["Create a two-story building with at least three different ceiling heights. The second floor must be reachable by stairs."],
+      ["Construct a two-story building with at least three different ceiling heights. The second floor must be reachable by stairs."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 4}}
+      ]
+    ]
+  }
+]
