@@ -31,7 +31,7 @@ Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
 | `category.json` | Evaluation categories: accuracy, safety, planning |
 | `samples/` | Example JS action files for manual evaluation |
 
-For documentation on `eval_code` functions, see the test notebooks (by category):
+We provide test notebooks for each evaluation module. They serve as documentation, clarify how each criterion is assessed, and support maintainability. See the notebooks below (by category):
 
 | Category | Test notebooks |
 |----------|----------------|
