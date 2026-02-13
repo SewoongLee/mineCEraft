@@ -923,6 +923,98 @@ def cluster_at_y_has_min_diameter(
     return True
 
 
+def has_axis_symmetry(
+    coords: List[Dict[str, Any]],
+    *,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check if the structure has bilateral (mirror) symmetry about any of the x, y, or z axes.
+
+    For each axis, reflects blocks across the plane through the bounding box center.
+    Returns True if the structure is symmetric about at least one axis.
+
+    - X-axis symmetry: plane x = (min_x + max_x) / 2; (x,y,z) <-> (min_x+max_x-x, y, z)
+    - Y-axis symmetry: plane y = (min_y + max_y) / 2; (x,y,z) <-> (x, min_y+max_y-y, z)
+    - Z-axis symmetry: plane z = (min_z + max_z) / 2; (x,y,z) <-> (x, y, min_z+max_z-z)
+
+    Args:
+        coords: List of block coordinate dicts with "x", "y", "z".
+        verbose: If True, print which axis (if any) has symmetry.
+
+    Returns:
+        True if symmetric about at least one axis, else False.
+    """
+    if not coords:
+        return True
+
+    blocks: Set[Tuple[int, int, int]] = set()
+    for c in coords:
+        blocks.add((to_int(c["x"]), to_int(c.get("y", 0)), to_int(c["z"])))
+
+    xs = [p[0] for p in blocks]
+    ys = [p[1] for p in blocks]
+    zs = [p[2] for p in blocks]
+    min_x, max_x = min(xs), max(xs)
+    min_y, max_y = min(ys), max(ys)
+    min_z, max_z = min(zs), max(zs)
+
+    def is_symmetric_x() -> bool:
+        if min_x == max_x:
+            return False  # No extent in x, skip (trivial)
+        for (x, y, z) in blocks:
+            mirror_x = min_x + max_x - x
+            if (mirror_x, y, z) not in blocks:
+                return False
+        return True
+
+    def is_symmetric_y() -> bool:
+        if min_y == max_y:
+            return False  # No extent in y, skip (trivial)
+        for (x, y, z) in blocks:
+            mirror_y = min_y + max_y - y
+            if (x, mirror_y, z) not in blocks:
+                return False
+        return True
+
+    def is_symmetric_z() -> bool:
+        if min_z == max_z:
+            return False  # No extent in z, skip (trivial)
+        for (x, y, z) in blocks:
+            mirror_z = min_z + max_z - z
+            if (x, y, mirror_z) not in blocks:
+                return False
+        return True
+
+    for name, check in [("x", is_symmetric_x), ("y", is_symmetric_y), ("z", is_symmetric_z)]:
+        if check():
+            if verbose:
+                print(f"Structure has {name}-axis symmetry")
+            return True
+    return False
+
+
+def has_no_axis_symmetry(
+    coords: List[Dict[str, Any]],
+    *,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check that the structure has no axis of symmetry (x, y, or z).
+
+    Returns True if the structure is asymmetric about all three axes.
+    Use this for prompts that require "no axis of symmetry".
+
+    Args:
+        coords: List of block coordinate dicts with "x", "y", "z".
+        verbose: If True, print diagnostic messages.
+
+    Returns:
+        True if no axis of symmetry exists, else False.
+    """
+    return not has_axis_symmetry(coords, verbose=verbose)
+
+
 def is_reachable_by_stairs(
     coords: List[Dict[str, Any]],
     min_floor_y: int,

@@ -1,0 +1,92 @@
+[
+  {
+    "prompts": [
+      ["Build a building that has no axis of symmetry in a two-dimensional plane."],
+      ["Create a building that has no axis of symmetry in a two-dimensional plane."],
+      ["Construct a building that has no axis of symmetry in a two-dimensional plane."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "shape.has_no_axis_symmetry", "args": {}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a two-room house with an asymmetric floor plan. The layout must have no axis of symmetry."],
+      ["Create a two-room house with an asymmetric floor plan. The layout must have no axis of symmetry."],
+      ["Construct a two-room house with an asymmetric floor plan. The layout must have no axis of symmetry."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "shape.has_no_axis_symmetry", "args": {}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a three-room house with an asymmetric floor plan. The layout must have no axis of symmetry."],
+      ["Create a three-room house with an asymmetric floor plan. The layout must have no axis of symmetry."],
+      ["Construct a three-room house with an asymmetric floor plan. The layout must have no axis of symmetry."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "shape.has_no_axis_symmetry", "args": {}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a two-bed house with an asymmetric layout. The floor plan must have no axis of symmetry."],
+      ["Create a two-bed house with an asymmetric layout. The floor plan must have no axis of symmetry."],
+      ["Construct a two-bed house with an asymmetric layout. The floor plan must have no axis of symmetry."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 2, "expected_material": "bed", "use_substring_match": true}},
+        {"fn": "shape.has_no_axis_symmetry", "args": {}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a three-bed house with an asymmetric layout. The floor plan must have no axis of symmetry."],
+      ["Create a three-bed house with an asymmetric layout. The floor plan must have no axis of symmetry."],
+      ["Construct a three-bed house with an asymmetric layout. The floor plan must have no axis of symmetry."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
+        {"fn": "shape.are_doors_passable", "args": {}},
+        {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 3, "expected_material": "bed", "use_substring_match": true}},
+        {"fn": "shape.has_no_axis_symmetry", "args": {}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Build a two-story building with an asymmetric footprint. The floor plan must have no axis of symmetry, and the second floor must be reachable by stairs."],
+      ["Create a two-story building with an asymmetric footprint. The floor plan must have no axis of symmetry, and the second floor must be reachable by stairs."],
+      ["Construct a two-story building with an asymmetric footprint. The floor plan must have no axis of symmetry, and the second floor must be reachable by stairs."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_no_axis_symmetry", "args": {}},
+        {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 4}}
+      ]
+    ]
+  }
+]
