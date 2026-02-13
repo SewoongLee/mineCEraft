@@ -816,6 +816,113 @@ def clusters_at_y_have_min_span(
     return True
 
 
+def _cluster_radius(cluster: Set[Tuple[int, int]]) -> float:
+    """
+    Max L2 distance from cluster centroid to any point in the cluster.
+    Returns 0 for empty or single-point cluster.
+    """
+    if len(cluster) <= 1:
+        return 0.0
+    pts = list(cluster)
+    cx = sum(p[0] for p in pts) / len(pts)
+    cz = sum(p[1] for p in pts) / len(pts)
+    best = 0.0
+    for (ax, az) in pts:
+        d = ((ax - cx) ** 2 + (az - cz) ** 2) ** 0.5
+        if d > best:
+            best = d
+    return best
+
+
+def _cluster_diameter(cluster: Set[Tuple[int, int]]) -> float:
+    """
+    Max L2 distance between any two points in the cluster.
+    Returns 0 for empty or single-point cluster.
+    """
+    if len(cluster) <= 1:
+        return 0.0
+    pts = list(cluster)
+    best = 0.0
+    for i in range(len(pts)):
+        ax, az = pts[i]
+        for j in range(i + 1, len(pts)):
+            bx, bz = pts[j]
+            d = ((ax - bx) ** 2 + (az - bz) ** 2) ** 0.5
+            if d > best:
+                best = d
+    return best
+
+
+def cluster_at_y_has_min_radius(
+    coords: List[Dict[str, Any]],
+    *,
+    y: int,
+    min_radius: float,
+    use_8_neighbors: bool = False,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check that at y there is exactly one cluster and its radius (max distance from
+    centroid to any point) is at least min_radius.
+
+    Args:
+        coords: List of block coordinate dicts with "x", "y", "z".
+        y: The y level at which to evaluate.
+        min_radius: Minimum required radius (L2 from centroid to farthest point).
+        use_8_neighbors: If True, use 8-neighborhood for clustering.
+        verbose: If True, print why the check failed.
+
+    Returns:
+        True if exactly one cluster at y and its radius >= min_radius; else False.
+    """
+    clusters = _clusters_at_y(coords, y, use_8_neighbors=use_8_neighbors)
+    if len(clusters) != 1:
+        if verbose:
+            print(f"cluster_at_y_has_min_radius: at y={y} found {len(clusters)} clusters, expected 1")
+        return False
+    r = _cluster_radius(clusters[0])
+    if r < min_radius:
+        if verbose:
+            print(f"cluster_at_y_has_min_radius: at y={y} radius={r:.4f}, required >= {min_radius}")
+        return False
+    return True
+
+
+def cluster_at_y_has_min_diameter(
+    coords: List[Dict[str, Any]],
+    *,
+    y: int,
+    min_diameter: float,
+    use_8_neighbors: bool = False,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check that at y there is exactly one cluster and its diameter (max L2 distance
+    between any two points) is at least min_diameter.
+
+    Args:
+        coords: List of block coordinate dicts with "x", "y", "z".
+        y: The y level at which to evaluate.
+        min_diameter: Minimum required diameter (max pairwise L2 distance).
+        use_8_neighbors: If True, use 8-neighborhood for clustering.
+        verbose: If True, print why the check failed.
+
+    Returns:
+        True if exactly one cluster at y and its diameter >= min_diameter; else False.
+    """
+    clusters = _clusters_at_y(coords, y, use_8_neighbors=use_8_neighbors)
+    if len(clusters) != 1:
+        if verbose:
+            print(f"cluster_at_y_has_min_diameter: at y={y} found {len(clusters)} clusters, expected 1")
+        return False
+    d = _cluster_diameter(clusters[0])
+    if d < min_diameter:
+        if verbose:
+            print(f"cluster_at_y_has_min_diameter: at y={y} diameter={d:.4f}, required >= {min_diameter}")
+        return False
+    return True
+
+
 def is_reachable_by_stairs(
     coords: List[Dict[str, Any]],
     min_floor_y: int,
