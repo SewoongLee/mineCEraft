@@ -22,8 +22,8 @@ Subcategories:
 
 ## Quick Start
 
-1. Follow Mindcraft's setup to configure the connection (Minecraft server + MindServer on port 8080).
-2. Ensure `settings.js` uses `./builder.json` as the profile.
+1. Follow [Mindcraft's setup](https://github.com/mindcraft-bots/mindcraft) to configure the connection (Minecraft game + MindCraft server on port 15916).
+2. Ensure `./builder.json` has your desired LLM set under the `model` key.
 3. Run `mineCEraft/main.ipynb`.
 
 ## Workflow
