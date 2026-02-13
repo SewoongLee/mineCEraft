@@ -265,6 +265,68 @@ def are_doors_passable(coords: List[Dict[str, Any]], verbose: bool = False) -> b
     return True
 
 
+def are_adjacent(
+    coords: List[Dict[str, Any]],
+    materials: List[str],
+    *,
+    substring_match: bool = True,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check if at least one block of materials[0] is adjacent (6-neighbor) to at
+    least one block of materials[1]. materials must have length 2.
+
+    Args:
+        coords: Block dicts with "x","y","z", optional "material".
+        materials: Exactly 2 material strings to check adjacency between.
+        substring_match: If True, match by substring (e.g. "door" in "oak_door").
+        verbose: Print failure reason.
+
+    Returns:
+        True if some block of materials[0] and some block of materials[1] are
+        adjacent, else False.
+    """
+    if len(materials) != 2:
+        if verbose:
+            print("are_adjacent requires materials list of length 2")
+        return False
+    if not coords:
+        return False
+
+    a_sub, b_sub = materials[0].lower(), materials[1].lower()
+    set_a: Set[Tuple[int, int, int]] = set()
+    set_b: Set[Tuple[int, int, int]] = set()
+
+    def matches(mat: str, sub: str) -> bool:
+        m = str(mat or "").lower()
+        return sub in m if substring_match else m == sub
+
+    for c in coords:
+        pos = (to_int(c["x"]), to_int(c.get("y", 0)), to_int(c["z"]))
+        mat = c.get("material")
+        if matches(mat, a_sub):
+            set_a.add(pos)
+        if matches(mat, b_sub):
+            set_b.add(pos)
+
+    if not set_a or not set_b:
+        if verbose:
+            print(f"No blocks matching {materials[0]!r} or {materials[1]!r} for adjacency")
+        return False
+
+    offsets = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)]
+
+    for dx, dy, dz in set_a:
+        for ox, oy, oz in offsets:
+            nb = (dx + ox, dy + oy, dz + oz)
+            if nb in set_b:
+                return True
+
+    if verbose:
+        print(f"No {materials[0]!r} block is adjacent to any {materials[1]!r} block")
+    return False
+
+
 def is_single_level(
     coords: List[Dict[str, Any]],
     *,
