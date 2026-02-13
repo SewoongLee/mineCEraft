@@ -118,3 +118,31 @@ def max_y_is_geq(coords: List[Dict[str, Any]], *, min_y: int) -> int:
     _, ys, _ = xyz_lists(coords)
     max_y = max(ys)
     return 1 if max_y >= min_y else 0
+
+
+def all_dimensions_geq(coords: List[Dict[str, Any]], *, min_size: int) -> int:
+    """
+    Check that the structure spans at least min_size blocks in each dimension (x, y, z).
+    Uses coordinate ranges: for N blocks in a row, range = max - min = N - 1.
+    So min_size=5 requires range >= 4 in each axis.
+
+    Useful for validating minimum cabin/building dimensions (e.g., 5x5x5 cabin needs
+    at least 5 blocks in width, depth, and height).
+
+    Args:
+        coords: [{"x":..,"y":..,"z":.., ...}, ...]
+        min_size: Minimum number of blocks required in each dimension (width, depth, height)
+
+    Returns:
+        1 if dx >= min_size-1 and dy >= min_size-1 and dz >= min_size-1, else 0
+
+    Example:
+        # 5x5x5 cabin: need at least 5 blocks in each dimension
+        all_dimensions_geq(coords, min_size=5)
+    """
+    if not coords:
+        return 0
+
+    dx, dy, dz = _ranges(coords)
+    min_range = min_size - 1
+    return 1 if (dx >= min_range and dy >= min_range and dz >= min_range) else 0

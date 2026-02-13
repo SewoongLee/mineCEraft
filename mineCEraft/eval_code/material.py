@@ -85,6 +85,36 @@ def is_block_cnt_larger_than(
         return matching_count > cnt
 
 
+def is_block_cnt_leq(
+    coords: List[Dict[str, Any]],
+    max_count: int,
+    expected_material: str = None,
+    use_substring_match: bool = False,
+) -> bool:
+    """
+    Return True if number of blocks (matching expected_material if provided) is less than or equal to max_count, else False.
+    Useful for resource constraints (e.g., "at most 100 oak wood planks").
+
+    Args:
+        coords: List of coordinate dicts with keys {"x", "y", "z"} and optional {"material"}
+        max_count: The maximum allowed count (inclusive)
+        expected_material: Optional material to filter by. If None, counts all blocks.
+        use_substring_match: If True, use substring matching (e.g., 'oak' matches 'oak_planks');
+                           if False, use exact matching (default). Only used if expected_material is provided.
+
+    Returns:
+        True if count of matching blocks <= max_count, else False
+    """
+    if expected_material is None:
+        return len(coords) <= max_count
+    else:
+        matching_count = sum(
+            1 for c in coords
+            if _material_matches(c.get("material"), expected_material, use_substring_match)
+        )
+        return matching_count <= max_count
+
+
 def is_all_material_equal_to(
     coords: List[Dict[str, Any]], 
     expected_material: str,

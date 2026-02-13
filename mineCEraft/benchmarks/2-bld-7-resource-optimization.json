@@ -1,0 +1,62 @@
+[
+  {
+    "prompts": [
+      ["You only have 56 oak wood planks available. Build the largest possible single-room cabin you can with this limitation."],
+      ["With only 56 oak wood planks, construct the largest single-room cabin possible."],
+      ["Build the biggest single-room cabin you can using at most 56 oak wood planks."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
+        {"fn": "material.is_block_cnt_leq", "args": {"max_count": 56, "expected_material": "oak", "use_substring_match": true}},
+        {"fn": "size.all_dimensions_geq", "args": {"min_size": 4}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["You only have 98 oak wood planks available. Build the largest possible single-room cabin you can with this limitation."],
+      ["With only 98 oak wood planks, construct the largest single-room cabin possible."],
+      ["Build the biggest single-room cabin you can using at most 98 oak wood planks."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
+        {"fn": "material.is_block_cnt_leq", "args": {"max_count": 98, "expected_material": "oak", "use_substring_match": true}},
+        {"fn": "size.all_dimensions_geq", "args": {"min_size": 5}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["You only have 152 oak wood planks available. Build the largest possible single-room cabin you can with this limitation."],
+      ["With only 152 oak wood planks, construct the largest single-room cabin possible."],
+      ["Build the biggest single-room cabin you can using at most 152 oak wood planks."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
+        {"fn": "material.is_block_cnt_leq", "args": {"max_count": 152, "expected_material": "oak", "use_substring_match": true}},
+        {"fn": "size.all_dimensions_geq", "args": {"min_size": 6}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["You only have 218 oak wood planks available. Build the largest possible single-room cabin you can with this limitation."],
+      ["With only 218 oak wood planks, construct the largest single-room cabin possible."],
+      ["Build the biggest single-room cabin you can using at most 218 oak wood planks."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
+        {"fn": "material.is_block_cnt_leq", "args": {"max_count": 218, "expected_material": "oak", "use_substring_match": true}},
+        {"fn": "size.all_dimensions_geq", "args": {"min_size": 7}}
+      ]
+    ]
+  }
+]
