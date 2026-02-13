@@ -1,138 +1,154 @@
 [
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of red."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "red", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of blue."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "blue", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of green."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "green", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of yellow."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "yellow", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of orange."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "orange", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of purple."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "purple", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of black."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "black", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    },
-    {
-        "prompts": [
-            ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of white."]
-        ],
-        "checks": [
-            [
-                {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-                {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-                {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-                {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "white", "use_substring_match": true}},
-                {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-            ]
-        ]
-    }
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of red."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of red."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of red."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "red", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of blue."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of blue."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of blue."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "blue", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of green."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of green."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of green."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "green", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of yellow."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of yellow."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of yellow."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "yellow", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of orange."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of orange."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of orange."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "orange", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of purple."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of purple."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of purple."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "purple", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of black."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of black."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of black."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "black", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  },
+  {
+    "prompts": [
+      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of white."],
+      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of white."],
+      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of white."]
+    ],
+    "checks": [
+      [
+        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
+        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
+        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "white", "use_substring_match": true}},
+        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
+      ]
+    ]
+  }
 ]
