@@ -3,6 +3,39 @@ from typing import List, Dict, Any, Tuple, Set, Optional, Literal
 from .utils.coords import to_int, xyz_lists
 
 
+def _get_centroid(coords: List[Dict[str, Any]]) -> Tuple[int, int, int]:
+    """Bounding box center (integer)."""
+    if not coords:
+        return (0, 0, 0)
+    xs, ys, zs = xyz_lists(coords)
+    return (
+        (min(xs) + max(xs)) // 2,
+        (min(ys) + max(ys)) // 2,
+        (min(zs) + max(zs)) // 2,
+    )
+
+
+def _get_start_positions(
+    coords: List[Dict[str, Any]],
+    *,
+    start_material: Optional[str] = None,
+) -> List[Tuple[int, int, int]]:
+    """
+    Return start positions as (x, y, z). If start_material given, blocks matching
+    that substring; else use structure centroid.
+    """
+    if not coords:
+        return []
+    if start_material:
+        out: List[Tuple[int, int, int]] = []
+        for c in coords:
+            if start_material.lower() in str(c.get("material", "")).lower():
+                out.append((to_int(c["x"]), to_int(c.get("y", 0)), to_int(c["z"])))
+        return out
+    cx, cy, cz = _get_centroid(coords)
+    return [(cx, cy, cz)]
+
+
 def _extract_surface(
     coords: List[Dict[str, Any]],
     mode: Literal["top", "bottom"],
@@ -230,8 +263,237 @@ def are_doors_passable(coords: List[Dict[str, Any]], verbose: bool = False) -> b
                 return False
     
     return True
-    
-    
+
+
+def is_single_level(
+    coords: List[Dict[str, Any]],
+    *,
+    start_material: Optional[str] = None,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check no curb: from every start block (bed by default), a flat path on ground
+    exists to outside. Bed must be on ground (floor_y); path at floor_y only.
+
+    Args:
+        coords: Block dicts with "x","y","z", optional "material".
+        start_material: Substring for start blocks (e.g. "bed"). None = centroid.
+        verbose: Print failure reason.
+
+    Returns:
+        True if from every start, flat path to outside exists.
+    """
+    if not coords:
+        return True
+
+    blocks_xyz: Set[Tuple[int, int, int]] = set()
+    blocks_solid: Set[Tuple[int, int, int]] = set()
+    for c in coords:
+        p = (to_int(c["x"]), to_int(c.get("y", 0)), to_int(c["z"]))
+        blocks_xyz.add(p)
+        if "door" not in str(c.get("material", "")).lower():
+            blocks_solid.add(p)
+
+    floor_y = min(p[1] for p in blocks_xyz)
+    if floor_y > -1:
+        if verbose:
+            print(f"Floor at y={floor_y} is above ground (y=-1); not single level")
+        return False
+    floor_at: Set[Tuple[int, int]] = {(x, z) for (x, y, z) in blocks_xyz if y == floor_y}
+    if start_material:
+        for c in coords:
+            y = to_int(c.get("y", 0))
+            if y == floor_y + 1 and start_material.lower() in str(c.get("material", "")).lower():
+                floor_at.add((to_int(c["x"]), to_int(c["z"])))
+
+    if not floor_at:
+        return True
+
+    min_x = min(p[0] for p in floor_at)
+    max_x = max(p[0] for p in floor_at)
+    min_z = min(p[1] for p in floor_at)
+    max_z = max(p[1] for p in floor_at)
+
+    def is_outside(x: int, z: int) -> bool:
+        return x < min_x or x > max_x or z < min_z or z > max_z
+
+    def head_y(x: int, z: int) -> int:
+        return floor_y + 2 if (x, floor_y + 1, z) in blocks_solid else floor_y + 1
+
+    def can_step_to(x: int, z: int) -> bool:
+        if (x, z) in floor_at:
+            return (x, head_y(x, z), z) not in blocks_solid
+        if is_outside(x, z):
+            return (x, floor_y, z) not in blocks_solid and (x, floor_y + 1, z) not in blocks_solid
+        return False
+
+    starts_xyz = _get_start_positions(coords, start_material=start_material)
+    if not starts_xyz:
+        return True
+
+    ground_y = floor_y  # floor = ground for single level
+    for (sx, sy, sz) in starts_xyz:
+        if sy != ground_y + 1:  # bed must be exactly one block above ground
+            if verbose:
+                print(f"Start ({sx},{sy},{sz}) not on ground (must be at y={ground_y + 1})")
+            return False
+        if not can_step_to(sx, sz):
+            if verbose:
+                print(f"Start ({sx},{sz}) has no head clearance")
+            return False
+
+    def can_reach_outside(start: Tuple[int, int]) -> bool:
+        q: deque = deque([start])
+        seen: Set[Tuple[int, int]] = {start}
+        while q:
+            x, z = q.popleft()
+            for dx, dz in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                nx, nz = x + dx, z + dz
+                if (nx, nz) in seen:
+                    continue
+                if is_outside(nx, nz) and can_step_to(nx, nz):
+                    return True
+                if (nx, nz) in floor_at and can_step_to(nx, nz):
+                    seen.add((nx, nz))
+                    q.append((nx, nz))
+        return False
+
+    for (sx, _, sz) in starts_xyz:
+        if not can_reach_outside((sx, sz)):
+            if verbose:
+                print(f"Start ({sx},{sz}) cannot reach outside via flat path at y={floor_y}")
+            return False
+    return True
+
+
+def _occupied_at_y_for_rooms(coords: List[Dict], y: int) -> Set[Tuple[int, int]]:
+    """
+    Build the set of occupied (x, z) cells at height y.
+    Includes blocks at y and door blocks at y-1 (doors are 2 blocks tall).
+    """
+    occupied: Set[Tuple[int, int]] = set()
+    for p in coords:
+        if p.get("y") == y:
+            occupied.add((int(p["x"]), int(p["z"])))
+        elif p.get("y") == y - 1:
+            block_name = p.get("material", "")
+            if "door" in block_name.lower():
+                occupied.add((int(p["x"]), int(p["z"])))
+    return occupied
+
+
+def _solid_blocks(coords: List[Dict[str, Any]], passable: Optional[Set[str]] = None) -> Set[Tuple[int, int, int]]:
+    """
+    Blocks that block passage. Exclude doors; exclude materials in passable (e.g. bed).
+    Bed must be excluded for has_exit/has_wide_exit: if bed is solid, a 2x2 block cannot
+    find a valid start position in a typical 5x5 room with bed at center.
+    """
+    passable = passable or set()
+    out: Set[Tuple[int, int, int]] = set()
+    for c in coords:
+        mat = str(c.get("material", "")).lower()
+        if "door" in mat:
+            continue
+        if passable and any(p in mat for p in passable):
+            continue
+        out.add((to_int(c["x"]), to_int(c.get("y", 0)), to_int(c["z"])))
+    return out
+
+
+def has_exit(
+    coords: List[Dict[str, Any]],
+    *,
+    width: int = 2,
+    depth: int = 1,
+    height: int = 2,
+    start_material: Optional[str] = None,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check that a width x depth x height block can reach outside from start (or centroid).
+    Default: start at centroid. 2x1x2 human, ±1 y step, doors passable.
+
+    Args:
+        coords: Block dicts with "x","y","z", optional "material".
+        width, depth, height: Block dimensions.
+        start_material: If given, start at blocks matching; else centroid.
+        verbose: Print failure reason.
+
+    Returns:
+        True if can reach (x,z) outside bounding box.
+    """
+    if not coords:
+        return True
+
+    # Bed must be passable: if solid, a 2x2 block cannot find a valid start in a 5x5 room with bed at center
+    solid = _solid_blocks(coords, passable={"bed"})
+    xs, ys, zs = xyz_lists(coords)
+    min_x, max_x = min(xs), max(xs)
+    min_y, max_y = min(ys), max(ys)
+    min_z, max_z = min(zs), max(zs)
+
+    def is_outside(x: int, z: int) -> bool:
+        return x < min_x or x > max_x or z < min_z or z > max_z
+
+    starts = _get_start_positions(coords, start_material=start_material)
+    if not starts:
+        return True
+
+    def volume_clear(ox: int, oy: int, oz: int, orient_x: bool) -> bool:
+        """Check width x depth x height volume clear. orient_x: width in x else in z."""
+        dx = width if orient_x else depth
+        dz = depth if orient_x else width
+        for xx in range(ox, ox + dx):
+            for zz in range(oz, oz + dz):
+                for yy in range(oy, oy + height):
+                    if (xx, yy, zz) in solid:
+                        return False
+        return True
+
+    def try_start(sx: int, sy: int, sz: int) -> bool:
+        for orient in [True, False]:
+            if volume_clear(sx, sy, sz, orient):
+                q: deque = deque([(sx, sy, sz, orient)])
+                seen: Set[Tuple[int, int, int, bool]] = {(sx, sy, sz, orient)}
+                while q:
+                    x, y, z, o = q.popleft()
+                    dx = width if o else depth
+                    dz = depth if o else width
+                    corners = [(x, z), (x + dx - 1, z), (x, z + dz - 1), (x + dx - 1, z + dz - 1)]
+                    if all(is_outside(cx, cz) for cx, cz in corners):
+                        return True
+                    for dx, dz in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                        for dy in [-1, 0, 1]:
+                            nx, ny, nz = x + dx, y + dy, z + dz
+                            if ny < min_y or ny > max_y:
+                                continue
+                            if (nx, ny, nz, o) in seen:
+                                continue
+                            if volume_clear(nx, ny, nz, o):
+                                seen.add((nx, ny, nz, o))
+                                q.append((nx, ny, nz, o))
+        return False
+
+    for (sx, sy, sz) in starts:
+        for dx, dz in [(0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)]:
+            if try_start(sx + dx, sy, sz + dz):
+                return True
+    return False
+
+
+def has_wide_exit(
+    coords: List[Dict[str, Any]],
+    *,
+    width: int = 2,
+    start_material: Optional[str] = None,
+    verbose: bool = False,
+) -> bool:
+    """
+    Check that a width x width x 2 block can exit. Same as has_exit with square footprint.
+    """
+    return has_exit(coords, width=width, depth=width, height=2, start_material=start_material, verbose=verbose)
+
+
 def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:
     """
     Determine whether there are at least `room_cnt` enclosed regions ("rooms")
@@ -250,17 +512,7 @@ def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:
         return True
 
     # 1) Collect occupied cells at the given height y.
-    #    Door blocks are 2 blocks tall, so a door at height y-1 also occupies height y.
-    occupied: Set[Tuple[int, int]] = set()
-    for p in coords:
-        if p.get("y") == y:
-            occupied.add((int(p["x"]), int(p["z"])))
-        elif p.get("y") == y - 1:
-            # Check if this is a door block (doors are 2 blocks tall)
-            block_name = p.get("material", "")
-            if "door" in block_name.lower():
-                occupied.add((int(p["x"]), int(p["z"])))
-
+    occupied = _occupied_at_y_for_rooms(coords, y)
     if not occupied:
         return False
 
