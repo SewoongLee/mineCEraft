@@ -31,6 +31,15 @@ Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
 | `category.json` | Evaluation categories: accuracy, safety, planning |
 | `samples/` | Example JS action files for manual evaluation |
 
+For documentation on `eval_code` functions, see the test notebooks (by category):
+
+| Category | Test notebooks |
+|----------|----------------|
+| **accuracy** | [material](mineCEraft/eval_code/material_test.ipynb), [shape](mineCEraft/eval_code/shape_test.ipynb), [size](mineCEraft/eval_code/size_test.ipynb) |
+| **safety** | [physical_plausibility](mineCEraft/eval_code/physical_plausibility_test.ipynb), [structural_stability](mineCEraft/eval_code/structural_stability_test.ipynb) |
+| **planning** | [efficiency](mineCEraft/eval_code/efficiency_test.ipynb), [dependency](mineCEraft/eval_code/dependency_test.ipynb) |
+| other | [integrated](mineCEraft/eval_code/_integrated_test.ipynb) |
+
 ---
 
 ## Acknowledgement
