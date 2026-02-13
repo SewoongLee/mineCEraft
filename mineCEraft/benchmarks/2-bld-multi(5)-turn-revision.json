@@ -1,0 +1,54 @@
+[
+  {
+    "prompts": [
+      [
+        "Build a studio.",
+        "The client changed their mind. Revise it to a two-room house.",
+        "The client changed their mind again. Revise it to a three-room house.",
+        "The client changed their mind again. Revise it to a four-room house.",
+        "The client changed their mind again. Revise it to a five-room house."
+      ],
+      [
+        "Create a studio.",
+        "The client changed their mind. Revise it to a two-room house.",
+        "The client changed their mind again. Revise it to a three-room house.",
+        "The client changed their mind again. Revise it to a four-room house.",
+        "The client changed their mind again. Revise it to a five-room house."
+      ],
+      [
+        "Construct a studio.",
+        "The client changed their mind. Revise it to a two-room house.",
+        "The client changed their mind again. Revise it to a three-room house.",
+        "The client changed their mind again. Revise it to a four-room house.",
+        "The client changed their mind again. Revise it to a five-room house."
+      ]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.are_doors_passable", "args": {}}
+        ],
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.are_doors_passable", "args": {}}
+        ],
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.are_doors_passable", "args": {}}
+        ],
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.are_doors_passable", "args": {}}
+        ],
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt":5}},
+            {"fn": "shape.are_doors_passable", "args": {}}
+        ]
+    ]
+  }
+]
