@@ -94,3 +94,27 @@ def min_y_is_leq(coords: List[Dict[str, Any]], *, max_y: int) -> int:
     _, ys, _ = xyz_lists(coords)
     min_y = min(ys)
     return 1 if min_y <= max_y else 0
+
+
+def max_y_is_geq(coords: List[Dict[str, Any]], *, min_y: int) -> int:
+    """
+    Check if the maximum y-coordinate (highest block) is greater than or equal to min_y.
+    Useful for checking that structures reach at least a certain height.
+    
+    Args:
+        coords: [{"x":..,"y":..,"z":.., ...}, ...]
+        min_y: The minimum required maximum y-coordinate (i.e., structure must reach at least this height)
+    
+    Returns:
+        1 if max(y) >= min_y, else 0
+    
+    Example:
+        # Check if structure reaches at least y=12 (e.g., 4-story building floor level)
+        max_y_is_geq(coords, min_y=12)
+    """
+    if not coords:
+        return 0
+    
+    _, ys, _ = xyz_lists(coords)
+    max_y = max(ys)
+    return 1 if max_y >= min_y else 0

@@ -1,36 +1,39 @@
 [
   {
     "prompts": [
-      ["Build the frame (including stairs) of a two-story building using concrete. The ground floor should be at y=0, with each subsequent floor 4 blocks above the previous one."]
+      ["Build the frame (including stairs) of a two-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
     ],
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
         {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 4}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 8}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]
   },
   {
     "prompts": [
-      ["Build the frame (including stairs) of a three-story building using concrete. The ground floor should be at y=0, with each subsequent floor 4 blocks above the previous one."]
+      ["Build the frame (including stairs) of a three-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
     ],
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
         {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 8}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 12}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]
   },
   {
     "prompts": [
-      ["Build the frame (including stairs) of a four-story building using concrete. The ground floor should be at y=0, with each subsequent floor 4 blocks above the previous one."]
+      ["Build the frame (including stairs) of a four-story building using concrete. Each upper floor should be 4 blocks above the one below it."]
     ],
     "checks": [
       [
         {"fn": "physical_plausibility.is_ground_connected", "args": {}},
         {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 12}},
+        {"fn": "size.max_y_is_geq", "args": {"min_y": 16}},
         {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
       ]
     ]
