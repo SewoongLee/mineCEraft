@@ -8,11 +8,11 @@ Our work is located in the `mineCEraft` folder.
 
 Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
 
-| Prefix | Meaning |
-|--------|---------|
-| **bde** | Building Elements |
-| **bld** | Building |
-| **cse** | Civil/Structural Engineering |
+| Prefix  | Meaning |
+|---------|---------|
+| `1-bde` | Building Elements |
+| `2-bld` | Building |
+| `3-cse` | Civil/Structural Engineering |
 
 ## Quick Start
 
