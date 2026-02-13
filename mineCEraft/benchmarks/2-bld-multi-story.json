@@ -1,0 +1,35 @@
+[
+    {
+        "prompts": [
+            ["Erect the structural frame for the second floor with exactly 4 columns and the floor slab at 5 block height."],
+            ["Build the structural frame for the second floor with exactly 4 columns and the floor slab at 5 block height."],
+            ["Create the structural frame for the second floor with exactly 4 columns and the floor slab at 5 block height."],
+            ["Construct the structural frame for the second floor with exactly 4 columns and the floor slab at 5 block height."],
+            ["Erect the structural frame for the second floor: 4 columns and a floor slab at 5 block height."],
+            ["Build the structural frame for the second floor: 4 columns and a floor slab at 5 block height."],
+            ["Add the structural frame for the second floor with 4 columns and the floor slab at 5 block height."],
+            ["Install the structural frame for the second floor with 4 columns and the floor slab at 5 block height."]
+        ],
+        "checks": [
+            [
+                {
+                    "fn": "physical_plausibility.is_ground_connected",
+                    "args": {}
+                },
+                {
+                    "fn": "size.max_y_is_geq",
+                    "args": {
+                        "min_y": 4
+                    }
+                },
+                {
+                    "fn": "shape.cluster_count_at_y_is",
+                    "args": {
+                        "y": 2,
+                        "expected_count": 4
+                    }
+                }
+            ]
+        ]
+    }
+]
