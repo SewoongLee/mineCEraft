@@ -17,8 +17,8 @@ Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
 Subcategories:
 
 - **Building Elements**: Foundations, Walls, Roofs and Columns, Frames
-- **Buildings**: Basic Buildings, Multiple Rooms, Multiple Bedrooms, Multi-story Building, Accessibility & Human Factors, Unusual/Creative Requests, Resource Optimization, Single-turn Planning, Multi-turn Planning & Revision
-- **Civil/Structural Engineering**: Basic Bridges, Arched Bridges, Vault, Dome
+- **Buildings**: Basic Buildings, Multiple Rooms, Multiple Bedrooms, Multi-story Building, Accessibility, Creative Requests, Resource Optimization, Single-turn Planning, Multi-turn Planning & Revision
+- **Civil/Structural Engineering**: Basic Bridges, Arched Bridges, Dome
 
 ## Quick Start
 
