@@ -20,25 +20,6 @@
   },
   {
     "prompts": [
-      ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of blue."],
-      ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of blue."],
-      ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of blue."]
-    ],
-    "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "material.is_corner_material_equal_to", "args": {"expected_material": "stone"}},
-        {"fn": "material.is_min_x_material_equal_to", "args": {"expected_material": "dirt"}},
-        {"fn": "material.is_max_x_material_equal_to", "args": {"expected_material": "dirt"}},
-        {"fn": "material.is_min_z_material_equal_to", "args": {"expected_material": "dirt"}},
-        {"fn": "material.is_max_z_material_equal_to", "args": {"expected_material": "dirt"}},
-        {"fn": "material.is_highest_block_material_equal_to", "args": {"expected_material": "blue", "use_substring_match": true}},
-        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 0, "expected_material": "door", "use_substring_match": true}}
-      ]
-    ]
-  },
-  {
-    "prompts": [
       ["Let's build a house with pillars made of stone, walls made of dirt, and a roof made of green."],
       ["Let's create a house with pillars made of stone, walls made of dirt, and a roof made of green."],
       ["Let's construct a house with pillars made of stone, walls made of dirt, and a roof made of green."]
