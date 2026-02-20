@@ -1,1378 +1,514 @@
 [
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 21
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":21}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 24
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":24}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 27
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":27}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 30
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":30}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 23
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":23}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 27
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":27}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 31
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":31}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 35
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":35}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 31
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":31}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 34
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":34}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 37
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":37}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 40
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":40}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 33
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":33}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 37
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":37}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 41
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":41}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 45
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":45}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 41
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":41}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 44
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":44}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 47
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":47}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 50
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":50}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 43
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":43}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 47
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":47}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 51
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":51}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 55
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":55}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 55
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":55}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 58
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":58}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 61
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":61}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 64
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":64}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 57
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":57}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 61
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":61}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":3}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 65
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":65}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":4}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   },
+
   {
     "prompts": [
-      [
-        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ],
-      [
-        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
-      ]
+      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
+      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
     ],
     "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 69
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":69}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":5}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence":["stone","oak_planks"]}}
+        ]
     ]
   }
+
 ]
