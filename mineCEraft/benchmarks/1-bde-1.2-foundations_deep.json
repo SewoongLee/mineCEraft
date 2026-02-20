@@ -1,352 +1,410 @@
 [
-    {
-        "prompts": [
-            ["Install four 1×1 drilled piles, each 7 blocks deep, with a span length of 5 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by four 1×1 drilled piles, each extending 7 blocks deep with a 5-block span."],
-            ["Install a 20×20 pile cap with four underlying drilled piles of size 1×1 and depth 7 blocks, arranged with a 5-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -7
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -7,
-                        "expected_count": 4
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -7,
-                        "min_span": 5
-                    }
-                }
-            ]
+  {
+    "prompts": [
+      ["Lay a 7×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":69}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install five 1×1 drilled piles, each 8 blocks deep, with a span length of 6 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by five 1×1 drilled piles, each extending 8 blocks deep with a 6-block span."],
-            ["Install a 20×20 pile cap with five underlying drilled piles of size 1×1 and depth 8 blocks, arranged with a 6-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -8
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -8,
-                        "expected_count": 5
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -8,
-                        "min_span": 6
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":74}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install six 1×1 drilled piles, each 9 blocks deep, with a span length of 7 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by six 1×1 drilled piles, each extending 9 blocks deep with a 7-block span."],
-            ["Install a 20×20 pile cap with six underlying drilled piles of size 1×1 and depth 9 blocks, arranged with a 7-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -9
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -9,
-                        "expected_count": 6
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -9,
-                        "min_span": 7
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":79}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install seven 1×1 drilled piles, each 10 blocks deep, with a span length of 8 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by seven 1×1 drilled piles, each extending 10 blocks deep with a 8-block span."],
-            ["Install a 20×20 pile cap with seven underlying drilled piles of size 1×1 and depth 10 blocks, arranged with a 8-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -10
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -10,
-                        "expected_count": 7
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -10,
-                        "min_span": 8
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":118}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install eight 1×1 drilled piles, each 11 blocks deep, with a span length of 9 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by eight 1×1 drilled piles, each extending 11 blocks deep with a 9-block span."],
-            ["Install a 20×20 pile cap with eight underlying drilled piles of size 1×1 and depth 11 blocks, arranged with a 9-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -11
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -11,
-                        "expected_count": 8
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -11,
-                        "min_span": 9
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":123}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install four 2×2 drilled piles, each 7 blocks deep, with a span length of 5 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by four 2×2 drilled piles, each extending 7 blocks deep with a 5-block span."],
-            ["Install a 20×20 pile cap with four underlying drilled piles of size 2×2 and depth 7 blocks, arranged with a 5-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -7
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -7,
-                        "expected_count": 4
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -7,
-                        "min_span": 5
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":128}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install five 2×2 drilled piles, each 8 blocks deep, with a span length of 6 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by five 2×2 drilled piles, each extending 8 blocks deep with a 6-block span."],
-            ["Install a 20×20 pile cap with five underlying drilled piles of size 2×2 and depth 8 blocks, arranged with a 6-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -8
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -8,
-                        "expected_count": 5
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -8,
-                        "min_span": 6
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":83}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install six 2×2 drilled piles, each 9 blocks deep, with a span length of 7 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by six 2×2 drilled piles, each extending 9 blocks deep with a 7-block span."],
-            ["Install a 20×20 pile cap with six underlying drilled piles of size 2×2 and depth 9 blocks, arranged with a 7-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -9
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -9,
-                        "expected_count": 6
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -9,
-                        "min_span": 7
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":88}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install seven 2×2 drilled piles, each 10 blocks deep, with a span length of 8 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by seven 2×2 drilled piles, each extending 10 blocks deep with a 8-block span."],
-            ["Install a 20×20 pile cap with seven underlying drilled piles of size 2×2 and depth 10 blocks, arranged with a 8-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -10
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -10,
-                        "expected_count": 7
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -10,
-                        "min_span": 8
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":93}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
         ]
-    },
-    {
-        "prompts": [
-            ["Install eight 2×2 drilled piles, each 11 blocks deep, with a span length of 9 blocks beneath a 20×20 pile cap."],
-            ["Construct a 20×20 pile cap supported by eight 2×2 drilled piles, each extending 11 blocks deep with a 9-block span."],
-            ["Install a 20×20 pile cap with eight underlying drilled piles of size 2×2 and depth 11 blocks, arranged with a 9-block span."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "size.min_y_is_equal",
-                    "args": {
-                        "expected_y": -11
-                    }
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {
-                        "y": -11,
-                        "expected_count": 8
-                    }
-                },
-                {
-                    "fn": "shape.clusters_at_y_have_min_span",
-                    "args": {
-                        "y": -11,
-                        "min_span": 9
-                    }
-                }
-            ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":146}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
         ]
-    }
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":151}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 7×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":156}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":83}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":88}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":93}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":146}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":151}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":156}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":101}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":106}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":111}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":182}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":187}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  },
+
+  {
+    "prompts": [
+      ["Lay a 9×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":192}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+        ]
+    ]
+  }
+
 ]
