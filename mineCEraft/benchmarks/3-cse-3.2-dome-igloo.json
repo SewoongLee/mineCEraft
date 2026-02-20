@@ -6,16 +6,17 @@
       ["Construct an igloo with a base of 5 blocks in diameter. The top must curve upward like a hemisphere and reach at least 3 blocks high."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
-        {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 2.5}},
-        {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 5}},
-        {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
-        {"fn": "size.max_y_is_geq", "args": {"min_y": 3}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
+            {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 2.5}},
+            {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 5}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 3}}
+        ]
     ]
   },
+
   {
     "prompts": [
       ["Build an igloo with a base of 6 blocks in diameter. The top must curve upward like a hemisphere and reach at least 3 blocks high."],
@@ -23,16 +24,17 @@
       ["Construct an igloo with a base of 6 blocks in diameter. The top must curve upward like a hemisphere and reach at least 3 blocks high."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
-        {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 3}},
-        {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 6}},
-        {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
-        {"fn": "size.max_y_is_geq", "args": {"min_y": 3}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
+            {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 3}},
+            {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 6}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 3}}
+        ]
     ]
   },
+
   {
     "prompts": [
       ["Build an igloo with a base of 7 blocks in diameter. The top must curve upward like a hemisphere and reach at least 4 blocks high."],
@@ -40,16 +42,17 @@
       ["Construct an igloo with a base of 7 blocks in diameter. The top must curve upward like a hemisphere and reach at least 4 blocks high."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
-        {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 3.5}},
-        {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 7}},
-        {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
-        {"fn": "size.max_y_is_geq", "args": {"min_y": 4}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
+            {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 3.5}},
+            {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 7}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}}
+        ]
     ]
   },
+
   {
     "prompts": [
       ["Build an igloo with a base of 8 blocks in diameter. The top must curve upward like a hemisphere and reach at least 4 blocks high."],
@@ -57,16 +60,17 @@
       ["Construct an igloo with a base of 8 blocks in diameter. The top must curve upward like a hemisphere and reach at least 4 blocks high."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
-        {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 4}},
-        {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 8}},
-        {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
-        {"fn": "size.max_y_is_geq", "args": {"min_y": 4}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
+            {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 4}},
+            {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 8}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}}
+        ]
     ]
   },
+
   {
     "prompts": [
       ["Build an igloo with a base of 9 blocks in diameter. The top must curve upward like a hemisphere and reach at least 5 blocks high."],
@@ -74,16 +78,17 @@
       ["Construct an igloo with a base of 9 blocks in diameter. The top must curve upward like a hemisphere and reach at least 5 blocks high."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
-        {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 4.5}},
-        {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 9}},
-        {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
-        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
+            {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 4.5}},
+            {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 9}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+        ]
     ]
   },
+
   {
     "prompts": [
       ["Build an igloo with a base of 10 blocks in diameter. The top must curve upward like a hemisphere and reach at least 5 blocks high."],
@@ -91,14 +96,15 @@
       ["Construct an igloo with a base of 10 blocks in diameter. The top must curve upward like a hemisphere and reach at least 5 blocks high."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
-        {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 5}},
-        {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 10}},
-        {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
-        {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 1}},
+            {"fn": "shape.cluster_at_y_has_min_radius", "args": {"y": 0, "min_radius": 5}},
+            {"fn": "shape.cluster_at_y_has_min_diameter", "args": {"y": 0, "min_diameter": 10}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 5}}
+        ]
     ]
   }
+
 ]

@@ -6,12 +6,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -24,12 +24,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -42,12 +42,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 4}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -60,12 +60,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -78,12 +78,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -96,12 +96,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 4}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -114,12 +114,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -132,12 +132,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -150,12 +150,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 4}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -168,12 +168,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 4}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":1}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -186,12 +186,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 4}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":2}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]
@@ -204,12 +204,12 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":4}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 4}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ],
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.has_rooms", "args": {"room_cnt":3}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
             {"fn": "shape.are_doors_passable", "args": {}}
         ]
     ]

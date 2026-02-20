@@ -1,29 +1,18 @@
 [
-    {
-        "prompts": [
-            ["Build a stone arch bridge."],
-            ["Create a stone arch bridge."],
-            ["Construct a stone arch bridge."]
-        ],
-        "checks": [
-            [
-                {
-                    "fn": "physical_plausibility.is_ground_connected",
-                    "args": {}
-                },
-                {
-                    "fn": "shape.cluster_count_at_y_is",
-                    "args": {"y": 0, "expected_count": 2}
-                },
-                {
-                    "fn": "shape.is_top_surface_concave",
-                    "args": {"strict": "non-flat"}
-                },
-                {
-                    "fn": "shape.is_bottom_surface_concave",
-                    "args": {"strict": "non-flat"}
-                }
-            ]
+  {
+    "prompts": [
+      ["Build a stone arch bridge."],
+      ["Create a stone arch bridge."],
+      ["Construct a stone arch bridge."]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
-    }
+    ]
+  }
+
 ]

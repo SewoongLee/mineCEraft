@@ -8,13 +8,13 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":10}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":4}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 10}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -28,14 +28,14 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":10}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":5}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 10}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 5}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -49,15 +49,15 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":10}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":6}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 4, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 10}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 6}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -71,13 +71,13 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":13}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":4}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 13}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -91,14 +91,14 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":13}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":5}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 13}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 5}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -112,15 +112,15 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":13}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":6}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 4, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 13}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 6}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -134,13 +134,13 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":17}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":4}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 17}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -154,14 +154,14 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":17}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":5}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 17}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 5}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -175,15 +175,15 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":17}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":6}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 4, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 17}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 6}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -197,13 +197,13 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":20}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":4}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 20}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -217,14 +217,14 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":20}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":5}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 20}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 5}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   },
@@ -238,15 +238,15 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":1,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":2,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":3,"expected_count":2}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":4,"expected_count":2}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":0,"min_span":20}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":6}},
-            {"fn": "shape.is_top_surface_concave", "args": {"strict":"non-flat"}},
-            {"fn": "shape.is_bottom_surface_concave", "args": {"strict":"non-flat"}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 2, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 3, "expected_count": 2}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 4, "expected_count": 2}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": 0, "min_span": 20}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 6}},
+            {"fn": "shape.is_top_surface_concave", "args": {"strict": "non-flat"}},
+            {"fn": "shape.is_bottom_surface_concave", "args": {"strict": "non-flat"}}
         ]
     ]
   }

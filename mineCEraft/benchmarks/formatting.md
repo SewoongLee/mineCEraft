@@ -25,16 +25,15 @@ Each benchmark file is a JSON array of objects. Each object has:
 - The outer `checks` array has one element per turn.
 - The inner list (the actual list of check objects) uses 4-space indent.
 - **Each check object (fn) on its own line.**
-- Format each check as a compact object: `{"fn": "module.function_name", "args": {...}}`
-- Use `separators=(',', ':')` for args (no spaces, compact).
+- Put a space after `:` and after `,` everywhere (same rule for check object and for args).
 
 Example:
 ```json
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":0,"expected_count":2}},
-            {"fn": "size.max_y_is_geq", "args": {"min_y":4}}
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 2}},
+            {"fn": "size.max_y_is_geq", "args": {"min_y": 4}}
         ]
     ]
 ```
@@ -49,47 +48,15 @@ Example:
 |---------|--------|
 | Root array | Newlines between items |
 | Prompts | `["text"],` each on one line |
-| Checks inner list | Each `{"fn": "...", "args": {...}}` on its own line |
-| Args | Compact (no spaces, e.g. `{"y":0,"min_span":10}`) |
+| Objects | Space after `:` and `,` (e.g. `{"fn": "...", "args": {"y": 0}}`) |
 
-## Example Script (Python)
+## Reformatting All Benchmarks
 
-To reformat a benchmark file programmatically:
+A script in this directory reformats every `*.json` file (except `builder.json`) to match the rules above. **Reformatting changes only whitespace** (newlines, indentation). All content is preserved exactly: numbers keep their form (e.g. `62e6` stays `62e6`, `62000000` stays `62000000`), strings and keys are unchanged.
 
-```python
-import json
-from pathlib import Path
-
-def fmt_item(item):
-    lines = ['  {', '    "prompts": [']
-    for p in item['prompts']:
-        s = json.dumps(p, ensure_ascii=False)
-        lines.append('      ' + s + ',')
-    if item['prompts']:
-        lines[-1] = lines[-1].rstrip(',')
-    lines.append('    ],')
-    lines.append('    "checks": [')
-    lines.append('        [')
-    for c in item['checks'][0]:
-        args = json.dumps(c['args'], ensure_ascii=False, separators=(',', ':'))
-        lines.append('            {"fn": "' + c['fn'] + '", "args": ' + args + '},')
-    if item['checks'][0]:
-        lines[-1] = lines[-1].rstrip(',')
-    lines.append('        ]')
-    lines.append('    ]')
-    lines.append('  }')
-    return '\n'.join(lines)
-
-path = Path('benchmarks/your_file.json')
-with path.open(encoding='utf-8') as f:
-    data = json.load(f)
-out = ['[']
-for i, item in enumerate(data):
-    out.append(fmt_item(item))
-    if i < len(data) - 1:
-        out[-1] += ','
-    out.append('')
-out.append(']')
-with path.open('w', encoding='utf-8') as f:
-    f.write('\n'.join(out))
+```bash
+cd mineCEraft/benchmarks
+python reformat_benchmarks.py
 ```
+
+Use **reformat_benchmarks.py** for formatting. It handles single- and multi-turn benchmarks and preserves all content (no re-serialization of numbers or strings).

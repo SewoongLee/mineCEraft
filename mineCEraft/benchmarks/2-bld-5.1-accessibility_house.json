@@ -10,45 +10,17 @@
     ],
     "checks": [
         [
-            {
-                "fn": "physical_plausibility.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 3
-                }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            },
-            {
-                "fn": "material.is_block_cnt_equal_to",
-                "args": {
-                    "expected_count": 2,
-                    "expected_material": "bed",
-                    "use_substring_match": true
-                }
-            },
-            {
-                "fn": "shape.is_single_level",
-                "args": {
-                    "start_material": "bed"
-                }
-            },
-            {
-                "fn": "shape.has_exit",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_wide_exit",
-                "args": {}
-            }
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 3}},
+            {"fn": "shape.are_doors_passable", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 2, "expected_material": "bed", "use_substring_match": true}},
+            {"fn": "shape.is_single_level", "args": {"start_material": "bed"}},
+            {"fn": "shape.has_exit", "args": {}},
+            {"fn": "shape.has_wide_exit", "args": {}}
         ]
     ]
   },
+
   {
     "prompts": [
       ["Build a wheelchair-accessible house for one elderly person and one caregiver: single level, 2 rooms, 1 bed for the elderly resident, no stairs, and doorways at least 2 blocks wide."],
@@ -60,45 +32,17 @@
     ],
     "checks": [
         [
-            {
-                "fn": "physical_plausibility.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 2
-                }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            },
-            {
-                "fn": "material.is_block_cnt_equal_to",
-                "args": {
-                    "expected_count": 1,
-                    "expected_material": "bed",
-                    "use_substring_match": true
-                }
-            },
-            {
-                "fn": "shape.is_single_level",
-                "args": {
-                    "start_material": "bed"
-                }
-            },
-            {
-                "fn": "shape.has_exit",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_wide_exit",
-                "args": {}
-            }
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
+            {"fn": "shape.are_doors_passable", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 1, "expected_material": "bed", "use_substring_match": true}},
+            {"fn": "shape.is_single_level", "args": {"start_material": "bed"}},
+            {"fn": "shape.has_exit", "args": {}},
+            {"fn": "shape.has_wide_exit", "args": {}}
         ]
     ]
   },
+
   {
     "prompts": [
       ["Build a wheelchair-accessible house for two elderly people: single level, 2 rooms, 2 beds for the two elderly residents, no stairs, and doorways at least 2 blocks wide."],
@@ -110,45 +54,17 @@
     ],
     "checks": [
         [
-            {
-                "fn": "physical_plausibility.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 2
-                }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            },
-            {
-                "fn": "material.is_block_cnt_equal_to",
-                "args": {
-                    "expected_count": 2,
-                    "expected_material": "bed",
-                    "use_substring_match": true
-                }
-            },
-            {
-                "fn": "shape.is_single_level",
-                "args": {
-                    "start_material": "bed"
-                }
-            },
-            {
-                "fn": "shape.has_exit",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_wide_exit",
-                "args": {}
-            }
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 2}},
+            {"fn": "shape.are_doors_passable", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 2, "expected_material": "bed", "use_substring_match": true}},
+            {"fn": "shape.is_single_level", "args": {"start_material": "bed"}},
+            {"fn": "shape.has_exit", "args": {}},
+            {"fn": "shape.has_wide_exit", "args": {}}
         ]
     ]
   },
+
   {
     "prompts": [
       ["Build a wheelchair-accessible house for one elderly person: single level, 1 room, 1 bed for the elderly resident, no stairs, and doorways at least 2 blocks wide."],
@@ -160,43 +76,15 @@
     ],
     "checks": [
         [
-            {
-                "fn": "physical_plausibility.is_ground_connected",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_rooms",
-                "args": {
-                    "room_cnt": 1
-                }
-            },
-            {
-                "fn": "shape.are_doors_passable",
-                "args": {}
-            },
-            {
-                "fn": "material.is_block_cnt_equal_to",
-                "args": {
-                    "expected_count": 1,
-                    "expected_material": "bed",
-                    "use_substring_match": true
-                }
-            },
-            {
-                "fn": "shape.is_single_level",
-                "args": {
-                    "start_material": "bed"
-                }
-            },
-            {
-                "fn": "shape.has_exit",
-                "args": {}
-            },
-            {
-                "fn": "shape.has_wide_exit",
-                "args": {}
-            }
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "shape.has_rooms", "args": {"room_cnt": 1}},
+            {"fn": "shape.are_doors_passable", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 1, "expected_material": "bed", "use_substring_match": true}},
+            {"fn": "shape.is_single_level", "args": {"start_material": "bed"}},
+            {"fn": "shape.has_exit", "args": {}},
+            {"fn": "shape.has_wide_exit", "args": {}}
         ]
     ]
   }
+
 ]

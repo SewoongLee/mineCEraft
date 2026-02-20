@@ -6,12 +6,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":69}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 69}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -23,12 +23,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":74}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 74}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -40,12 +40,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":79}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 79}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -57,12 +57,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":118}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 118}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -74,12 +74,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":123}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 123}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -91,12 +91,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":128}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 128}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -108,12 +108,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":83}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 83}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -125,12 +125,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":88}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 88}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -142,12 +142,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":93}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 93}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -159,12 +159,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":146}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 146}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -176,12 +176,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":151}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 151}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -193,12 +193,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":156}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 156}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -210,12 +210,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":83}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 83}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -227,12 +227,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":88}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 88}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -244,12 +244,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":93}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 93}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -261,12 +261,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":146}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 146}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -278,12 +278,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":151}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 151}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -295,12 +295,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":156}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 156}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -312,12 +312,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":101}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 101}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -329,12 +329,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":106}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 106}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -346,12 +346,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":111}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 111}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-5}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-5,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-5,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -5}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -5, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -5, "min_span": 1}}
         ]
     ]
   },
@@ -363,12 +363,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":182}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 182}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":4}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 4}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -380,12 +380,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":187}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 187}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":5}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 5}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   },
@@ -397,12 +397,12 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count":192}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material":"stone"}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 192}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "size.min_y_is_equal", "args": {"expected_y":-6}},
-            {"fn": "shape.cluster_count_at_y_is", "args": {"y":-6,"expected_count":6}},
-            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y":-6,"min_span":1}}
+            {"fn": "size.min_y_is_equal", "args": {"expected_y": -6}},
+            {"fn": "shape.cluster_count_at_y_is", "args": {"y": -6, "expected_count": 6}},
+            {"fn": "shape.clusters_at_y_have_min_span", "args": {"y": -6, "min_span": 1}}
         ]
     ]
   }

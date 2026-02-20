@@ -1,25 +1,20 @@
 [
   {
     "prompts": [
-      [
-        "Build a single-story movie theater with 100 seats (use oak stairs). The total size must not exceed 50 × 50 blocks. There should be two exits (use two doors for each), and the path to them should be flat and glowing (use sea lantern blocks) with no dead ends."
-      ],
-      [
-        "Create a single-story movie theater with 100 seats (use oak stairs). The total size must not exceed 50 × 50 blocks. There should be two exits (use two doors for each), and the path to them should be flat and glowing (use sea lantern blocks) with no dead ends."
-      ],
-      [
-        "Construct a single-story movie theater with 100 seats (use oak stairs). The total size must not exceed 50 × 50 blocks. There should be two exits (use two doors for each), and the path to them should be flat and glowing (use sea lantern blocks) with no dead ends."
-      ]
+      ["Build a single-story movie theater with 100 seats (use oak stairs). The total size must not exceed 50 × 50 blocks. There should be two exits (use two doors for each), and the path to them should be flat and glowing (use sea lantern blocks) with no dead ends."],
+      ["Create a single-story movie theater with 100 seats (use oak stairs). The total size must not exceed 50 × 50 blocks. There should be two exits (use two doors for each), and the path to them should be flat and glowing (use sea lantern blocks) with no dead ends."],
+      ["Construct a single-story movie theater with 100 seats (use oak stairs). The total size must not exceed 50 × 50 blocks. There should be two exits (use two doors for each), and the path to them should be flat and glowing (use sea lantern blocks) with no dead ends."]
     ],
     "checks": [
-      [
-        {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-        {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 100, "expected_material": "oak_stairs", "use_substring_match": true}},
-        {"fn": "size.is_leq", "args": {"xz": [50, 50], "y": 50}},
-        {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 3, "expected_material": "door", "use_substring_match": true}},
-        {"fn": "shape.are_doors_passable", "args": {}},
-        {"fn": "shape.are_adjacent", "args": {"materials": ["door", "sea_lantern"], "substring_match": true}}
-      ]
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 100, "expected_material": "oak_stairs", "use_substring_match": true}},
+            {"fn": "size.is_leq", "args": {"xz": [50, 50], "y": 50}},
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 3, "expected_material": "door", "use_substring_match": true}},
+            {"fn": "shape.are_doors_passable", "args": {}},
+            {"fn": "shape.are_adjacent", "args": {"materials": ["door", "sea_lantern"], "substring_match": true}}
+        ]
     ]
   }
+
 ]
