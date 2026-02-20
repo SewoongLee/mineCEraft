@@ -1,9 +1,15 @@
 [
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -38,9 +44,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -75,9 +87,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -112,9 +130,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -149,9 +173,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -186,9 +216,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -223,9 +259,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -260,9 +302,15 @@
   },
   {
     "prompts": [
-      ["Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 3 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -297,9 +345,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -334,9 +388,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -371,9 +431,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -408,9 +474,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -445,9 +517,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -482,9 +560,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -519,9 +603,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -556,9 +646,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 5 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -593,9 +689,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -630,9 +732,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -667,9 +775,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -704,9 +818,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -741,9 +861,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -778,9 +904,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -815,9 +947,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -852,9 +990,15 @@
   },
   {
     "prompts": [
-      ["Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 5 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -889,9 +1033,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -926,9 +1076,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -963,9 +1119,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -1000,9 +1162,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -1037,9 +1205,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -1074,9 +1248,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -1111,9 +1291,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -1148,9 +1334,15 @@
   },
   {
     "prompts": [
-      ["Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
+      [
+        "Build a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Create a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ],
+      [
+        "Construct a 7 × 7 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."
+      ]
     ],
     "checks": [
       [
@@ -1162,598 +1354,6 @@
           "fn": "material.is_block_cnt_equal_to",
           "args": {
             "expected_count": 69
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 76
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 79
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 82
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 85
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 78
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 82
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 86
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 7 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 7 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 7 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 90
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 106
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 109
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 112
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 3 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 115
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 5
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 2 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 108
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 2
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 3 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 112
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 3
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 4 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 116
-          }
-        },
-        {
-          "fn": "shape.cluster_count_at_y_is",
-          "args": {
-            "y": 1,
-            "expected_count": 4
-          }
-        },
-        {
-          "fn": "dependency.material_sequence_order",
-          "args": {
-            "material_sequence": [
-              "stone",
-              "oak_planks"
-            ]
-          }
-        }
-      ]
-    ]
-  },
-  {
-    "prompts": [
-      ["Build a 10 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Create a 10 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."],
-      ["Construct a 10 × 10 × 1 flat roof (one block thick) supported by exactly 5 columns with a 1 × 1 cross-section and a height of 4 blocks. Use stone for the columns and oak planks for the roof."]
-    ],
-    "checks": [
-      [
-        {
-          "fn": "physical_plausibility.is_ground_connected",
-          "args": {}
-        },
-        {
-          "fn": "material.is_block_cnt_equal_to",
-          "args": {
-            "expected_count": 120
           }
         },
         {
