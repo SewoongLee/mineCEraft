@@ -249,6 +249,13 @@ def plot(
         tick0 = int(np.floor(lo))
         return dict(tickmode="linear", tick0=tick0, dtick=1, tickformat=",d")
 
+    # When colorbar is shown (heatmap mode), place legend on the left to avoid overlap.
+    legend_config: dict = dict(itemsizing="constant")
+    margin = dict(l=0, r=0, t=40, b=0)
+    if heat_colors and colorbar_title:
+        legend_config.update(x=0, xanchor="left", y=1, yanchor="top")
+        margin["l"] = 80  # space for legend on the left
+
     fig.update_layout(
         title=title,
         scene=dict(
@@ -260,8 +267,8 @@ def plot(
             yaxis=_int_ticks(plot_y),
             zaxis=_int_ticks(plot_z),
         ),
-        legend=dict(itemsizing="constant"),
-        margin=dict(l=0, r=0, t=40, b=0),
+        legend=legend_config,
+        margin=margin,
     )
 
     # Add a material legend (only if not in heatmap mode).
