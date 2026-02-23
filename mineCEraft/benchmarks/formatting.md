@@ -59,4 +59,4 @@ cd mineCEraft/benchmarks
 python reformat_benchmarks.py
 ```
 
-Use **reformat_benchmarks.py** for formatting. It handles single- and multi-turn benchmarks and preserves all content (no re-serialization of numbers or strings).
+Use **reformat_benchmarks.py** for formatting. Update it if there are bugs. It handles single- and multi-turn benchmarks and preserves all content (no re-serialization of numbers or strings).
