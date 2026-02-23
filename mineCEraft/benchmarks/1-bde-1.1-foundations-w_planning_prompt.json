@@ -1,0 +1,18 @@
+[
+  {
+    "prompts": [
+      ["Lay the foundation for a 6x6 block rectangular building. Use stone blocks and make it one block deep. Let's think about the most efficient path."],
+      ["Install the foundation for a 6x6 block rectangular building. Use stone blocks and make it one block deep. Let's think about the most efficient path."]
+    ],
+    "checks": [
+        [
+            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 36}},
+            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
+            {"fn": "size.is_equal", "args": {"xz": [6, 6], "y": 1}},
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+        ]
+    ]
+  }
+
+]
