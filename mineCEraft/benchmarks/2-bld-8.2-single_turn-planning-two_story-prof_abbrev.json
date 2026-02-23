@@ -1,0 +1,37 @@
+[
+  {
+    "prompts": [
+      ["Build a two-story house:\n- Stone SOG\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling"],
+      ["Build a two-story house:\n- Stone SOG\n- Frame made of white concrete\n- Red ceiling\n- 2nd floor: Oak planks"],
+      ["Build a two-story house:\n- Stone SOG\n- 2nd floor: Oak planks\n- Frame made of white concrete\n- Red ceiling"],
+      ["Build a two-story house:\n- Stone SOG\n- 2nd floor: Oak planks\n- Red ceiling\n- Frame made of white concrete"],
+      ["Build a two-story house:\n- Stone SOG\n- Red ceiling\n- Frame made of white concrete\n- 2nd floor: Oak planks"],
+      ["Build a two-story house:\n- Stone SOG\n- Red ceiling\n- 2nd floor: Oak planks\n- Frame made of white concrete"],
+      ["Build a two-story house:\n- Frame made of white concrete\n- Stone SOG\n- 2nd floor: Oak planks\n- Red ceiling"],
+      ["Build a two-story house:\n- Frame made of white concrete\n- Stone SOG\n- Red ceiling\n- 2nd floor: Oak planks"],
+      ["Build a two-story house:\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Stone SOG\n- Red ceiling"],
+      ["Build a two-story house:\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Red ceiling\n- Stone SOG"],
+      ["Build a two-story house:\n- Frame made of white concrete\n- Red ceiling\n- Stone SOG\n- 2nd floor: Oak planks"],
+      ["Build a two-story house:\n- Frame made of white concrete\n- Red ceiling\n- 2nd floor: Oak planks\n- Stone SOG"],
+      ["Build a two-story house:\n- 2nd floor: Oak planks\n- Stone SOG\n- Frame made of white concrete\n- Red ceiling"],
+      ["Build a two-story house:\n- 2nd floor: Oak planks\n- Stone SOG\n- Red ceiling\n- Frame made of white concrete"],
+      ["Build a two-story house:\n- 2nd floor: Oak planks\n- Frame made of white concrete\n- Stone SOG\n- Red ceiling"],
+      ["Build a two-story house:\n- 2nd floor: Oak planks\n- Frame made of white concrete\n- Red ceiling\n- Stone SOG"],
+      ["Build a two-story house:\n- 2nd floor: Oak planks\n- Red ceiling\n- Stone SOG\n- Frame made of white concrete"],
+      ["Build a two-story house:\n- 2nd floor: Oak planks\n- Red ceiling\n- Frame made of white concrete\n- Stone SOG"],
+      ["Build a two-story house:\n- Red ceiling\n- Stone SOG\n- Frame made of white concrete\n- 2nd floor: Oak planks"],
+      ["Build a two-story house:\n- Red ceiling\n- Stone SOG\n- 2nd floor: Oak planks\n- Frame made of white concrete"],
+      ["Build a two-story house:\n- Red ceiling\n- Frame made of white concrete\n- Stone SOG\n- 2nd floor: Oak planks"],
+      ["Build a two-story house:\n- Red ceiling\n- Frame made of white concrete\n- 2nd floor: Oak planks\n- Stone SOG"],
+      ["Build a two-story house:\n- Red ceiling\n- 2nd floor: Oak planks\n- Stone SOG\n- Frame made of white concrete"],
+      ["Build a two-story house:\n- Red ceiling\n- 2nd floor: Oak planks\n- Frame made of white concrete\n- Stone SOG"]
+    ],
+    "checks": [
+        [
+            {"fn": "physical_plausibility.is_ground_connected", "args": {}},
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence": ["stone", "white_concrete", "oak_planks", "red"]}}
+        ]
+    ]
+  }
+
+]
