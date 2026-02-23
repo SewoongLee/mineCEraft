@@ -1,14 +1,14 @@
 [
   {
     "prompts": [
-      ["Build a 10 × 10 SOMD at Level 2 supported by exactly five 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
-      ["Create a 10 × 10 SOMD at Level 2 supported by exactly five 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
-      ["Construct a 10 × 10 SOMD at Level 2 supported by exactly five 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."]
+      ["Build a 10 × 10 × 2  SOMD at Level 2 supported by exactly five 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
+      ["Create a 10 × 10 × 2  SOMD at Level 2 supported by exactly five 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
+      ["Construct a 10 × 10 × 2  SOMD at Level 2 supported by exactly five 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."]
     ],
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "structural_stability.is_stress_safe", "args": {"von_mises_stress": 62000000}},
+            {"fn": "structural_stability.is_stress_safe", "args": {"von_mises_stress": 8943}},
             {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 240}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 5}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 5}},
@@ -19,14 +19,14 @@
 
   {
     "prompts": [
-      ["Build a 10 × 10 SOMD at Level 2 supported by exactly four 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
-      ["Create a 10 × 10 SOMD at Level 2 supported by exactly four 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
-      ["Construct a 10 × 10 SOMD at Level 2 supported by exactly four 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."]
+      ["Build a 10 × 10 × 2  SOMD at Level 2 supported by exactly four 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
+      ["Create a 10 × 10 × 2 SOMD at Level 2 supported by exactly four 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."],
+      ["Construct a 10 × 10 × 2 SOMD at Level 2 supported by exactly four 2 × 2 × 2 columns. Arrange the columns for maximum structural stability. Use white_concrete for the supports, iron for the first layer, and gray_concrete for the second."]
     ],
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "structural_stability.is_stress_safe", "args": {"von_mises_stress": 70000000}},
+            {"fn": "structural_stability.is_stress_safe", "args": {"von_mises_stress": 9474}},
             {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 232}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 4}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 4}},
