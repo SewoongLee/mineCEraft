@@ -1,4 +1,4 @@
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 from .utils.coords import xyz_lists
 
 def _ranges(coords: List[Dict[str, Any]]) -> Tuple[int, int, int]:
@@ -28,12 +28,13 @@ def is_equal(coords: List[Dict[str, Any]], *, xz: Tuple[int, int], y: int) -> in
     ok_y  = (dy == y - 1)
     return 1 if (ok_xz and ok_y) else 0
 
-def is_leq(coords: List[Dict[str, Any]], *, xz: Tuple[int, int], y: int) -> int:
+def is_leq(coords: List[Dict[str, Any]], *, xz: Tuple[int, int], y: Optional[int] = None) -> int:
     """
     Upper-bound check (order-insensitive on x/z):
       - Ensures the realized ranges do NOT exceed the requested ranges.
       - Interprets unit spacing: range <= (size - 1).
       - Accepts smaller shapes as long as they fit within the bounds.
+      - If y is not provided, only x/z bounds are checked (y is ignored).
 
     Returns 1 if within bounds, else 0.
     """
@@ -46,7 +47,9 @@ def is_leq(coords: List[Dict[str, Any]], *, xz: Tuple[int, int], y: int) -> int:
     got_xz  = sorted([dx, dz])
 
     ok_xz = (got_xz[0] <= want_xz[0] and got_xz[1] <= want_xz[1])
-    ok_y  = (dy <= (y - 1))
+    if y is None:
+        return 1 if ok_xz else 0
+    ok_y = (dy <= (y - 1))
     return 1 if (ok_xz and ok_y) else 0
 
 def min_y_is_equal(coords: List[Dict[str, Any]], *, expected_y: int) -> int:
