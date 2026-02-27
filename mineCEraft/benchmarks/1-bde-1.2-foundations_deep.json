@@ -1,8 +1,8 @@
 [
   {
     "prompts": [
-      ["Lay a 7×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×7 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -18,8 +18,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×7 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -35,8 +35,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×7 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -52,8 +52,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×7 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -69,8 +69,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×7 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -86,8 +86,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×7 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×7 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -103,8 +103,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×9 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -120,8 +120,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×9 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -137,8 +137,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×9 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -154,8 +154,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×9 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -171,8 +171,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×9 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -188,8 +188,8 @@
 
   {
     "prompts": [
-      ["Lay a 7×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 7×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 7×9 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 7×9 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -205,8 +205,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×7 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×7 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -222,8 +222,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×7 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×7 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -239,8 +239,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×7 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×7 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -256,8 +256,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×7 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×7 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -273,8 +273,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×7 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×7 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -290,8 +290,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×7 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×7 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×7 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -307,8 +307,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×9 pile cap, 1 block thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×9 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 1 block thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -324,8 +324,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×9 pile cap, 1 block thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×9 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 1 block thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -341,8 +341,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×9 pile cap, 1 block thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×9 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 1 block thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -358,8 +358,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×9 pile cap, 2 blocks thick, with 4 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×9 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 2 blocks thick, with four 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -375,8 +375,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×9 pile cap, 2 blocks thick, with 5 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×9 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 2 blocks thick, with five 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
@@ -392,8 +392,8 @@
 
   {
     "prompts": [
-      ["Lay a 9×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
-      ["Install a 9×9 pile cap, 2 blocks thick, with 6 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
+      ["Lay a 9×9 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."],
+      ["Install a 9×9 pile cap, 2 blocks thick, with six 1×1 drilled piles, each 5 blocks deep, with a 1-block span. Use stone blocks."]
     ],
     "checks": [
         [
