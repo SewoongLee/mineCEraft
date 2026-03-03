@@ -1,9 +1,9 @@
 [
   {
     "prompts": [
-      ["Build a stone arch bridge."],
-      ["Create a stone arch bridge."],
-      ["Construct a stone arch bridge."]
+      ["Build a stone arch bridge. The bridge must be walkable from both ends."],
+      ["Create a stone arch bridge. The bridge must be walkable from both ends."],
+      ["Construct a stone arch bridge. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [

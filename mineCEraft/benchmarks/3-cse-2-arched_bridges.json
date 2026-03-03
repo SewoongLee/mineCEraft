@@ -1,9 +1,9 @@
 [
   {
     "prompts": [
-      ["Build an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -21,9 +21,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -42,9 +42,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 10-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -64,9 +64,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -84,9 +84,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -105,9 +105,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 13-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -127,9 +127,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -147,9 +147,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -168,9 +168,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 17-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -190,9 +190,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 3 × 3 × 3 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -210,9 +210,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 4 × 4 × 4 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -231,9 +231,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Create an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."],
-      ["Construct an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through."]
+      ["Build an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Create an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge to cross a 20-block wide river. It must be high enough for a boat to pass underneath. No pillars may be placed in the river, and the bridge must allow a boat approximately 5 × 5 × 5 blocks in size to pass through. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
