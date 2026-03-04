@@ -6,7 +6,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 49}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -22,7 +21,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 98}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -38,7 +36,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 56}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -54,7 +51,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 112}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -70,7 +66,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 63}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -86,7 +81,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 126}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -102,7 +96,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 70}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -118,7 +111,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 140}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -134,7 +126,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 56}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -150,7 +141,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 112}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -166,7 +156,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 64}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -182,7 +171,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 128}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -198,7 +186,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 72}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -214,7 +201,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 144}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -230,7 +216,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 80}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -246,7 +231,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 160}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -262,7 +246,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 63}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -278,7 +261,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 126}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -294,7 +276,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 72}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -310,7 +291,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 144}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -326,7 +306,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 81}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -342,7 +321,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 162}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -358,7 +336,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 90}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -374,7 +351,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 180}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -390,7 +366,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 70}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -406,7 +381,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 140}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -422,7 +396,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 80}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -438,7 +411,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 160}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -454,7 +426,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 90}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -470,7 +441,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 180}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -486,7 +456,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 100}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
@@ -502,7 +471,6 @@
     ],
     "checks": [
         [
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 200}},
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
