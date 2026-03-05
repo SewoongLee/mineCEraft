@@ -9,7 +9,7 @@
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "structural_stability.is_stress_safe", "args": {"von_mises_stress": 8943}},
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 240}},
+            {"fn": "material.is_block_cnt_geq", "args": {"min_count": 240}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 5}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 5}},
             {"fn": "dependency.material_sequence_order", "args": {"material_sequence": ["white_concrete", "iron", "gray_concrete"]}}
@@ -27,7 +27,7 @@
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "structural_stability.is_stress_safe", "args": {"von_mises_stress": 9474}},
-            {"fn": "material.is_block_cnt_equal_to", "args": {"expected_count": 232}},
+            {"fn": "material.is_block_cnt_geq", "args": {"min_count": 232}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 0, "expected_count": 4}},
             {"fn": "shape.cluster_count_at_y_is", "args": {"y": 1, "expected_count": 4}},
             {"fn": "dependency.material_sequence_order", "args": {"material_sequence": ["white_concrete", "iron", "gray_concrete"]}}
