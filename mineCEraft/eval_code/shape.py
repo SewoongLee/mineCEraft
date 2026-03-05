@@ -230,7 +230,8 @@ def is_bottom_surface_concave(
 def are_doors_passable(coords: List[Dict[str, Any]], verbose: bool = False) -> bool:
     """
     Check if all doors are passable. A door fails if at either y or y+1 level,
-    3 or more of the 4 adjacent positions are blocked.
+    3 or more of the 4 adjacent positions are blocked by non-door blocks.
+    Adjacent doors (e.g. double door) do not count as blocking.
     """
     if not coords:
         return True
@@ -247,6 +248,7 @@ def are_doors_passable(coords: List[Dict[str, Any]], verbose: bool = False) -> b
     if not doors:
         return True
     
+    door_set: Set[Tuple[int, int, int]] = set(doors)
     neighbors = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     seen = set()
     
@@ -256,7 +258,12 @@ def are_doors_passable(coords: List[Dict[str, Any]], verbose: bool = False) -> b
         seen.add((x, z))
         
         for cy in [y, y + 1]:
-            blocked_count = sum(1 for dx, dz in neighbors if (x + dx, cy, z + dz) in blocks)
+            # Only count non-door blocks as blocking (so double doors are passable)
+            blocked_count = sum(
+                1 for dx, dz in neighbors
+                if (x + dx, cy, z + dz) in blocks
+                and (x + dx, cy, z + dz) not in door_set
+            )
             if blocked_count >= 3:
                 if verbose:
                     print(f"Door at ({x}, {cy}, {z}): {blocked_count}/4 sides blocked")
