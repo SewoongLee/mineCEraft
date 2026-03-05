@@ -1,8 +1,9 @@
 {
     "name": "builder",
-    
-    "model": "claude-sonnet-4-5-20250929",
-    "model-2": "gemini-3-pro-preview",
+    "random_seed": 42,
+
+    "model-1": "claude-sonnet-4-5-20250929",
+    "model": "gemini-3-pro-preview",
     "model-3": "gpt-5-mini",
     "model-4": "meta-llama/llama-4-scout-17b-16e-instruct",
     
