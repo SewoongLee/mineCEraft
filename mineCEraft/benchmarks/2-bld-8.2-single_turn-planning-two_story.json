@@ -29,7 +29,8 @@
     "checks": [
         [
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "dependency.material_sequence_order", "args": {"material_sequence": ["stone", "white_concrete", "oak_planks", "red"]}}
+            {"fn": "dependency.material_sequence_order", "args": {"material_sequence": ["stone", "white_concrete", "oak_planks", "red"]}},
+            {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 3}}
         ]
     ]
   }
