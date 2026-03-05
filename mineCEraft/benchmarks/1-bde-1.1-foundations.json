@@ -9,7 +9,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -24,7 +24,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -39,7 +39,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -54,7 +54,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -69,7 +69,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -84,7 +84,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -99,7 +99,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -114,7 +114,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [7, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -129,7 +129,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -144,7 +144,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -159,7 +159,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -174,7 +174,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -189,7 +189,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -204,7 +204,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -219,7 +219,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -234,7 +234,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [8, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -249,7 +249,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -264,7 +264,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -279,7 +279,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -294,7 +294,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -309,7 +309,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -324,7 +324,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -339,7 +339,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -354,7 +354,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [9, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -369,7 +369,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 7], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -384,7 +384,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 7], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -399,7 +399,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 8], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -414,7 +414,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 8], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -429,7 +429,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 9], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -444,7 +444,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 9], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -459,7 +459,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 10], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   },
@@ -474,7 +474,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [10, 10], "y": 2}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   }
