@@ -100,15 +100,28 @@ def read_placed_and_removed_from_action(
     // Minimal block mock for bot.blockAt (action code may call it e.g. in safePlaceBlock).
     const airTypeId = 0;
     const mockRegistry = { blocks: { [airTypeId]: { name: 'air' } } };
-    global.bot = {
+    const noopAsync = async () => {};
+    const noopSync = () => {};
+    // Any unknown bot.* or bot.pathfinder.getPathTo etc. returns a no-op; no errors from non-block actions.
+    const noopProxy = new Proxy(noopSync, {
+      get: () => noopAsync,
+      apply: () => Promise.resolve()
+    });
+    const botBase = {
       interrupt_code: false,
       entity: { position: _pos },
-      chat: async () => {}, // no-op mock for bot.chat()
+      chat: async () => {},
       registry: mockRegistry,
       blockAt(pos) {
         return { type: airTypeId, position: pos };
       },
     };
+    global.bot = new Proxy(botBase, {
+      get(target, prop) {
+        if (Object.prototype.hasOwnProperty.call(target, prop)) return target[prop];
+        return noopProxy;
+      }
+    });
     global.world = {
       getPosition: (_bot) => _pos,
       getBlockAtPosition: (_bot, _x, _y, _z) => ({ name: 'air' })
