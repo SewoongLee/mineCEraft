@@ -12,6 +12,7 @@
             {"fn": "size.is_leq", "args": {"xz": [20, 20]}},
             {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 3, "expected_material": "door", "use_substring_match": true}},
             {"fn": "shape.are_doors_passable", "args": {}},
+            {"fn": "shape.is_single_level", "args": {"start_material": "oak_stairs"}},
             {"fn": "shape.are_adjacent", "args": {"materials": ["door", "sea_lantern"], "substring_match": true}}
         ]
     ]
