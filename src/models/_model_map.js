@@ -86,6 +86,11 @@ export function createModel(profile) {
     if (!apiMap[profile.api]) {
         throw new Error('Unknown api:', profile.api);
     }
-    const model = new apiMap[profile.api](profile.model, profile.url, profile.params);
+    // Unify random_seed: use builder's random_seed as params.seed for LLM when supported
+    const params = { ...(profile.params || {}) };
+    if (profile.random_seed != null) {
+        params.seed = profile.random_seed;
+    }
+    const model = new apiMap[profile.api](profile.model, profile.url, params);
     return model;
 }
