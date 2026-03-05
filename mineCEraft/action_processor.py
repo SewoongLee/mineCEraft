@@ -136,6 +136,8 @@ def read_placed_and_removed_from_action(
       placeBlock: async (_bot, block, x, y, z, ...rest) => {
         console.log(JSON.stringify({ action: 'place', x, y, z, material: block }));
       },
+      // no-op so action code that moves then places does not throw
+      goToPosition: async (_bot, x, y, z, ...rest) => {},
       // wait mock to avoid runtime errors in your action code
       wait: async (_bot, ms) => {
         ms = Number(ms) || 0;
