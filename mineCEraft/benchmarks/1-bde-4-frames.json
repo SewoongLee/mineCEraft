@@ -13,7 +13,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 4}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 8}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 32, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -32,7 +32,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 8}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 12}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 48, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -51,7 +51,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 12}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 16}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 64, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -70,7 +70,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 16}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 20}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 80, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -89,7 +89,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 20}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 24}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 96, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -108,7 +108,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 24}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 28}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 112, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -127,7 +127,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 28}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 32}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 128, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -146,7 +146,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 32}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 36}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 144, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   },
@@ -165,7 +165,7 @@
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
             {"fn": "shape.is_reachable_by_stairs", "args": {"min_floor_y": 36}},
             {"fn": "size.max_y_is_geq", "args": {"min_y": 40}},
-            {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "concrete"}}
+            {"fn": "material.is_block_cnt_larger_than", "args": {"cnt": 160, "expected_material": "concrete", "use_substring_match": true}}
         ]
     ]
   }
