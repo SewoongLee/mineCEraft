@@ -55,20 +55,22 @@ def _run_checks(coords: List[Dict[str, Any]], checks: List[Dict[str, Any]]) -> D
 
 def _infer_model_and_ts(paths: List[Path]) -> Tuple[str, str]:
     """
-    Infer (model_safe, ts) from eval_raw file name(s).
-    If exactly one file matches eval_raw_{model_safe}_{ts}.json, reuse that.
+    Infer (model_safe, ts) from eval raw file name(s).
+    If exactly one file matches eval_{model_safe}_{ts}_raw.json, reuse that.
     Otherwise fall back to a generic name and current timestamp.
     """
     now_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     if not paths:
         return "unknown_model", now_ts
 
-    stem = paths[0].stem  # e.g., "eval_raw_model_ts"
-    if stem.startswith("eval_raw_"):
-        rest = stem[len("eval_raw_") :]
-        parts = rest.rsplit("_", 1)
-        if len(parts) == 2:
-            return parts[0] or "unknown_model", parts[1] or now_ts
+    stem = paths[0].stem  # e.g., "eval_model_ts_raw"
+    if stem.endswith("_raw"):
+        rest = stem[: -len("_raw")]  # "eval_model_ts"
+        if rest.startswith("eval_"):
+            rest = rest[len("eval_") :]  # "model_ts"
+            parts = rest.rsplit("_", 1)
+            if len(parts) == 2:
+                return parts[0] or "unknown_model", parts[1] or now_ts
         return rest or "unknown_model", now_ts
 
     if len(paths) > 1:
@@ -83,7 +85,7 @@ def evaluate_from_raw(
     results_dir: str | Path = "eval_results",
 ) -> Tuple[List[List[List[Dict[str, Any]]]], Path, Path]:
     """
-    Evaluate one or more eval_raw_*.json files and write:
+    Evaluate one or more eval_*_raw.json files and write:
       - eval_{model_safe}_{ts}.log
       - eval_{model_safe}_{ts}.csv
 

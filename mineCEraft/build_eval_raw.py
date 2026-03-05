@@ -91,7 +91,7 @@ def run_build_and_save_eval_raw(
       - builder_model, model_safe, ts, action_file
 
     The returned path has the form:
-      results_dir / f"eval_raw_{model_safe}_{ts}.json"
+      results_dir / f"eval_{model_safe}_{ts}_raw.json"
     """
     runs = list(runs)
     if not runs:
@@ -106,7 +106,7 @@ def run_build_and_save_eval_raw(
 
     results_dir_path = Path(results_dir)
     results_dir_path.mkdir(exist_ok=True)
-    eval_raw_path = results_dir_path / f"eval_raw_{model_safe}_{ts}.json"
+    eval_raw_path = results_dir_path / f"eval_{model_safe}_{ts}_raw.json"
 
     print(f"[PY] Using builder model: {model_name} (safe='{model_safe}')")
     print(f"[PY] Total turns to send: {total_turns}")
