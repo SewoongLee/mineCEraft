@@ -85,6 +85,23 @@ def is_block_cnt_larger_than(
         return matching_count > cnt
 
 
+def is_block_cnt_geq(
+    coords: List[Dict[str, Any]],
+    min_count: int,
+    expected_material: str = None,
+    use_substring_match: bool = False,
+) -> bool:
+    """
+    Return True if number of blocks (matching expected_material if provided) is >= min_count, else False.
+    Wraps is_block_cnt_larger_than for "at least N blocks" checks.
+    """
+    return is_block_cnt_larger_than(
+        coords, cnt=min_count - 1,
+        expected_material=expected_material,
+        use_substring_match=use_substring_match,
+    )
+
+
 def is_block_cnt_leq(
     coords: List[Dict[str, Any]],
     max_count: int,
