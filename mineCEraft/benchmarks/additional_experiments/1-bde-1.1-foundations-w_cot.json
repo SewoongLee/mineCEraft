@@ -9,7 +9,7 @@
             {"fn": "material.is_all_material_equal_to", "args": {"expected_material": "stone"}},
             {"fn": "size.is_equal", "args": {"xz": [6, 6], "y": 1}},
             {"fn": "physical_plausibility.is_ground_connected", "args": {}},
-            {"fn": "efficiency.l1_dist", "args": {"required_step": 1}}
+            {"fn": "efficiency.l1_dist", "args": {}}
         ]
     ]
   }
