@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import time
@@ -11,6 +12,8 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from action_processor import read_placed_and_removed_from_action
 
+# (prompt_sequence, checks_per_turn, comment) per run
+RunItem = Tuple[List[str], List[List[Dict[str, Any]]], str]
 
 SENTINEL = "::ACTION_MAX_JS::"  # indicator of the lastly executed JS file names for each prompt.
 
@@ -38,7 +41,7 @@ def _merge_coords(prev: List[Dict[str, Any]], placed: List[Dict[str, Any]], remo
     return list(by_key.values())
 
 
-def _flatten_runs(runs: Iterable[Tuple[List[str], List[List[Dict[str, Any]]], str]]) -> List[FlatTurnMeta]:
+def _flatten_runs(runs: Iterable[RunItem]) -> List[FlatTurnMeta]:
     """Flatten runs into per-turn metadata in the same order as prompts_for_send."""
     flat: List[FlatTurnMeta] = []
     for run_idx, (prompt_sequence, checks_per_turn, comment) in enumerate(runs, start=1):
@@ -71,11 +74,12 @@ def _safe_model_name(raw: str) -> str:
 
 
 def run_build_and_save_eval_raw(
-    runs: Iterable[Tuple[List[str], List[List[Dict[str, Any]]], str]],
+    runs: Iterable[RunItem],
     *,
     results_dir: str | Path = "eval_results",
-    inter_prompt_command: str = "Come up to the highest block position, and move 20 blocks in the positive z direction.",
-    inter_prompt_delay_ms: int = 10000,
+    inter_prompt_command: str = "Come up to the ground level, and move 20 blocks to the positive z direction.",
+    inter_prompt_response_timeout_ms: int = 60000,
+    action_file_wait_ms: int = 10000,
     wait_for_agent_ready_seconds: int = 15,
 ) -> Path:
     """
@@ -150,7 +154,9 @@ def run_build_and_save_eval_raw(
         "run_lengths": run_lengths_for_send,
         "clear_between": True,
         "inter_prompt_command": inter_prompt_command,
-        "inter_prompt_delay": inter_prompt_delay_ms,
+        "inter_prompt_response_timeout_ms": inter_prompt_response_timeout_ms,
+        "action_file_wait_ms": action_file_wait_ms,
+        "parent_pid": os.getpid(),
     }
     proc_send_prompts.stdin.write(json.dumps(payload) + "\n")
     proc_send_prompts.stdin.close()
