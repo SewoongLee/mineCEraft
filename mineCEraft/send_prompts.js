@@ -22,6 +22,12 @@ const PARENT_WATCH_INTERVAL_MS = 2000;
 const COMMAND_COMPLETION_TIMEOUT_MS = 5000; // clearChat etc.
 const SENTINEL = "::ACTION_MAX_JS::";
 
+// When stdout is piped to Python, Node uses block buffering so lines can stay buffered and
+// Python blocks on "next line" while Node has already written it. Force line-at-a-time delivery.
+if (!process.stdout.isTTY && process.stdout._handle?.setBlocking) {
+  process.stdout._handle.setBlocking(true);
+}
+
 // --- Agent name (from settings) ---
 
 /**
