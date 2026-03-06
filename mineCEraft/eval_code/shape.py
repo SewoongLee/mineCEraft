@@ -1,4 +1,4 @@
-from collections import deque
+from collections import deque, defaultdict
 from typing import List, Dict, Any, Tuple, Set, Optional, Literal
 from .utils.coords import to_int, xyz_lists
 
@@ -59,35 +59,84 @@ def _extract_surface(
     return surface
 
 
-def _get_line_points(p1: Tuple[int, int], p2: Tuple[int, int]) -> List[Tuple[int, int]]:
+def _slices_along_axis(
+    surface: Dict[Tuple[int, int], int],
+    fix_z: bool,
+) -> List[List[Tuple[int, int]]]:
     """
-    Get all integer grid points on the line segment from p1 to p2.
-    Uses Bresenham's line algorithm for discrete grid traversal.
+    Return 1D slices: fix_z=True -> slices at fixed z (param=x); fix_z=False -> at fixed x (param=z).
+    Each slice is a sorted list of (param, y).
     """
-    x1, z1 = p1
-    x2, z2 = p2
-    points = []
-    dx = abs(x2 - x1)
-    dz = abs(z2 - z1)
-    sx = 1 if x1 < x2 else -1
-    sz = 1 if z1 < z2 else -1
-    err = dx - dz
-    x, z = x1, z1
-    while True:
-        points.append((x, z))
-        if x == x2 and z == z2:
-            break
-        e2 = 2 * err
-        if e2 > -dz:
-            err -= dz
-            x += sx
-        if e2 < dx:
-            err += dx
-            z += sz
-    return points
+    grouped: Dict[int, List[Tuple[int, int]]] = defaultdict(list)
+    for (x, z), y in surface.items():
+        key, param_y = (z, (x, y)) if fix_z else (x, (z, y))
+        grouped[key].append(param_y)
+    return [sorted(grouped[key], key=lambda p: p[0]) for key in sorted(grouped)]
 
 
-def _surface_concave(
+def _get_axis_aligned_slices(
+    surface: Dict[Tuple[int, int], int],
+) -> List[List[Tuple[int, int]]]:
+    """
+    All axis-aligned 1D slices: fixed z (vary x) and fixed x (vary z).
+    Each slice = list of (param, y) sorted by param. Used for existence check.
+    """
+    return _slices_along_axis(surface, fix_z=True) + _slices_along_axis(surface, fix_z=False)
+
+
+# Tolerance for non-strict concavity (allow small numerical error).
+_CONCAVE_TOL = 1e-9
+
+
+def _is_1d_profile_concave(
+    profile: List[Tuple[int, int]],
+    sign: int,
+    strict: bool | Literal["non-flat"],
+    verbose: bool,
+    slice_name: str,
+) -> bool:
+    """
+    True if the 1D profile (param, y) sorted by param is concave: every chord lies
+    on or below the profile (top, sign=1) or on or above (bottom, sign=-1).
+    """
+    if not profile:
+        return True
+    if len(profile) == 1:
+        return strict is False  # Only non-strict accepts single point as concave
+
+    ys = [p[1] for p in profile]
+    all_flat = all(y == ys[0] for y in ys)
+    if strict == "non-flat" and all_flat:
+        if verbose:
+            print(f"Not concave: 1D slice {slice_name} is completely flat (all y={ys[0]})")
+        return False
+
+    n = len(profile)
+    for i in range(n):
+        for j in range(i + 1, n):
+            y_i, y_j = profile[i][1], profile[j][1]
+            if strict is True and j == i + 1 and y_i == y_j:
+                if verbose:
+                    print(f"Not concave: flat segment in 1D slice {slice_name} (indices {i}–{j}, y={y_i})")
+                return False
+            for k in range(i, j + 1):
+                t = (k - i) / (j - i) if j > i else 1.0
+                expected_y = y_i + t * (y_j - y_i)
+                actual_y = profile[k][1]
+                diff = sign * (actual_y - expected_y)
+                is_endpoint = k == i or k == j
+                # strict=True: interior points must have diff > 0; else: diff >= -tol
+                fails = (strict is True and not is_endpoint and diff <= 0) or (
+                    strict is not True and diff < -_CONCAVE_TOL
+                )
+                if fails:
+                    if verbose:
+                        print(f"Not concave: index {k} diff={diff:.2f} in 1D slice {slice_name} (segment {i}–{j})")
+                    return False
+    return True
+
+
+def _surface_has_concave_slice(
     surface: Dict[Tuple[int, int], int],
     strict: bool | Literal["non-flat"],
     verbose: bool,
@@ -95,62 +144,15 @@ def _surface_concave(
     surface_name: str,
 ) -> bool:
     """
-    Check if a 2D surface (x,z) -> y is concave along the given sign.
-    sign=1: top surface concavity (actual_y >= expected_y, bulge upward).
-    sign=-1: bottom surface concavity (actual_y <= expected_y, bulge downward when viewed from above).
+    Existence check: True if at least one axis-aligned 1D slice is concave.
+    strict only changes the concavity criterion per slice, not the existence logic.
     """
     if not surface:
         return True
-    points = set(surface.keys())
-    if len(points) <= 1:
-        return True
-
-    if strict == "non-flat":
-        ys = list(surface.values())
-        if ys and all(y == ys[0] for y in ys):
-            if verbose:
-                print(f"Not concave: entire {surface_name} is completely flat (all y={ys[0]})")
-            return False
-
-    points_list = list(points)
-    for i in range(len(points_list)):
-        for j in range(i + 1, len(points_list)):
-            p1, p2 = points_list[i], points_list[j]
-            line_points = _get_line_points(p1, p2)
-            y1, y2 = surface[p1], surface[p2]
-
-            if strict is True and len(line_points) == 2 and y1 == y2:
-                if verbose:
-                    print(f"Not concave: flat line from {p1} (y={y1}) to {p2} (y={y2}) on {surface_name}")
-                return False
-
-            for (x, z) in line_points:
-                if (x, z) not in surface:
-                    if verbose:
-                        print(f"Not concave: point ({x}, {z}) on line from {p1} to {p2} is not in {surface_name}")
-                    return False
-
-            for k, (x, z) in enumerate(line_points):
-                if len(line_points) > 1:
-                    t = k / (len(line_points) - 1)
-                    expected_y = y1 + t * (y2 - y1)
-                else:
-                    expected_y = y1
-                actual_y = surface[(x, z)]
-                diff = sign * (actual_y - expected_y)
-
-                if strict is True:
-                    is_endpoint = (k == 0) or (k == len(line_points) - 1)
-                    if not is_endpoint and diff <= 0:
-                        if verbose:
-                            print(f"Not concave: point ({x}, {z}) diff={diff:.2f} on line {p1}->{p2} on {surface_name}")
-                        return False
-                else:
-                    if diff < -1e-9:
-                        if verbose:
-                            print(f"Not concave: point ({x}, {z}) diff={diff:.2f} on line {p1}->{p2} on {surface_name}")
-                        return False
-    return True
+    for idx, profile in enumerate(_get_axis_aligned_slices(surface)):
+        if _is_1d_profile_concave(profile, sign, strict, verbose, f"{surface_name} (slice {idx})"):
+            return True
+    return False
 
 
 def is_top_surface_concave(
@@ -159,41 +161,38 @@ def is_top_surface_concave(
     verbose: bool = False,
 ) -> bool:
     """
-    Check if the top surface of the structure is concave.
-    
-    Mathematical Definition:
-    A top surface is concave if:
-    - For any two points p1=(x1,z1) and p2=(x2,z2) on the top surface with heights y1 and y2,
-    - For any point p=(x,z) on the line segment between p1 and p2 with linearly interpolated height:
-        expected_y = y1 + t*(y2 - y1), where t ∈ [0,1] is the parameter along the line
-    - The actual height at p must satisfy: actual_y >= expected_y
-    - This ensures the surface bulges upward (concave), not downward
-    
-    Examples:
-    - Arch shape [1, 2, 1]: middle is higher → concave ✓
-    - Inverted arch [2, 1, 2]: middle is lower → not concave ✗
-    - Flat surface [2, 2, 2]: all equal → concave (non-strict) ✓
-    
-    When strict=True, use strict inequalities (<, >).
-    When strict=False (mathematical standard), use non-strict inequalities (<=, >=); 
-    equality is allowed (flat surfaces/planes are considered concave).
-    When strict='non-flat', equality is allowed, but the top surface should not be 
-    completely flat without any concavity (i.e., must have some upward bulge).
-    
+    Check whether the top surface has concavity (existence check).
+
+    We consider axis-aligned 1D slices only: slices at fixed z (varying x) and
+    slices at fixed x (varying z). Return True if at least one such slice is
+    concave. This way, e.g. an arch bridge with a concave footpath plus
+    non-concave handrails still passes, because the footpath slice is concave.
+
+    Definition of concave for one 1D slice (ordered by x or z):
+    For every pair of points on the slice and every point between them, the
+    actual height y must be >= the linearly interpolated height (expected_y).
+    So the profile bulges upward (arch-shaped).
+
+    strict only changes the criterion for "concave" on that slice, not the
+    existence logic (always: one slice suffices).
+    - strict=False: allow equality (flat segments allowed).
+    - strict=True: require strict inequality at non-endpoints; flat segments
+      (two endpoints with same y) do not count as concave.
+    - strict='non-flat': allow equality but the slice must not be completely
+      flat (all same y); at least some upward bulge required.
+
     Args:
         coords: List of block coordinate dictionaries with 'x', 'y', 'z' keys.
-        strict: If False (default), use non-strict inequalities (<=, >=). 
-                If True, use strict inequalities (<, >).
-                If 'non-flat', allow equality but reject completely flat surfaces.
+        strict: False (default), True, or 'non-flat' (see above).
         verbose: If True, print detailed diagnostic messages.
-    
+
     Returns:
-        True if the top surface is concave, else False.
+        True if at least one axis-aligned slice of the top surface is concave.
     """
     if not coords:
         return True
     surface = _extract_surface(coords, "top")
-    return _surface_concave(surface, strict, verbose, sign=1, surface_name="top surface")
+    return _surface_has_concave_slice(surface, strict, verbose, sign=1, surface_name="top surface")
 
 
 def is_bottom_surface_concave(
@@ -202,28 +201,26 @@ def is_bottom_surface_concave(
     verbose: bool = False,
 ) -> bool:
     """
-    Check if the bottom surface of the structure is concave (when viewed from below).
-    
-    The bottom surface is defined as the minimum y at each (x, z). For an arch,
-    the underside should also be curved: between any two points on the bottom
-    surface, the actual y should be <= the linearly interpolated expected y
-    (i.e., the bottom bulges downward / dips in the middle).
-    
-    When strict=True, use strict inequalities; when strict=False, allow equality.
-    When strict='non-flat', reject completely flat bottom surfaces.
-    
+    Check whether the bottom surface has concavity (existence check).
+
+    Same as is_top_surface_concave but for the bottom surface (min y per (x, z)).
+    We require at least one axis-aligned 1D slice to be concave: for that slice,
+    actual y <= linearly interpolated expected y (bottom bulges downward).
+
+    strict has the same semantics as in is_top_surface_concave.
+
     Args:
         coords: List of block coordinate dictionaries with 'x', 'y', 'z' keys.
         strict: Same semantics as is_top_surface_concave.
         verbose: If True, print detailed diagnostic messages.
-    
+
     Returns:
-        True if the bottom surface is concave, else False.
+        True if at least one axis-aligned slice of the bottom surface is concave.
     """
     if not coords:
         return True
     surface = _extract_surface(coords, "bottom")
-    return _surface_concave(surface, strict, verbose, sign=-1, surface_name="bottom surface")
+    return _surface_has_concave_slice(surface, strict, verbose, sign=-1, surface_name="bottom surface")
 
 
 
