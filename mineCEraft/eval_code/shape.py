@@ -733,6 +733,7 @@ def _min_distance_l2(
     """
     Minimum L2 (Euclidean) distance between any block in cluster_a and any in cluster_b.
     L2(a, b) = sqrt((ax - bx)^2 + (az - bz)^2).
+    Returns 0.0 if either cluster is empty (no pairs to compare).
     """
     best = float("inf")
     for (ax, az) in cluster_a:
@@ -793,7 +794,8 @@ def clusters_at_y_have_min_span(
     clusters are at least 5 apart in straight-line distance. Using L2 correctly
     handles diagonal and triangular layouts (e.g. equilateral triangle).
 
-    If there are 0 or 1 cluster at y, the condition is vacuously satisfied (True).
+    Returns False if there are fewer than 2 clusters at y (span between clusters
+    is undefined when there is only one or zero clusters).
 
     Args:
         coords: List of block coordinate dicts with "x", "y", "z".
@@ -803,13 +805,16 @@ def clusters_at_y_have_min_span(
         verbose: If True, print why the check failed.
 
     Returns:
-        True if every pair of clusters at y has min L2 distance >= min_span;
-        otherwise False.
+        True if there are at least 2 clusters at y and every pair has min L2
+        distance >= min_span; False if fewer than 2 clusters or any pair is
+        closer than min_span.
     """
     clusters = _clusters_at_y(coords, y, use_8_neighbors=use_8_neighbors)
     n = len(clusters)
-    if n <= 1:
-        return True
+    if n < 2:
+        if verbose:
+            print(f"clusters_at_y_have_min_span: at y={y} found {n} cluster(s), need at least 2 to define span")
+        return False  # Span is only defined between two or more clusters
     for i in range(n):
         for j in range(i + 1, n):
             d = _min_distance_l2(clusters[i], clusters[j])
