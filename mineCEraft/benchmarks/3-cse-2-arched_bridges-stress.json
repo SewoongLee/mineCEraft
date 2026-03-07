@@ -1,9 +1,9 @@
 [
   {
     "prompts": [
-      ["Build an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
-      ["Create an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
-      ["Construct an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."]
+      ["Build an arch bridge with a width of 2 and capable of crossing a river 5 units wide. The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
+      ["Create an arch bridge with a width of 2 and capable of crossing a river 5 units wide. The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge with a width of 2 and capable of crossing a river 5 units wide. The bridge must be supported by 2x2 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -18,9 +18,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
-      ["Create an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
-      ["Construct an arch bridge with a width of 2 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 2x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."]
+      ["Build an arch bridge with a width of 2 and capable of crossing a river 5 units wide. The bridge must be supported by 2x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
+      ["Create an arch bridge with a width of 2 and capable of crossing a river 5 units wide. The bridge must be supported by 2x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge with a width of 2 and capable of crossing a river 5 units wide. The bridge must be supported by 2x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
@@ -35,9 +35,9 @@
 
   {
     "prompts": [
-      ["Build an arch bridge with a width of 3 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 3x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
-      ["Create an arch bridge with a width of 3 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 3x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
-      ["Construct an arch bridge with a width of 3 and a span of 5 (capable of crossing a river 5 units wide). The bridge must be supported by 3x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."]
+      ["Build an arch bridge with a width of 3 and capable of crossing a river 5 units wide. The bridge must be supported by 3x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
+      ["Create an arch bridge with a width of 3 and capable of crossing a river 5 units wide. The bridge must be supported by 3x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."],
+      ["Construct an arch bridge with a width of 3 and capable of crossing a river 5 units wide. The bridge must be supported by 3x3 area supports at both ends, and the highest point of the arch must reach a height of 4. The bridge must be walkable from both ends."]
     ],
     "checks": [
         [
