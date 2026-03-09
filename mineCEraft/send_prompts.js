@@ -12,14 +12,22 @@ import path from "path";
 const SERVER = "http://localhost:8080";
 const RESPONSE_TIMEOUT_MS = 10 * 60 * 1000; // max wait per turn for completion keyword
 const COMPLETION_KEYWORDS = [
-  "complete", "finished", "done", "successfully", "built",
-  "i've laid", "i've installed", "as requested", "is there anything else",
+  // Phrases chosen to match explicit completion messages, not planning text.
+  "i've successfully built",
+  "i've built",
+  "i've created",
+  "i've constructed",
+  "i've laid",
+  "i've installed",
+  "as requested",
+  "is there anything else",
 ];
 const TURN_DELAY_MS = 500;
 const ACTION_FILE_POLL_MS = 200;
-const STDIN_READ_TIMEOUT_MS = 100;
+const STDIN_READ_TIMEOUT_MS = 5000;
 const PARENT_WATCH_INTERVAL_MS = 2000;
 const COMMAND_COMPLETION_TIMEOUT_MS = 5000; // clearChat etc.
+const INTER_PROMPT_ACTION_TIMEOUT_MS = 3 * 60 * 1000; // wait for !newAction during inter-prompt
 const SENTINEL = "::ACTION_MAX_JS::";
 
 // When stdout is piped to Python, Node uses block buffering so lines can stay buffered and
@@ -199,10 +207,29 @@ async function reportMaxActionFile(options = {}) {
 
 // --- Socket: wait for bot messages ---
 
+// Phrases/markers that indicate this message is still describing or issuing commands,
+// not reporting that a turn has fully completed.
+const NON_COMPLETION_MARKERS = [
+  "!newaction(",
+  "!gotocoordinates(",
+  "!clearchat",
+  "!stats",
+];
+
+/** True if any message in the array contains a !newAction command. */
+function containsNewAction(messages) {
+  return messages.some((m) => String(m).toLowerCase().includes("!newaction("));
+}
+
 /** True if text contains any completion keyword (case-insensitive). */
 function hasCompletionKeyword(text) {
   if (!text) return false;
   const lower = String(text).toLowerCase();
+
+  if (NON_COMPLETION_MARKERS.some((m) => lower.includes(m))) {
+    return false;
+  }
+
   return COMPLETION_KEYWORDS.some((kw) => lower.includes(kw));
 }
 
@@ -356,6 +383,15 @@ socket.on("connect", async () => {
     process.exit(0);
   }
 
+  const totalPromptsNeeded = opts.run_lengths.reduce((sum, len) => sum + (len || 0), 0);
+  if (opts.prompts.length < totalPromptsNeeded) {
+    console.error(
+      `❌ Invalid payload: prompts length (${opts.prompts.length}) is smaller than total run_lengths (${totalPromptsNeeded}).`
+    );
+    socket.disconnect();
+    process.exit(1);
+  }
+
   const stopParentWatchdog = opts.parent_pid != null ? startParentWatchdog(opts.parent_pid) : () => {};
 
   const actionCodeDir = getActionCodeDir();
@@ -374,6 +410,12 @@ socket.on("connect", async () => {
         console.log(`⏳ Waiting for first LLM response (timeout ${Math.round(opts.inter_prompt_response_timeout_ms / 1000)}s)...`);
         const res = await waitForFirstResponse(agentName, opts.inter_prompt_response_timeout_ms);
         console.log(res.ok ? "✅ Inter-prompt response received." : "⚠️ Inter-prompt response timeout, proceeding anyway...");
+
+        if (res.ok && containsNewAction(res.messages)) {
+          console.log("⏳ Inter-prompt triggered !newAction — waiting for action to finish...");
+          const actionRes = await waitForCompletion(agentName, INTER_PROMPT_ACTION_TIMEOUT_MS);
+          console.log(actionRes.ok ? "✅ Inter-prompt action completed." : "⚠️ Inter-prompt action timeout, proceeding anyway...");
+        }
       }
       if (opts.clear_between) {
         console.log(`\n🧹 Clearing history before run ${runIdx + 1}/${opts.run_lengths.length}...`);
@@ -410,4 +452,5 @@ socket.on("connect", async () => {
 
 socket.on("connect_error", (err) => {
   console.error("❌ Socket connection error:", err?.message ?? err);
+  process.exit(1);
 });

@@ -46,6 +46,11 @@ def _flatten_runs(runs: Iterable[RunItem]) -> List[FlatTurnMeta]:
     flat: List[FlatTurnMeta] = []
     for run_idx, (prompt_sequence, checks_per_turn, comment) in enumerate(runs, start=1):
         n_turns = len(prompt_sequence)
+        if len(checks_per_turn) != n_turns:
+            raise ValueError(
+                f"Run {run_idx}: len(checks_per_turn) ({len(checks_per_turn)}) "
+                f"does not match len(prompt_sequence) ({n_turns})."
+            )
         for turn_idx, prompt_text in enumerate(prompt_sequence, start=1):
             checks_this_turn = checks_per_turn[turn_idx - 1]
             flat.append(
@@ -64,6 +69,8 @@ def _flatten_runs(runs: Iterable[RunItem]) -> List[FlatTurnMeta]:
 def _load_builder_model() -> Tuple[str, Dict[str, Any]]:
     """Load builder.json and return (model_name, full_cfg)."""
     builder_cfg_path = Path.cwd().parent / "builder.json"
+    if not builder_cfg_path.exists():
+        raise FileNotFoundError(f"builder.json not found at {builder_cfg_path}")
     builder_cfg = json.loads(builder_cfg_path.read_text(encoding="utf-8"))
     model_name = builder_cfg.get("model", "unknown_model")
     return model_name, builder_cfg
@@ -117,15 +124,26 @@ def run_build_and_save_eval_raw(
     print(f"[PY] Intermediate eval_raw file: {eval_raw_path}")
 
     # Start the main agent (Minecraft builder) process.
+    # Capture its stdout/stderr to a dedicated log file so that coder.js
+    # diagnostics are preserved for post-mortem root-cause analysis.
     parent_dir = Path.cwd().parent
+    agent_log_path = results_dir_path / f"eval_{model_safe}_{ts}_agent.log"
+    f_agent_log = open(agent_log_path, "w", encoding="utf-8")  # noqa: SIM115
     proc_main_agent = subprocess.Popen(
         ["node", "main.js"],
         cwd=str(parent_dir),
+        stdout=f_agent_log,
+        stderr=subprocess.STDOUT,
     )
     print(f"[PY] Builder agent started (PID={proc_main_agent.pid})")
+    print(f"[PY] Agent log: {agent_log_path}")
 
     # Give the agent some time to join the world before sending prompts.
     time.sleep(wait_for_agent_ready_seconds)
+
+    # If the main agent exited early, fail fast instead of hanging the eval.
+    if proc_main_agent.poll() is not None:
+        raise RuntimeError(f"Builder agent exited early with code {proc_main_agent.poll()}")
 
     # Start the send_prompts.js helper.
     script = (Path.cwd() / "send_prompts.js").resolve()
@@ -166,46 +184,55 @@ def run_build_and_save_eval_raw(
     flat_index = 0  # index into flat_meta
 
     try:
-        with eval_raw_path.open("w", encoding="utf-8") as f_raw:
+        raw_log_path = eval_raw_path.with_suffix(".log")
+        with eval_raw_path.open("w", encoding="utf-8") as f_raw, raw_log_path.open("w", encoding="utf-8") as f_raw_log:
             for line in proc_send_prompts.stdout:
                 line = line.rstrip("\n")
                 print(line)  # mirror Node logs to notebook/stdout
+                f_raw_log.write(line + "\n")
+                f_raw_log.flush()
 
                 # If Node reports the max-numbered file, parse and record it.
                 if not line.startswith(SENTINEL):
                     continue
 
                 payload_raw = line[len(SENTINEL) :]
-                try:
-                    payload_json = json.loads(payload_raw)
-                except json.JSONDecodeError:
-                    print("[PY] Failed to parse sentinel JSON.")
-                    continue
-
-                if not (payload_json.get("ok") and "path" in payload_json):
-                    reason = payload_json.get("reason", "unknown")
-                    print(f"[PY] No max file reported (reason={reason}).")
-                    continue
-
-                file_path = Path(payload_json["path"])
-                print(f"\n[PY] Max action file: index={payload_json.get('index')} name={payload_json.get('name')}")
-                print(f"[PY] Path: {file_path}")
-
-                try:
-                    placed, removed = read_placed_and_removed_from_action(str(file_path))
-                    print(f"[PY] placed={len(placed)}, removed={len(removed)}")
-                except Exception as e:  # noqa: BLE001
-                    print(f"[PY] Failed to convert action to coords: {e}")
-                    continue
-
                 if flat_index >= total_turns:
                     print("[PY] Warning: received more action files than expected; skipping extra action.")
                     continue
 
                 meta = flat_meta[flat_index]
                 prev_coords = cumulative_by_run.get(meta.run_idx, [])
-                coords = _merge_coords(prev_coords, placed, removed)
-                cumulative_by_run[meta.run_idx] = coords
+
+                coords: List[Dict[str, Any]]
+                action_file: str | None
+
+                try:
+                    payload_json = json.loads(payload_raw)
+                except json.JSONDecodeError:
+                    print("[PY] Failed to parse sentinel JSON.")
+                    coords = prev_coords
+                    action_file = None
+                else:
+                    if not (payload_json.get("ok") and "path" in payload_json):
+                        reason = payload_json.get("reason", "unknown")
+                        print(f"[PY] No max file reported (reason={reason}).")
+                        coords = prev_coords
+                        action_file = None
+                    else:
+                        file_path = Path(payload_json["path"])
+                        print(f"\n[PY] Max action file: index={payload_json.get('index')} name={payload_json.get('name')}")
+                        print(f"[PY] Path: {file_path}")
+                        try:
+                            placed, removed = read_placed_and_removed_from_action(str(file_path))
+                            print(f"[PY] placed={len(placed)}, removed={len(removed)}")
+                            coords = _merge_coords(prev_coords, placed, removed)
+                            cumulative_by_run[meta.run_idx] = coords
+                            action_file = str(file_path)
+                        except Exception as e:  # noqa: BLE001
+                            print(f"[PY] Failed to convert action to coords: {e}")
+                            coords = prev_coords
+                            action_file = None
 
                 record = {
                     "run_idx": meta.run_idx,
@@ -218,7 +245,7 @@ def run_build_and_save_eval_raw(
                     "builder_model": model_name,
                     "model_safe": model_safe,
                     "ts": ts,
-                    "action_file": str(file_path),
+                    "action_file": action_file,
                 }
                 f_raw.write(json.dumps(record, ensure_ascii=False) + "\n")
                 f_raw.flush()
@@ -230,6 +257,8 @@ def run_build_and_save_eval_raw(
             if proc_send_prompts.stdout is not None:
                 proc_send_prompts.stdout.close()
             proc_send_prompts.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            proc_send_prompts.kill()
         except Exception:
             pass
 
@@ -238,6 +267,8 @@ def run_build_and_save_eval_raw(
             print("[PY] Builder agent process terminated.")
         except Exception:
             pass
+        finally:
+            f_agent_log.close()
 
     if flat_index != total_turns:
         print(f"[PY] Warning: expected {total_turns} turns but recorded {flat_index}. Some prompts may have failed.")

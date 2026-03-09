@@ -162,6 +162,8 @@ def read_placed_and_removed_from_action(
         .replace("__Z0__", str(z0))
 
     res = subprocess.run(["node", "-e", js_wrapper], capture_output=True, text=True)
+    if res.returncode != 0:
+        raise RuntimeError(f"Action script failed with code {res.returncode}. stderr: {res.stderr!r}")
 
     placed: List[Dict[str, Any]] = []
     removed: List[Dict[str, Any]] = []
