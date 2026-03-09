@@ -19,6 +19,7 @@ const COMPLETION_KEYWORDS = [
   "i've constructed",
   "i've laid",
   "i've installed",
+  "i've moved", // inter-prompt move (e.g. "I've moved to the ground level and 20 blocks...")
   "as requested",
   "is there anything else",
 ];
