@@ -122,28 +122,49 @@ def read_placed_and_removed_from_action(
         return noopProxy;
       }
     });
-    global.world = {
+    const worldBase = {
       getPosition: (_bot) => _pos,
-      getBlockAtPosition: (_bot, _x, _y, _z) => ({ name: 'air' })
+      getBlockAtPosition: (_bot, _x, _y, _z) => ({ name: 'air' }),
+      getNearestFreeSpace: (_bot, _size, _dist) => _pos,
+      getNearestBlock: (_bot, _type, _dist) => null,
+      getNearestBlocks: (_bot, _types, _dist, _count) => [],
+      getInventoryCounts: (_bot) => ({}),
+      getSurroundingBlocks: (_bot) => [],
+      getNearbyEntities: (_bot, _dist) => [],
+      getNearbyPlayerNames: (_bot) => [],
+      getNearbyBlockTypes: (_bot, _dist) => [],
+      shouldPlaceTorch: (_bot) => false,
+      getBiomeName: (_bot) => 'plains',
     };
+    global.world = new Proxy(worldBase, {
+      get(target, prop) {
+        if (Object.prototype.hasOwnProperty.call(target, prop)) return target[prop];
+        return (..._args) => null;
+      }
+    });
 
     global.log = function () {}; // no-op
 
-    global.skills = {
+    const skillsBase = {
       breakBlockAt: async (_bot, x, y, z) => {
         console.log(JSON.stringify({ action: 'remove', x, y, z }));
       },
       placeBlock: async (_bot, block, x, y, z, ...rest) => {
         console.log(JSON.stringify({ action: 'place', x, y, z, material: block }));
       },
-      // no-op so action code that moves then places does not throw
       goToPosition: async (_bot, x, y, z, ...rest) => {},
-      // wait mock to avoid runtime errors in your action code
       wait: async (_bot, ms) => {
         ms = Number(ms) || 0;
         await new Promise(r => setTimeout(r, ms));
       },
+      log: function() {},
     };
+    global.skills = new Proxy(skillsBase, {
+      get(target, prop) {
+        if (Object.prototype.hasOwnProperty.call(target, prop)) return target[prop];
+        return async (..._args) => {};
+      }
+    });
 
     (async () => {
       try {
