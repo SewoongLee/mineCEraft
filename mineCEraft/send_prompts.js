@@ -374,7 +374,11 @@ clearActionCodeDir();
 
 const socket = io(SERVER, { transports: ["websocket", "polling"] });
 
-socket.on("connect", async () => {
+socket.on("reconnect", (attemptNumber) => {
+  console.log(`🔄 Reconnected to MindServer (attempt ${attemptNumber}, new socket id=${socket.id})`);
+});
+
+socket.once("connect", async () => {
   console.log(`✅ Connected to MindServer at ${SERVER} (socket id=${socket.id})`);
 
   const opts = await parseStdinPayload();
