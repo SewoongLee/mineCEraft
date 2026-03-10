@@ -4,6 +4,28 @@
 
 Our work is located in the [mineCEraft](mineCEraft/) folder.
 
+## Quick Start
+
+### Requirements
+- [Minecraft Java Edition](https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc) (recommend v1.21.1)
+- [Node.js](https://nodejs.org/) Installed
+- Rename `keys.example.json` to `keys.json` and fill in API keys
+
+### In Minecraft
+(The world setup only needs to be done once; after that, you can just "Recreate" it.)
+- Select Single Player
+- In Game tab, Game Mode: Creative, Difficulty: Peaceful, Allow Commands: ON
+- In World tab, World Type: Superflat
+- In Customize (Superflat Customization), Presets = `minecraft:bedrock,62*minecraft:dirt,minecraft:grass_block;minecraft:plains`
+- In More tab, toggle off (1) time advance and (2) weather.
+- "Create New World"
+- ESC -> Open to LAN (Port Num: 55916)
+
+### In Code
+- Check if `random_seed` and `model` in [builder.json](builder.json) are set correctly.
+- Check if `sampling_for_lite` is set correctly in [main.ipynb](mineCEraft/main.ipynb)
+- "Restart" and "Run all" [main.ipynb](mineCEraft/main.ipynb)
+
 ## Benchmark Categories
 
 Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
@@ -19,12 +41,6 @@ Subcategories:
 - **Building Elements**: Foundations, Walls, Roofs and Columns, Frames
 - **Buildings**: Basic Buildings, Multiple Rooms, Multiple Bedrooms, Multi-story Building, Accessibility, Creative Requests, Resource Optimization, Single-turn Planning, Multi-turn Planning & Revision
 - **Civil/Structural Engineering**: Basic Bridges, Arched Bridges, Dome
-
-## Quick Start
-
-1. Follow [Mindcraft's setup](https://github.com/mindcraft-bots/mindcraft) to configure the connection (Minecraft game + MindCraft server on port 15916).
-2. Ensure [builder.json](builder.json) has your desired LLM set under the `model` key.
-3. Run `mineCEraft/main.ipynb`.
 
 ## Workflow
 
@@ -52,4 +68,4 @@ We provide test notebooks for each evaluation module. They serve as documentatio
 
 ## Acknowledgement
 
-This project is built on [Mindcraft](https://github.com/mindcraft-bots/mindcraft). We thank the Mindcraft project for the underlying framework. For setup, installation, and detailed documentation, see [github.com/mindcraft-bots/mindcraft](https://github.com/mindcraft-bots/mindcraft).
+This project is built on [Mindcraft](https://github.com/mindcraft-bots/mindcraft) (Paper: https://arxiv.org/pdf/2504.17950). We thank the Mindcraft project for the underlying framework. For setup, installation, and detailed documentation, please also refer to [github.com/mindcraft-bots/mindcraft](https://github.com/mindcraft-bots/mindcraft).
