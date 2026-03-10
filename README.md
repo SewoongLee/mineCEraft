@@ -14,12 +14,12 @@ Our work is located in the [mineCEraft](mineCEraft/) folder.
 ### In Minecraft
 (The world setup only needs to be done once; after that, you can just "Recreate" it.)
 - Select Single Player
-- In Game tab, Game Mode: Creative, Difficulty: Peaceful, Allow Commands: ON
-- In World tab, World Type: Superflat
-- In Customize (Superflat Customization), Presets = `minecraft:bedrock,62*minecraft:dirt,minecraft:grass_block;minecraft:plains`
-- In More tab, toggle off (1) time advance and (2) weather.
+- In "Game" tab, Game Mode: Creative, Difficulty: Peaceful, Allow Commands: ON
+- In "World" tab, World Type: Superflat
+- In "Customize" (Superflat Customization), Presets = `minecraft:bedrock,62*minecraft:dirt,minecraft:grass_block;minecraft:plains`
+- In "More" tab, toggle off (1) time advance and (2) weather.
 - "Create New World"
-- ESC -> Open to LAN (Port Num: 55916)
+- Click ESC and "Open to LAN" (Port Num: 55916)
 
 ### In Code
 - Check if `random_seed` and `model` in [builder.json](builder.json) are set correctly.
