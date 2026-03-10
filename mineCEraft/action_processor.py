@@ -113,7 +113,8 @@ def read_placed_and_removed_from_action(
       chat: async () => {},
       registry: mockRegistry,
       blockAt(pos) {
-        return { type: airTypeId, position: pos };
+        const p = pos || _pos;
+        return { name: 'air', type: airTypeId, position: createPosObj(p.x, p.y, p.z, {}) };
       },
     };
     global.bot = new Proxy(botBase, {
@@ -124,7 +125,12 @@ def read_placed_and_removed_from_action(
     });
     const worldBase = {
       getPosition: (_bot) => _pos,
-      getBlockAtPosition: (_bot, _x, _y, _z) => ({ name: 'air' }),
+      getBlockAtPosition: (_bot, _x, _y, _z) => {
+        const bx = Math.floor(_pos.x) + (_x || 0);
+        const by = Math.floor(_pos.y) + (_y || 0);
+        const bz = Math.floor(_pos.z) + (_z || 0);
+        return { name: 'air', position: createPosObj(bx, by, bz, {}) };
+      },
       getNearestFreeSpace: (_bot, _size, _dist) => _pos,
       getNearestBlock: (_bot, _type, _dist) => null,
       getNearestBlocks: (_bot, _types, _dist, _count) => [],
