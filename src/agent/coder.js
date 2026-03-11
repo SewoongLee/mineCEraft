@@ -1,4 +1,4 @@
-import { writeFile, readFile, mkdirSync } from 'fs';
+import { writeFile, readFile, mkdirSync, readdirSync } from 'fs';
 import { makeCompartment, lockdown } from './library/lockdown.js';
 import * as skills from './library/skills.js';
 import * as world from './library/world.js';
@@ -8,10 +8,12 @@ import {ESLint} from "eslint";
 export class Coder {
     constructor(agent) {
         this.agent = agent;
-        this.file_counter = 0;
         this.fp = '/bots/'+agent.name+'/action-code/';
         this.code_template = '';
         this.code_lint_template = '';
+
+        mkdirSync('.' + this.fp, { recursive: true });
+        this.file_counter = this._initFileCounter();
 
         readFile('./bots/execTemplate.js', 'utf8', (err, data) => {
             if (err) throw err;
@@ -21,7 +23,6 @@ export class Coder {
             if (err) throw err;
             this.code_lint_template = data;
         });
-        mkdirSync('.' + this.fp, { recursive: true });
     }
 
     async generateCode(agent_history) {
@@ -214,6 +215,28 @@ export class Coder {
         }
 
         return { func:{main: mainFn}, src_lint_copy: src_lint_copy };
+    }
+
+    _initFileCounter() {
+        const dir = '.' + this.fp;
+        try {
+            const files = readdirSync(dir);
+            let max = -1;
+            for (const f of files) {
+                const m = f.match(/^(\d+)\.js$/);
+                if (m) {
+                    const n = Number(m[1]);
+                    if (n > max) max = n;
+                }
+            }
+            const counter = max + 1;
+            if (counter > 0) {
+                console.log(`[coder] Resuming file_counter at ${counter} (found existing files up to ${max}.js)`);
+            }
+            return counter;
+        } catch {
+            return 0;
+        }
     }
 
     _sanitizeCode(code) {
