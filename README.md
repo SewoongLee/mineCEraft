@@ -34,7 +34,7 @@ Benchmark files under `mineCEraft/benchmarks/` use the following prefixes:
 |---------|---------|
 | `1-se`  | Structural Elements |
 | `2-bt`  | Building Types |
-| `3-ae`  | Accessibility & Experience |
+| `3-ae`  | Architectural Element |
 | `4-cm`  | Construction Management |
 | `5-ce`  | Civil Engineering |
 
@@ -42,7 +42,7 @@ Subcategories:
 
 - **Structural Elements**: Foundations, Walls, Roofs and Columns, Frames
 - **Building Types**: Basic Buildings, Multiple Rooms, Multiple Bedrooms, Multi-story Building
-- **Accessibility & Experience**: Accessibility, Creative Requests
+- **Architectural Element**: Accessibility, Creative Requests
 - **Construction Management**: Resource Optimization, Single-turn Planning, Multi-turn Planning & Revision
 - **Civil Engineering**: Basic Bridges, Arched Bridges, Dome
 
