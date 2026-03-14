@@ -1,5 +1,11 @@
 # MineCEraft
 
+<sub>*Pronunciation: Mine-Cee-Eee-raft*</sub>
+
+<p align="center">
+  <img src="intro.png" alt="MineCEraft Benchmark Overview" width="800">
+</p>
+
 **MineCEraft** (Minecraft **C**onstruction **E**ngineering Benchmark) is an open-source benchmark for evaluating LLMs as construction engineers in Minecraft. It provides a safe, controllable environment to assess how well language models perform realistic construction engineering tasks with programmable and systematic evaluation.
 
 Our work is located in the [mineCEraft](mineCEraft/) folder.
