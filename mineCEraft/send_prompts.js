@@ -13,8 +13,11 @@ const SERVER = "http://localhost:8080";
 const RESPONSE_TIMEOUT_MS = 10 * 60 * 1000; // max wait per turn for completion keyword
 const COMPLETION_KEYWORDS = [
   // Phrases chosen to match explicit completion messages, not planning text.
-  "i've successfully built",
+  "i've successfully",
   "i've built",
+  "i've expanded",
+  "i've revised",
+  "i've converted",
   "i've created",
   "i've constructed",
   "i've laid",

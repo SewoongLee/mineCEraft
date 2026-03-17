@@ -560,7 +560,7 @@ def has_wide_exit(
     return has_exit(coords, width=width, depth=width, height=2, start_material=start_material, verbose=verbose)
 
 
-def has_rooms(coords: List[Dict], room_cnt: int, y: int = 2) -> bool:
+def has_rooms(coords: List[Dict], room_cnt: int, y: int = 1) -> bool:
     """
     Determine whether there are at least `room_cnt` enclosed regions ("rooms")
     on the X-Z plane at height `y`.
