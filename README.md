@@ -1,6 +1,6 @@
 # MineCEraft
 
-<sub>*Pronunciation: Mine-Cee-Eee-raft*</sub>
+<sub>*Pronunciation: mine-see-ee-raft*</sub>
 
 <p align="center">
   <img src="intro.png" alt="MineCEraft Benchmark Overview" width="800">
