@@ -2,6 +2,8 @@
 
 <sub>*Pronunciation: mine-see-ee-raft*</sub>
 
+[![Paper](https://img.shields.io/badge/arXiv-Coming_Soon-b31b1b)](#)
+
 <p align="center">
   <img src="intro.png" alt="MineCEraft Benchmark Overview" width="800">
 </p>
