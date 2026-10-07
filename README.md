@@ -2,7 +2,7 @@
 
 <sub>*Pronunciation: mine-see-ee-raft*</sub>
 
-[![Paper](https://img.shields.io/badge/arXiv-[2608.28884](https://arxiv.org/pdf/2608.28884)-b31b1b)](#)
+[![Paper](https://img.shields.io/badge/arXiv-https://arxiv.org/pdf/2608.28884-b31b1b)](#)
 
 <p align="center">
   <img src="intro.png" alt="MineCEraft Benchmark Overview" width="800">
