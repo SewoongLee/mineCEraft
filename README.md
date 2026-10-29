@@ -113,4 +113,4 @@ This project is built on [Mindcraft](https://github.com/mindcraft-bots/mindcraft
 
 ## License
 
-The text-based question-answer pairs and benchmark metadata are released under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+The text-based benchmarks are released under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
