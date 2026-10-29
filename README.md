@@ -1,6 +1,11 @@
-# MineCEraft
+
+**[EMNLP Findings 2026]** MineCEraft: Evaluating Language Models as Construction Engineers in the World of Minecraft
 
 <sub>*Pronunciation: mine-see-ee-raft*</sub>
+
+**Authors**: Sewoong Lee, Risham Sidhu, Julia Hockenmaier, and Yoonhwa Jung. 
+
+**Paper**: [EMNLP 2026 Findings](https://aclanthology.org/2026.findings-emnlp.130.pdf)
 
 [![arXiv](https://img.shields.io/badge/arXiv-2608.28884-b31b1b.svg)](https://arxiv.org/abs/2608.28884)
 
@@ -81,3 +86,31 @@ We provide test notebooks for each evaluation module. They serve as documentatio
 ## Acknowledgement
 
 This project is built on [Mindcraft](https://github.com/mindcraft-bots/mindcraft) (Paper: https://arxiv.org/pdf/2504.17950). We thank the Mindcraft project for the underlying framework. For setup, installation, and detailed documentation, please also refer to [github.com/mindcraft-bots/mindcraft](https://github.com/mindcraft-bots/mindcraft).
+
+---
+
+## Citation
+
+
+```bibtex
+@inproceedings{lee-etal-2026-mineceraft,
+    title = "{M}ine{CE}raft: Evaluating Language Models as Construction Engineers in the World of {M}inecraft",
+    author = "Lee, Sewoong  and
+      Sidhu, Risham  and
+      Hockenmaier, Julia  and
+      Jung, Yoonhwa",
+    booktitle = "Findings of the {A}ssociation for {C}omputational {L}inguistics: {EMNLP} 2026",
+    month = oct,
+    year = "2026",
+    address = "Budapest, Hungary",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.findings-emnlp.130/",
+    pages = "2643--2667"
+}
+```
+
+---
+
+## License
+
+The text-based question-answer pairs and benchmark metadata are released under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
